@@ -1,0 +1,24 @@
+{
+    "players": [
+        {
+            "name": "Ramsey Bland",
+            "handicap": 5,
+            "team": 1
+        },
+        {
+            "name": "Ross Bland",
+            "handicap": 8,
+            "team": 1
+        },
+        {
+            "name": "Brock Carlson",
+            "handicap": 8,
+            "team": 1
+        },
+        {
+            "name": "Pat Kent",
+            "handicap": 11,
+            "team": 1
+        }
+    ]
+}

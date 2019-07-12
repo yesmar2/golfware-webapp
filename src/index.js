@@ -6,13 +6,29 @@ import * as serviceWorker from './serviceWorker';
 import { createGlobalStyle, ThemeProvider } from 'styled-components'
 
 const GlobalStyle = createGlobalStyle`
-    body {
-        display: flex;
+    *,
+    *:before,
+    *:after {
+        box-sizing: border-box;
+    }
+
+    html, body {
+        height: 100%;
+    }
+
+    #root {
+        height: 100%;
     }
 `
 
 const theme = {
-    spacing: 8
+    spacingSmall: "8px",
+    spacingMedium: "16px",
+    spacingLarge: "24px",
+    spacingHuge: "32px",
+    headerHeight: "50px",
+    leftDrawerWidth: "200px",
+    borderColor: "#ececec"
 }
 
 ReactDOM.render(

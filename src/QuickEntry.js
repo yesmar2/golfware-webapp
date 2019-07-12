@@ -1,15 +1,30 @@
 import React, { Component } from 'react';
-import styled from 'styled-components'
+import styled from 'styled-components';
+import Search from './Search';
+import PlayerCard from './PlayerCard';
+import data from './data.json';
 
 const Container = styled.div`
-    padding: ${props => props.theme.spacing}px
+    
+`;
+
+const Players = styled.div`
+    
 `;
 
 class QuickEntry extends Component {
     render() {
         return (
             <Container>
-                Quick Entry
+                <Search />
+                <Players>
+                    {data.players.map(player => (
+                            <PlayerCard 
+                                name={player.name}
+                                team={player.team} />
+                        )
+                    )}
+                </Players>
             </Container>
         );
     }
