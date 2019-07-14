@@ -5,14 +5,22 @@ const Container = styled.div`
     position: fixed;
     height: 100%;
     width: ${props => props.theme.leftDrawerWidth};
-    border-right: 1px solid black;
-    padding: ${props => props.theme.spacingMedium};
+    border-right: 1px solid  ${props => props.theme.borderColor};
+    padding: ${props => props.theme.spacingLarge};
 `;
+
+const Heading = styled.h1`
+    font-size: 24px;
+    font-weight: normal;
+`;
+
 
 const LeftDrawer = props => {
     return (
         <Container>
-            Golfware
+            <Heading>
+                Golfware
+            </Heading>
         </Container>
     );
 }

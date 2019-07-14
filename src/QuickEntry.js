@@ -13,13 +13,27 @@ const Players = styled.div`
 `;
 
 class QuickEntry extends Component {
+    state = {
+        players: data.players
+    }
+
+    onChange = value => {
+        const filteredPlayers = data.players.filter(player => { 
+            const name = player.name.toLowerCase();
+            return name.indexOf(value.toLowerCase()) !== -1 ;
+        })
+
+        this.setState({ players: filteredPlayers })
+    }
+
     render() {
         return (
             <Container>
-                <Search />
+                <Search onChange={this.onChange} />
                 <Players>
-                    {data.players.map(player => (
+                    {this.state.players.map(player => (
                             <PlayerCard 
+                                key={player.id}
                                 name={player.name}
                                 team={player.team} />
                         )

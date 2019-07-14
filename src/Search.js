@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components'
 
 const Container = styled.div`
@@ -10,14 +10,24 @@ const Container = styled.div`
 
 const Input = styled.input`
     border: none;
+    outline: none;
 `;
 
-const Search = props => {
-    return (
-        <Container>
-            <Input placeholder="Placeholder..." />
-        </Container>
-    );
+class Search extends Component {
+
+    onChange = (event) => {
+        this.props.onChange(event.target.value);
+    }
+
+    render() {
+        return (
+            <Container>
+                <Input 
+                    placeholder="Placeholder..."
+                    onChange={this.onChange} />
+            </Container>
+        );
+    }
 }
 
 export default Search;

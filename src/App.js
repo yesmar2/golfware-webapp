@@ -13,7 +13,7 @@ const Content = styled.div`
     height: 100%;
     margin-left: ${props => props.theme.leftDrawerWidth};
     margin-top: ${props => props.theme.headerHeight};
-    padding: ${props => props.theme.spacingMedium}
+    padding: ${props => props.theme.spacingLarge}
 `;
 
 function App() {
