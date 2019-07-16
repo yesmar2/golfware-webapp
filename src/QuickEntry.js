@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import Search from './Search';
+import Input from './Input';
 import PlayerCard from './PlayerCard';
 import data from './data.json';
 
@@ -10,6 +10,10 @@ const Container = styled.div`
 
 const Players = styled.div`
     
+`;
+
+const Search = styled(Input)`
+    width: 100%;
 `;
 
 class QuickEntry extends Component {
@@ -35,7 +39,7 @@ class QuickEntry extends Component {
                             <PlayerCard 
                                 key={player.id}
                                 name={player.name}
-                                team={player.team} />
+                                teamId={player.teamId} />
                         )
                     )}
                 </Players>

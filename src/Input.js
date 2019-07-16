@@ -1,33 +1,32 @@
 import React, { Component } from 'react';
 import styled from 'styled-components'
 
-const Container = styled.div`
+const Container = styled.input`
     display: flex;
-    border: 1px solid ${props => props.theme.borderColor};
+    border: 1px solid ${props => props.theme.colors.grey[200]};
     padding: ${props => props.theme.spacingMedium};
     margin-bottom: ${props => props.theme.spacingMedium};
-`;
-
-const Input = styled.input`
-    border: none;
     outline: none;
+    border-radius: 4px;
 `;
 
-class Search extends Component {
+
+class Input extends Component {
 
     onChange = (event) => {
         this.props.onChange(event.target.value);
     }
 
     render() {
+        const { className } = this.props;
+
         return (
-            <Container>
-                <Input 
-                    placeholder="Placeholder..."
-                    onChange={this.onChange} />
-            </Container>
+            <Container 
+                className={className}
+                placeholder="Search..."
+                onChange={this.onChange} />
         );
     }
 }
 
-export default Search;
+export default Input;

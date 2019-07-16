@@ -8,6 +8,10 @@ import { createGlobalStyle, ThemeProvider } from 'styled-components'
 const theme = {
     colors: {
         green: "#30da7b",
+        red: "#EE6352",
+        yellow: "#FFE74C",
+        purple: "#731DD8",
+        blue: "#3FA7D6",
         grey: {
             100: "#F6F7F9",
             200: "#E0E7F0",
@@ -21,8 +25,7 @@ const theme = {
     spacingLarge: "24px",
     spacingHuge: "32px",
     headerHeight: "64px",
-    leftDrawerWidth: "200px",
-    borderColor: "#d5dde6"
+    leftDrawerWidth: "256px"
 }
 
 const GlobalStyle = createGlobalStyle`

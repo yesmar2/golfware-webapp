@@ -1,28 +1,64 @@
 {
+    "teams": [
+        {
+            "id": 1,
+            "number": 1,
+            "color": "green" 
+        },
+        {
+            "id": 2,
+            "number": 2,
+            "color": "red" 
+        }
+    ],
     "players": [
         {
             "id": 1,
             "name": "Ramsey Bland",
             "handicap": 5,
-            "team": 1
+            "teamId": 1
         },
         {
             "id": 2,
             "name": "Ross Bland",
             "handicap": 8,
-            "team": 1
+            "teamId": 1
         },
         {
             "id": 3,
             "name": "Brock Carlson",
             "handicap": 8,
-            "team": 1
+            "teamId": 1
         },
         {
             "id": 4,
             "name": "Pat Kent",
             "handicap": 11,
-            "team": 1
+            "teamId": 1
+        },
+        {
+            "id": 5,
+            "name": "Brett Steffen",
+            "handicap": 5,
+            "teamId": 2
+        },
+        {
+            "id": 6,
+            "name": "Jeff Gustafson",
+            "handicap": 4,
+            "teamId": 2
+        },
+        {
+            "id": 7,
+            "name": "Barry Eckwahl",
+            "handicap": 2,
+            "teamId": 2
+        },
+        {
+            "id": 8,
+            "name": "Kevin Beaton",
+            "handicap": 4,
+            "teamId": 2
         }
     ]
 }
