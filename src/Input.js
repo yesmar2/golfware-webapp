@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 const Container = styled.input`
-    display: flex;
-    border: 1px solid ${props => props.theme.colors.grey[200]};
-    padding: ${props => props.theme.spacingMedium};
-    margin-bottom: ${props => props.theme.spacingMedium};
     outline: none;
-    border-radius: 4px;
+    border: none;
+    width: 100%;
 `;
-
 
 class Input extends Component {
 
@@ -23,7 +19,6 @@ class Input extends Component {
         return (
             <Container 
                 className={className}
-                placeholder="Search..."
                 onChange={this.onChange} />
         );
     }

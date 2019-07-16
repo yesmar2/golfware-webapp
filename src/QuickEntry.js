@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import Input from './Input';
 import PlayerCard from './PlayerCard';
+import Search from './Search';
 import data from './data.json';
 
 const Container = styled.div`
@@ -12,8 +12,9 @@ const Players = styled.div`
     
 `;
 
-const Search = styled(Input)`
-    width: 100%;
+const Heading = styled.h3`
+    font-weight: normal;
+    margin-bottom: ${props => props.theme.spacingMedium};
 `;
 
 class QuickEntry extends Component {
@@ -33,6 +34,7 @@ class QuickEntry extends Component {
     render() {
         return (
             <Container>
+                <Heading>Quick Entry</Heading>
                 <Search onChange={this.onChange} />
                 <Players>
                     {this.state.players.map(player => (

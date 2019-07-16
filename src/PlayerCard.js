@@ -1,14 +1,14 @@
 import React from 'react';
 import styled from 'styled-components'
+import Paper from './Paper';
+import Entry from './Entry';
 import data from './data.json';
 
-const Container = styled.div`
+const Container = styled(Paper)`
     display: flex;
-    border: 1px solid ${props => props.theme.colors.grey[200]};
-    padding: ${props => props.theme.spacingMedium};
+    align-items: center;
+    height: 56px;
     margin-bottom: ${props => props.theme.spacingMedium};
-    background: #fff;
-    border-radius: 7px;
 `;
 
 const Team = styled.div`
@@ -16,6 +16,7 @@ const Team = styled.div`
     display: flex;
     justify-content: center;
     align-items: center';
+    margin-left: ${props => props.theme.spacingMedium};
     margin-right: ${props => props.theme.spacingMedium};
     background: ${props => props.theme.colors[props.color]};;
     color: #fff;
@@ -24,9 +25,8 @@ const Team = styled.div`
 `;
 
 const Name = styled.div`
-    
+    flex: 1;
 `;
-
 
 const PlayerCard = props => {
     const { name, teamId } = props;
@@ -40,6 +40,16 @@ const PlayerCard = props => {
             <Name>
                 {name}
             </Name>
+            <Entry></Entry>
+            <Entry>1</Entry>
+            <Entry>1</Entry>
+            <Entry>1</Entry>
+            <Entry>1</Entry>
+            <Entry>1</Entry>
+            <Entry>1</Entry>
+            <Entry>1</Entry>
+            <Entry>1</Entry>
+            <Entry>1</Entry>
         </Container>
     );
 }
