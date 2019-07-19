@@ -7,16 +7,23 @@ const Container = styled(Input)`
     width: 56px;
     border-left: 1px solid ${props => props.theme.colors.grey[200]}; 
     text-align: center;
+
+    &:last-child {
+        border-top-right-radius: 7px;
+        border-bottom-right-radius: 7px;
+    }
 `;
 
 class Entry extends Component {
     onChange = () => {
-        console.log("onChange");
+
     }
 
     render() {
         return (
-            <Container onChange={this.onChange}>
+            <Container 
+                onChange={this.onChange}
+                maxLength="1">
     
             </Container>
         );

@@ -9,6 +9,16 @@
             "id": 2,
             "number": 2,
             "color": "red" 
+        },
+        {
+            "id": 3,
+            "number": 3,
+            "color": "blue" 
+        },
+        {
+            "id": 4,
+            "number": 4,
+            "color": "purple" 
         }
     ],
     "players": [
@@ -59,6 +69,54 @@
             "name": "Kevin Beaton",
             "handicap": 4,
             "teamId": 2
+        },
+        {
+            "id": 9,
+            "name": "Rick Bland",
+            "handicap": 5,
+            "teamId": 3
+        },
+        {
+            "id": 10,
+            "name": "Earl Johnson",
+            "handicap": 4,
+            "teamId": 3
+        },
+        {
+            "id": 11,
+            "name": "Barry Anderson",
+            "handicap": 2,
+            "teamId": 3
+        },
+        {
+            "id": 12,
+            "name": "Jamie Henderson",
+            "handicap": 4,
+            "teamId": 3
+        },
+        {
+            "id": 13,
+            "name": "Tim Burns",
+            "handicap": 5,
+            "teamId": 4
+        },
+        {
+            "id": 14,
+            "name": "Jamie Kayner",
+            "handicap": 4,
+            "teamId": 4
+        },
+        {
+            "id": 15,
+            "name": "Greg Petrocarlo",
+            "handicap": 2,
+            "teamId": 4
+        },
+        {
+            "id": 16,
+            "name": "Scott Knipe",
+            "handicap": 4,
+            "teamId": 4
         }
     ]
 }

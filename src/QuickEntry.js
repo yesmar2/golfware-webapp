@@ -9,10 +9,14 @@ const Container = styled.div`
 `;
 
 const Players = styled.div`
-    
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: ${props => props.theme.spacingMedium};
 `;
 
 const Heading = styled.h3`
+    line-height: 18px;
+    font-size: 18px;
     font-weight: normal;
     margin-bottom: ${props => props.theme.spacingMedium};
 `;

@@ -6,6 +6,7 @@ const Container = styled.div`
     height: 100%;
     width: ${props => props.theme.leftDrawerWidth};
     border-right: 1px solid  ${props => props.theme.colors.grey[200]};
+    background: #fff;
 `;
 
 const AppName = styled.div`

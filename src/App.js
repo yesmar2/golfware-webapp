@@ -10,12 +10,10 @@ const Container = styled.div`
 `;
 
 const Content = styled.main`
-    height: 100%;
     width: 100%;
     margin-left: ${props => props.theme.leftDrawerWidth};
     margin-top: ${props => props.theme.headerHeight};
     padding: ${props => props.theme.spacingLarge};
-    background: ${props => props.theme.colors.grey[100]};
 `;
 
 function App() {

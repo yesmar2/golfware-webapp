@@ -15,7 +15,9 @@ const Search = props => {
     const { onChange } = props;
 
     return (
-        <Container onChange={onChange}>
+        <Container
+            placeholder="Search..."
+            onChange={onChange}>
 
         </Container>
     );

@@ -14,11 +14,17 @@ class Input extends Component {
     }
 
     render() {
-        const { className } = this.props;
+        const {
+            className,
+            maxLength,
+            placeholder
+         } = this.props;
 
         return (
             <Container 
+                placeholder={placeholder}
                 className={className}
+                maxLength={maxLength}
                 onChange={this.onChange} />
         );
     }

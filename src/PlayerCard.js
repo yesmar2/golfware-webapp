@@ -8,7 +8,6 @@ const Container = styled(Paper)`
     display: flex;
     align-items: center;
     height: 56px;
-    margin-bottom: ${props => props.theme.spacingMedium};
 `;
 
 const Team = styled.div`
@@ -40,16 +39,16 @@ const PlayerCard = props => {
             <Name>
                 {name}
             </Name>
-            <Entry></Entry>
-            <Entry>1</Entry>
-            <Entry>1</Entry>
-            <Entry>1</Entry>
-            <Entry>1</Entry>
-            <Entry>1</Entry>
-            <Entry>1</Entry>
-            <Entry>1</Entry>
-            <Entry>1</Entry>
-            <Entry>1</Entry>
+            {/* <Entry />
+            <Entry />
+            <Entry />
+            <Entry />
+            <Entry />
+            <Entry />
+            <Entry />
+            <Entry />
+            <Entry />
+            <Entry /> */}
         </Container>
     );
 }

@@ -38,6 +38,7 @@ const GlobalStyle = createGlobalStyle`
     html, body {
         height: 100%;
         color: ${props => props.theme.colors.grey[500]};
+        background: ${props => props.theme.colors.grey[100]};
     }
 
     #root {
