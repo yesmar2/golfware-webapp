@@ -8,10 +8,16 @@ const Container = styled.div`
 `;
 
 const Paper = props => {
-    const { children, className } = props;
+    const {
+        children,
+        className,
+        onClick 
+    } = props;
 
     return (
-        <Container className={className}>
+        <Container
+            className={className}
+            onClick={onClick}>
             {children}
         </Container>
     );

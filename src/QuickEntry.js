@@ -8,15 +8,36 @@ const Container = styled.div`
     
 `;
 
-const Players = styled.div`
+const Teams = styled.div`
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: ${props => props.theme.spacingMedium};
 `;
 
+const Team = styled.div`
+   
+`;
+
+const Players = styled.div`
+    display: flex;
+    flex-direction: column;
+`;
+
+const PlayerCardStyled = styled(PlayerCard)`
+    margin-bottom: ${props => props.theme.spacingMedium};
+`;
+
+
 const Heading = styled.h3`
     line-height: 18px;
     font-size: 18px;
+    font-weight: normal;
+    margin-bottom: ${props => props.theme.spacingMedium};
+`;
+
+const TeamHeading = styled.h4`
+    line-height: 16px;
+    font-size: 16px;
     font-weight: normal;
     margin-bottom: ${props => props.theme.spacingMedium};
 `;
@@ -36,19 +57,34 @@ class QuickEntry extends Component {
     }
 
     render() {
+        const { players } = this.state;
+
         return (
             <Container>
                 <Heading>Quick Entry</Heading>
                 <Search onChange={this.onChange} />
-                <Players>
-                    {this.state.players.map(player => (
-                            <PlayerCard 
-                                key={player.id}
-                                name={player.name}
-                                teamId={player.teamId} />
-                        )
-                    )}
-                </Players>
+                <Teams>
+                    {data.teams
+                        .filter(team => players.some(player => player.teamId === team.id))
+                        .map(team => (
+                        <Team>
+                            <TeamHeading>Team {team.id}</TeamHeading>
+                            <Players>
+                                {players
+                                    .filter(player => player.teamId === team.id)
+                                    .map(player => {
+                                        return (
+                                            <PlayerCardStyled 
+                                                key={player.id}
+                                                name={player.name}
+                                                handicap={player.handicap} />
+                                        );
+                                    }
+                                )}
+                            </Players>
+                        </Team>
+                    ))}
+                </Teams>
             </Container>
         );
     }

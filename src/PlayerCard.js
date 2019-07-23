@@ -10,47 +10,54 @@ const Container = styled(Paper)`
     height: 56px;
 `;
 
-const Team = styled.div`
+const Handicap = styled.div`
     border-radius: 50%;
     display: flex;
     justify-content: center;
-    align-items: center';
-    margin-left: ${props => props.theme.spacingMedium};
+    align-items: center
     margin-right: ${props => props.theme.spacingMedium};
-    background: ${props => props.theme.colors[props.color]};;
+    background: ${props => props.theme.colors.green}; 
     color: #fff;
-    height: ${props => props.theme.spacingLarge};
-    width: ${props => props.theme.spacingLarge};
+    height: ${props => props.theme.spacingHuge};
+    width: ${props => props.theme.spacingHuge};
 `;
 
 const Name = styled.div`
     flex: 1;
+    margin-left: ${props => props.theme.spacingMedium};
 `;
 
-const PlayerCard = props => {
-    const { name, teamId } = props;
-    const teamInfo = data.teams.find(team => team.id === teamId)
+class PlayerCard extends React.Component {
+    onClick = () => {
+        console.log("clicked");
+    }
 
-    return (
-        <Container>
-            <Team color={teamInfo.color}>
-                {teamInfo.number}
-            </Team>
-            <Name>
-                {name}
-            </Name>
-            {/* <Entry />
-            <Entry />
-            <Entry />
-            <Entry />
-            <Entry />
-            <Entry />
-            <Entry />
-            <Entry />
-            <Entry />
-            <Entry /> */}
-        </Container>
-    );
+    render() {
+        const { name, handicap, className } = this.props;
+
+        return (
+            <Container
+                className={className}
+                onClick={this.onClick}>
+                <Name>
+                    {name}
+                </Name>
+                <Handicap>
+                    {handicap}
+                </Handicap>
+                {/* <Entry />
+                <Entry />
+                <Entry />
+                <Entry />
+                <Entry />
+                <Entry />
+                <Entry />
+                <Entry />
+                <Entry />
+                <Entry /> */}
+            </Container>
+        );
+    }
 }
 
 export default PlayerCard;

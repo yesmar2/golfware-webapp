@@ -19,6 +19,36 @@
             "id": 4,
             "number": 4,
             "color": "purple" 
+        },
+        {
+            "id": 5,
+            "number": 5,
+            "color": "purple" 
+        },
+        {
+            "id": 6,
+            "number": 6,
+            "color": "purple" 
+        },
+        {
+            "id": 7,
+            "number": 7,
+            "color": "purple" 
+        },
+        {
+            "id": 8,
+            "number": 8,
+            "color": "purple" 
+        },
+        {
+            "id": 9,
+            "number": 9,
+            "color": "purple" 
+        },
+        {
+            "id": 10,
+            "number": 10,
+            "color": "purple" 
         }
     ],
     "players": [
@@ -117,6 +147,150 @@
             "name": "Scott Knipe",
             "handicap": 4,
             "teamId": 4
+        },
+        {
+            "id": 17,
+            "name": "Tim Burns",
+            "handicap": 5,
+            "teamId": 5
+        },
+        {
+            "id": 18,
+            "name": "Jamie Kayner",
+            "handicap": 4,
+            "teamId": 5
+        },
+        {
+            "id": 19,
+            "name": "Greg Petrocarlo",
+            "handicap": 2,
+            "teamId": 5
+        },
+        {
+            "id": 20,
+            "name": "Scott Knipe",
+            "handicap": 4,
+            "teamId": 5
+        },
+        {
+            "id": 21,
+            "name": "Tim Burns",
+            "handicap": 5,
+            "teamId": 6
+        },
+        {
+            "id": 22,
+            "name": "Jamie Kayner",
+            "handicap": 4,
+            "teamId": 6
+        },
+        {
+            "id": 23,
+            "name": "Greg Petrocarlo",
+            "handicap": 2,
+            "teamId": 6
+        },
+        {
+            "id": 24,
+            "name": "Scott Knipe",
+            "handicap": 4,
+            "teamId": 6
+        },
+        {
+            "id": 25,
+            "name": "Tim Burns",
+            "handicap": 5,
+            "teamId": 7
+        },
+        {
+            "id": 26,
+            "name": "Jamie Kayner",
+            "handicap": 4,
+            "teamId": 7
+        },
+        {
+            "id": 27,
+            "name": "Greg Petrocarlo",
+            "handicap": 2,
+            "teamId": 7
+        },
+        {
+            "id": 28,
+            "name": "Scott Knipe",
+            "handicap": 4,
+            "teamId": 7
+        },
+        {
+            "id": 29,
+            "name": "Tim Burns",
+            "handicap": 5,
+            "teamId": 8
+        },
+        {
+            "id": 30,
+            "name": "Jamie Kayner",
+            "handicap": 4,
+            "teamId": 8
+        },
+        {
+            "id": 31,
+            "name": "Greg Petrocarlo",
+            "handicap": 2,
+            "teamId": 8
+        },
+        {
+            "id": 32,
+            "name": "Scott Knipe",
+            "handicap": 4,
+            "teamId": 8
+        },
+        {
+            "id": 33,
+            "name": "Tim Burns",
+            "handicap": 5,
+            "teamId": 9
+        },
+        {
+            "id": 34,
+            "name": "Jamie Kayner",
+            "handicap": 4,
+            "teamId": 9
+        },
+        {
+            "id": 35,
+            "name": "Greg Petrocarlo",
+            "handicap": 2,
+            "teamId": 9
+        },
+        {
+            "id": 36,
+            "name": "Scott Knipe",
+            "handicap": 4,
+            "teamId": 9
+        },
+        {
+            "id": 37,
+            "name": "Tim Burns",
+            "handicap": 5,
+            "teamId": 10
+        },
+        {
+            "id": 38,
+            "name": "Jamie Kayner",
+            "handicap": 4,
+            "teamId": 10
+        },
+        {
+            "id": 39,
+            "name": "Greg Petrocarlo",
+            "handicap": 2,
+            "teamId": 10
+        },
+        {
+            "id": 40,
+            "name": "Scott Knipe",
+            "handicap": 4,
+            "teamId": 10
         }
     ]
 }
