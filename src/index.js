@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import { BrowserRouter } from "react-router-dom";
 import * as serviceWorker from './serviceWorker';
 import { createGlobalStyle, ThemeProvider } from 'styled-components'
+import App from './App';
 
 const theme = {
     colors: {
@@ -37,6 +37,15 @@ const GlobalStyle = createGlobalStyle`
 
     html, body {
         height: 100%;
+    }
+
+    body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+            "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+            sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
         color: ${props => props.theme.colors.grey[500]};
         background: ${props => props.theme.colors.grey[100]};
     }
@@ -48,15 +57,22 @@ const GlobalStyle = createGlobalStyle`
     h1, h2, h3, h4, h5, h6 {
         margin: 0;
     }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
 `
 
 ReactDOM.render(
-    <ThemeProvider theme={theme}>
-        <Fragment>
-            <GlobalStyle />
-            <App />
-        </Fragment>
-    </ThemeProvider>
+    <BrowserRouter>
+        <ThemeProvider theme={theme}>
+            <Fragment>
+                <GlobalStyle />
+                <App />
+            </Fragment>
+        </ThemeProvider>
+    </BrowserRouter>
     , document.getElementById('root')
 );
 

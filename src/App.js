@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Route } from "react-router-dom";
+import Home from './Home';
 import QuickEntry from './QuickEntry';
 import Header from './Header';
 import LeftDrawer from './LeftDrawer';
@@ -26,7 +28,8 @@ function App() {
                 
             </Header>
             <Content>
-                <QuickEntry />
+                <Route exact path="/" component={Home} />
+                <Route exact path="/quickentry" component={QuickEntry} />
             </Content>
         </Container>
     );

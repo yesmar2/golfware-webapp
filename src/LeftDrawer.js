@@ -1,7 +1,10 @@
 import React from 'react';
 import styled from 'styled-components'
+import { Link } from 'react-router-dom';
+import { FaGolfBall } from 'react-icons/fa';
+import MenuItem from './MenuItem';
 
-const Container = styled.div`
+const Container = styled.nav`
     position: fixed;
     height: 100%;
     width: ${props => props.theme.leftDrawerWidth};
@@ -22,15 +25,36 @@ const Heading = styled.h1`
     font-weight: normal;
 `;
 
+const Menu = styled.ul`
+    list-style-type: none;
+    margin: 0;
+    padding: ${props => props.theme.spacingMedium} 0;
+`;
 
 const LeftDrawer = props => {
     return (
         <Container>
             <AppName>
-                <Heading>
-                    Golfware
-                </Heading>
+                <Link to="/">
+                    <Heading>
+                        Golfware
+                    </Heading>
+                </Link>
             </AppName>
+            <Menu>
+                <MenuItem
+                    href="/quickentry"
+                    icon={<FaGolfBall />}
+                    text="Quick Entry" />
+                <MenuItem
+                    href="/teams"
+                    icon={<FaGolfBall />}
+                    text="Teams" />
+                <MenuItem
+                    href="/players"
+                    icon={<FaGolfBall />}
+                    text="Players" />
+            </Menu>
         </Container>
     );
 }
