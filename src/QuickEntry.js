@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Route } from 'react-router-dom';
 import styled from 'styled-components';
 import PlayerCard from './PlayerCard';
 import Search from './Search';

@@ -1,8 +1,6 @@
 import React from 'react';
-import styled from 'styled-components'
+import styled from 'styled-components';
 import Paper from './Paper';
-import Entry from './Entry';
-import data from './data.json';
 
 const Container = styled(Paper)`
     display: flex;
