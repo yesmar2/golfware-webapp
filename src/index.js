@@ -20,6 +20,7 @@ const theme = {
             500: "#414042"
         }
     },
+    spacingTiny: "4px",
     spacingSmall: "8px",
     spacingMedium: "16px",
     spacingLarge: "24px",
@@ -48,6 +49,8 @@ const GlobalStyle = createGlobalStyle`
         -moz-osx-font-smoothing: grayscale;
         color: ${props => props.theme.colors.grey[500]};
         background: ${props => props.theme.colors.grey[100]};
+        font-size: 14px;
+        line-height: 1;
     }
 
     #root {

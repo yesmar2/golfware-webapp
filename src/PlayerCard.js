@@ -1,28 +1,63 @@
 import React from 'react';
 import styled from 'styled-components';
 import Paper from './Paper';
+import TeamLogo from './TeamLogo';
+import HandicapChip from './HandicapChip';
+import ToggleSwitch from './ToggleSwitch';
+import { FaExchangeAlt } from 'react-icons/fa';
+import { IoMdInformationCircleOutline } from 'react-icons/io';
 
 const Container = styled(Paper)`
     display: flex;
     align-items: center;
     height: 56px;
+    padding-left: ${props => props.theme.spacingMedium};
+    padding-right: ${props => props.theme.spacingMedium};
+    cursor: pointer;
+
+    :hover {
+        border-color: ${props => props.theme.colors.green};
+    }
 `;
 
-const Handicap = styled.div`
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center
-    margin-right: ${props => props.theme.spacingMedium};
-    background: ${props => props.theme.colors.green}; 
-    color: #fff;
-    height: ${props => props.theme.spacingHuge};
-    width: ${props => props.theme.spacingHuge};
+const NameContainer = styled.div`
+    flex: 1;
+    margin-left: ${props => props.theme.spacingMedium};
 `;
 
 const Name = styled.div`
+    margin-bottom: ${props => props.theme.spacingTiny};
+`;
+
+const Team = styled.div`
+    font-size: 12px;
+    color: ${props => props.theme.colors.grey[300]};
+`;
+
+const HandicapContainer = styled.div`
     flex: 1;
-    margin-left: ${props => props.theme.spacingMedium};
+`;
+
+const SkinsContainer = styled.div`
+    flex: 1;
+    display: flex;
+`;
+
+const SubstitutionIcon = styled(FaExchangeAlt)`
+    color: ${props => props.theme.colors.grey[300]};
+    height: 20px;
+    width: 20px;
+`;
+
+const InfoIcon = styled(IoMdInformationCircleOutline)`
+    color: ${props => props.theme.colors.grey[300]};
+    margin-right: ${props => props.theme.spacingSmall};
+    height: 24px;
+    width: 24px;
+`;
+
+const StyledToggleSwitch = styled(ToggleSwitch)`
+    margin-right: ${props => props.theme.spacingLarge};
 `;
 
 class PlayerCard extends React.Component {
@@ -31,28 +66,36 @@ class PlayerCard extends React.Component {
     }
 
     render() {
-        const { name, handicap, className } = this.props;
+        const {
+            name,
+            teamNumber,
+            teamColor,
+            handicap,
+            className
+        } = this.props;
 
         return (
             <Container
                 className={className}
                 onClick={this.onClick}>
-                <Name>
-                    {name}
-                </Name>
-                <Handicap>
-                    {handicap}
-                </Handicap>
-                {/* <Entry />
-                <Entry />
-                <Entry />
-                <Entry />
-                <Entry />
-                <Entry />
-                <Entry />
-                <Entry />
-                <Entry />
-                <Entry /> */}
+                <TeamLogo color={teamColor} />
+                <NameContainer>
+                    <Name>
+                        {name}
+                    </Name>
+                    <Team>
+                        Team {teamNumber}
+                    </Team>
+                </NameContainer>
+                <HandicapContainer>
+                    <HandicapChip handicap={handicap} />
+                </HandicapContainer>
+                <SkinsContainer>
+                    <StyledToggleSwitch label="Scratch Skins" />
+                    <ToggleSwitch label="Net Skins" />
+                </SkinsContainer>
+                <InfoIcon />
+                <SubstitutionIcon />
             </Container>
         );
     }
