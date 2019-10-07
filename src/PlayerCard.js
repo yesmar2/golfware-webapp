@@ -10,13 +10,13 @@ import { IoMdInformationCircleOutline } from 'react-icons/io';
 const Container = styled(Paper)`
     display: flex;
     align-items: center;
-    height: 56px;
+    height: 64px;
     padding-left: ${props => props.theme.spacingMedium};
     padding-right: ${props => props.theme.spacingMedium};
     cursor: pointer;
 
     :hover {
-        border-color: ${props => props.theme.colors.green};
+        border: 1px solid ${props => props.theme.colors.green};
     }
 `;
 
@@ -26,6 +26,7 @@ const NameContainer = styled.div`
 `;
 
 const Name = styled.div`
+    font-weight: 500;
     margin-bottom: ${props => props.theme.spacingTiny};
 `;
 
@@ -39,14 +40,14 @@ const HandicapContainer = styled.div`
 `;
 
 const SkinsContainer = styled.div`
-    flex: 1;
+    flex: 2;
     display: flex;
 `;
 
 const SubstitutionIcon = styled(FaExchangeAlt)`
     color: ${props => props.theme.colors.grey[300]};
-    height: 20px;
-    width: 20px;
+    height: 16px;
+    width: 16px;
 `;
 
 const InfoIcon = styled(IoMdInformationCircleOutline)`

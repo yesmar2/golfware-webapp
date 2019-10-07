@@ -5,7 +5,7 @@ import Input from './Input';
 const Container = styled(Input)`
     height: 100%;
     width: 56px;
-    border-left: 1px solid ${props => props.theme.colors.grey[200]}; 
+    border-left: ${props => props.theme.defaultBorder};
     text-align: center;
 
     &:last-child {

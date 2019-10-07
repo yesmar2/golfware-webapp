@@ -1,10 +1,22 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
-const Container = styled.input`
+const Container = styled.div`
+    width: 100%;
+    font-size: 16px;
+    border-bottom: 1px solid ${props => props.theme.colors.grey[300]};
+`;
+
+const LeftIcon = styled.div`
+    margin-right: ${props => props.theme.spacingMedium};
+`;
+
+const StyledInput = styled.input`
     outline: none;
     border: none;
     width: 100%;
+    font-size: 16px;
+    background: transparent;
 `;
 
 class Input extends Component {
@@ -17,15 +29,23 @@ class Input extends Component {
         const {
             className,
             maxLength,
-            placeholder
+            placeholder,
+            leftIcon
          } = this.props;
 
         return (
-            <Container 
-                placeholder={placeholder}
-                className={className}
-                maxLength={maxLength}
-                onChange={this.onChange} />
+            <Container className={className}>
+                {leftIcon && (
+                    <LeftIcon>
+                        {leftIcon}
+                    </LeftIcon>
+                )}
+                <StyledInput 
+                    placeholder={placeholder}
+                    maxLength={maxLength}
+                    onChange={this.onChange} />
+            </Container>
+            
         );
     }
 }

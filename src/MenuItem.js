@@ -9,11 +9,15 @@ const Container = styled.li`
 const MenuItemLink = styled(Link)`
     display: flex;
     align-items: center;
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
 `;
 
 const MenuItemIcon = styled.div`
     display: flex;
     margin-right: ${props => props.theme.spacingLarge};
+    font-size: 18px;
 `;
 
 const MenuItemText = styled.div`

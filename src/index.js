@@ -5,6 +5,8 @@ import * as serviceWorker from './serviceWorker';
 import { createGlobalStyle, ThemeProvider } from 'styled-components'
 import App from './App';
 
+const grey200 = "#E0E7F0";
+
 const theme = {
     colors: {
         green: "#30da7b",
@@ -14,7 +16,7 @@ const theme = {
         blue: "#3FA7D6",
         grey: {
             100: "#F6F7F9",
-            200: "#E0E7F0",
+            200: grey200,
             300: "#B6BDC7",
             400: "#666D76",
             500: "#414042"
@@ -26,7 +28,8 @@ const theme = {
     spacingLarge: "24px",
     spacingHuge: "32px",
     headerHeight: "64px",
-    leftDrawerWidth: "256px"
+    leftDrawerWidth: "256px",
+    defaultBorder: `1px solid ${grey200}`
 }
 
 const GlobalStyle = createGlobalStyle`
@@ -42,9 +45,7 @@ const GlobalStyle = createGlobalStyle`
 
     body {
         margin: 0;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-            "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-            sans-serif;
+        font-family: 'Montserrat', sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         color: ${props => props.theme.colors.grey[500]};

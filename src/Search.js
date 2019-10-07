@@ -1,17 +1,13 @@
 import React from 'react';
 import styled from 'styled-components'
 import Input from './Input';
+import { FaSearch } from 'react-icons/fa';
 
 const Container = styled(Input)`
     width: 100%;
     height: 48px;
     display: flex;
     align-items: center;
-    border: 1px solid ${props => props.theme.colors.grey[200]};
-    padding-left: ${props => props.theme.spacingMedium};
-    padding-right: ${props => props.theme.spacingMedium};
-    margin-bottom: ${props => props.theme.spacingMedium};
-    border-radius: 4px;
 `;
 
 const Search = props => {
@@ -19,9 +15,10 @@ const Search = props => {
 
     return (
         <Container
-            placeholder="Search..."
+            placeholder="Search for a player..."
             onChange={onChange}
-            className={className}>
+            className={className}
+            leftIcon={<FaSearch />}>
 
         </Container>
     );

@@ -2,9 +2,9 @@ import React from 'react';
 import styled from 'styled-components'
 
 const Container = styled.div`
-    border: 1px solid ${props => props.theme.colors.grey[200]};
     background: #fff;
     border-radius: 7px;
+    box-shadow: 0 0 14px 0 rgba(53,64,82,.05);
 `;
 
 const Paper = props => {

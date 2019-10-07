@@ -6,7 +6,7 @@ const Container = styled.div`
     
 `;
 
-class QuickEntry2 extends Component {
+class Scorecard extends Component {
     render() {
         return (
             <Container>
@@ -17,4 +17,4 @@ class QuickEntry2 extends Component {
     }
 }
 
-export default QuickEntry2;
+export default Scorecard;

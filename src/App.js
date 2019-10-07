@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { Route } from "react-router-dom";
 import Home from './Home';
-import QuickEntry from './QuickEntry';
-import QuickEntry2 from './QuickEntry2';
+import ScoreEntry from './ScoreEntry';
+import Scorecard from './Scorecard';
 import Header from './Header';
 import LeftDrawer from './LeftDrawer';
 
@@ -30,8 +30,8 @@ function App() {
             </Header>
             <Content>
                 <Route exact path="/" component={Home} />
-                <Route exact path="/quickentry" component={QuickEntry} />
-                <Route exact path="/quickentry2" component={QuickEntry2} />
+                <Route exact path="/scoreentry/:week" component={ScoreEntry} />
+                <Route exact path="/scorecard" component={Scorecard} />
             </Content>
         </Container>
     );

@@ -6,8 +6,8 @@ const Container = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 32px;
-    width: 32px;
+    height: 40px;
+    width: 40px;
     background-color: ${props => props.theme.colors[props.color]};
     border-radius: 50%;
 `; 

@@ -60,7 +60,7 @@ const Input = styled.input`
 
 const StyledLabel = styled.label`
     margin-left: ${props => props.theme.spacingSmall};
-    font-size: 14px;
+    font-size: 12px;
 `;
 
 class ToggleSwitch extends Component {
