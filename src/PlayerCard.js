@@ -14,10 +14,6 @@ const Container = styled(Paper)`
     padding-left: ${props => props.theme.spacingMedium};
     padding-right: ${props => props.theme.spacingMedium};
     cursor: pointer;
-
-    :hover {
-        border: 1px solid ${props => props.theme.colors.green};
-    }
 `;
 
 const NameContainer = styled.div`
@@ -62,10 +58,6 @@ const StyledToggleSwitch = styled(ToggleSwitch)`
 `;
 
 class PlayerCard extends React.Component {
-    onClick = () => {
-        console.log("clicked");
-    }
-
     render() {
         const {
             name,
@@ -76,9 +68,7 @@ class PlayerCard extends React.Component {
         } = this.props;
 
         return (
-            <Container
-                className={className}
-                onClick={this.onClick}>
+            <Container className={className}>
                 <TeamLogo color={teamColor} />
                 <NameContainer>
                     <Name>

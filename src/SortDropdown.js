@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import Paper from './Paper';
 import { MdSort, MdExpandMore } from 'react-icons/md';
 
 const Container = styled.div`
