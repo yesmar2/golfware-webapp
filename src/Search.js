@@ -8,6 +8,7 @@ const Container = styled(Input)`
     height: 48px;
     display: flex;
     align-items: center;
+    border-bottom: 1px solid ${props => props.theme.colors.grey[300]};
 `;
 
 const Search = props => {

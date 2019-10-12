@@ -1,6 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import Paper from './Paper';
+import ListItem from './ListItem';
+import ListItemIcon from './ListItemIcon';
+import ListItemText from './ListItemText';
 import TeamLogo from './TeamLogo';
 import HandicapChip from './HandicapChip';
 import ToggleSwitch from './ToggleSwitch';
@@ -8,27 +11,7 @@ import { FaExchangeAlt } from 'react-icons/fa';
 import { IoMdInformationCircleOutline } from 'react-icons/io';
 
 const Container = styled(Paper)`
-    display: flex;
-    align-items: center;
-    height: 64px;
-    padding-left: ${props => props.theme.spacingMedium};
-    padding-right: ${props => props.theme.spacingMedium};
     cursor: pointer;
-`;
-
-const NameContainer = styled.div`
-    flex: 1;
-    margin-left: ${props => props.theme.spacingMedium};
-`;
-
-const Name = styled.div`
-    font-weight: 500;
-    margin-bottom: ${props => props.theme.spacingTiny};
-`;
-
-const Team = styled.div`
-    font-size: 12px;
-    color: ${props => props.theme.colors.grey[300]};
 `;
 
 const HandicapContainer = styled.div`
@@ -69,24 +52,24 @@ class PlayerCard extends React.Component {
 
         return (
             <Container className={className}>
-                <TeamLogo color={teamColor} />
-                <NameContainer>
-                    <Name>
-                        {name}
-                    </Name>
-                    <Team>
-                        Team {teamNumber}
-                    </Team>
-                </NameContainer>
-                <HandicapContainer>
-                    <HandicapChip handicap={handicap} />
-                </HandicapContainer>
-                <SkinsContainer>
-                    <StyledToggleSwitch label="Scratch Skins" />
-                    <ToggleSwitch label="Net Skins" />
-                </SkinsContainer>
-                <InfoIcon />
-                <SubstitutionIcon />
+                <ListItem>
+                    <ListItemIcon>
+                        <TeamLogo color={teamColor} />
+                    </ListItemIcon>
+                    <ListItemText
+                        primaryText={name}
+                        secondaryText={`Team ${teamNumber}`}
+                    />
+                    <HandicapContainer>
+                        <HandicapChip handicap={handicap} />
+                    </HandicapContainer>
+                    <SkinsContainer>
+                        <StyledToggleSwitch label="Scratch Skins" />
+                        <ToggleSwitch label="Net Skins" />
+                    </SkinsContainer>
+                    <InfoIcon />
+                    <SubstitutionIcon />
+                </ListItem>
             </Container>
         );
     }

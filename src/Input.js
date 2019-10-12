@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const Container = styled.div`
     width: 100%;
     font-size: 16px;
-    border-bottom: 1px solid ${props => props.theme.colors.grey[300]};
+    //border-bottom: 1px solid ${props => props.theme.colors.grey[300]};
 `;
 
 const LeftIcon = styled.div`

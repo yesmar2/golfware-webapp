@@ -4,7 +4,7 @@ import Input from './Input';
 
 const Container = styled(Input)`
     height: 100%;
-    width: 56px;
+    width: 64px;
     border-left: ${props => props.theme.defaultBorder};
     text-align: center;
 
