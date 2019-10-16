@@ -1,17 +1,24 @@
 import React from 'react';
 import styled from 'styled-components';
 import Paper from './Paper';
-import ListItem from './ListItem';
-import ListItemIcon from './ListItemIcon';
-import ListItemText from './ListItemText';
+import ListItem from './ui/ListItem';
+import ListItemIcon from './ui/ListItemIcon';
+import ListItemText from './ui/ListItemText';
 import TeamLogo from './TeamLogo';
 import HandicapChip from './HandicapChip';
-import ToggleSwitch from './ToggleSwitch';
+import ToggleSwitch from './ui/ToggleSwitch';
 import { FaExchangeAlt } from 'react-icons/fa';
 import { IoMdInformationCircleOutline } from 'react-icons/io';
 
 const Container = styled(Paper)`
     cursor: pointer;
+    transition-duration: 0.3s;
+    transition-property: box-shadow, transform;
+
+    :hover {
+        transform: scale(1.02);
+        box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.2);
+    }
 `;
 
 const HandicapContainer = styled.div`

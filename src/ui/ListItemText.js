@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import Paper from './Paper';
 
 const Container = styled.div`
     flex: 1;

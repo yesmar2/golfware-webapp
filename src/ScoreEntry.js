@@ -36,20 +36,13 @@ const SearchSortContainer = styled.div`
     margin-bottom: ${props => props.theme.spacingLarge};
 `;
 
-const SearchStyled = styled(Search)`
+const StyledSearch = styled(Search)`
     flex: 1;
     margin-right: ${props => props.theme.spacingLarge};
 `;
 
 const PlayerCardStyled = styled(PlayerCard)`
     margin-bottom: ${props => props.theme.spacingLarge};
-    transition-duration: 0.3s;
-    transition-property: box-shadow, transform;
-
-    :hover {
-        transform: scale(1.02);
-        box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.2);
-    }
 `;
 
 const MatchScoreStyled = styled(MatchScore)`
@@ -80,7 +73,7 @@ class ScoreEntry extends Component {
             <Container>
                 <PlayerContainer>
                     <SearchSortContainer>
-                        <SearchStyled onChange={this.onChange} />
+                        <StyledSearch onChange={this.onChange} />
                         <SortDropdown />
                     </SearchSortContainer>
                     {players

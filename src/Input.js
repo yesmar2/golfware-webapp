@@ -4,7 +4,6 @@ import styled from 'styled-components';
 const Container = styled.div`
     width: 100%;
     font-size: 16px;
-    //border-bottom: 1px solid ${props => props.theme.colors.grey[300]};
 `;
 
 const LeftIcon = styled.div`
@@ -15,13 +14,19 @@ const StyledInput = styled.input`
     outline: none;
     border: none;
     width: 100%;
-    font-size: 16px;
+    height: 100%;
+    font-size: inherit;
+    text-align: inherit;
     background: transparent;
 `;
 
 class Input extends Component {
+    state = {
+        value: ''
+    }
 
     onChange = (event) => {
+        this.setState({value: event.target.value});
         this.props.onChange(event.target.value);
     }
 
@@ -33,6 +38,8 @@ class Input extends Component {
             leftIcon
          } = this.props;
 
+         const { value } = this.state;
+
         return (
             <Container className={className}>
                 {leftIcon && (
@@ -43,7 +50,8 @@ class Input extends Component {
                 <StyledInput 
                     placeholder={placeholder}
                     maxLength={maxLength}
-                    onChange={this.onChange} />
+                    onChange={this.onChange}
+                    value={value} />
             </Container>
             
         );

@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import ListItem from './ListItem';
-import ListItemIcon from './ListItemIcon';
-import ListItemText from './ListItemText';
+import ListItem from './ui/ListItem';
+import ListItemIcon from './ui/ListItemIcon';
+import ListItemText from './ui/ListItemText';
 import TeamLogo from './TeamLogo';
 import HandicapChip from './HandicapChip';
 import { FaExchangeAlt } from 'react-icons/fa';
