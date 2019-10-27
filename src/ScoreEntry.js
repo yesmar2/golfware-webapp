@@ -5,7 +5,9 @@ import Search from './Search';
 import SortDropdown from './SortDropdown';
 import PlayerCard from './PlayerCard';
 import MatchScore from './MatchScore';
-import data from './data.json';
+import data from './data';
+
+const API_ROOT = 'http://localhost:3001'
 
 const Container = styled.div`
     display: flex;
@@ -51,23 +53,44 @@ const MatchScoreStyled = styled(MatchScore)`
 
 class ScoreEntry extends Component {
     state = {
-        players: data.players
+        players: [],
+        filteredPlayers: []
+    }
+
+    componentDidMount() {
+        fetch(`/players`)
+            .then(response => response.json())
+            .then(players => {
+                const allPlayers = players.map(player => {
+                    return {
+                        ...player,
+                        fullName: `${player.firstName} ${player.lastName}`
+                    }
+                });
+
+                this.setState({
+                    allPlayers,
+                    filteredPlayers: allPlayers
+                });
+            });
     }
 
     onChange = value => {
-        const filteredPlayers = data.players.filter(player => { 
-            const name = player.name.toLowerCase();
-            return name.indexOf(value.toLowerCase()) !== -1 ;
+        const { allPlayers } = this.state;
+
+        const filteredPlayers = allPlayers.filter(player => { 
+            const fullName = player.fullName.toLowerCase();
+            return fullName.indexOf(value.toLowerCase()) !== -1;
         })
 
-        this.setState({ players: filteredPlayers })
+        this.setState({ filteredPlayers })
     }
 
     render() {
         const { match } = this.props;
         const { params } = match;
         const { week } = params;
-        const { players } = this.state;
+        const { filteredPlayers } = this.state;
 
         return (
             <Container>
@@ -76,20 +99,26 @@ class ScoreEntry extends Component {
                         <StyledSearch onChange={this.onChange} />
                         <SortDropdown />
                     </SearchSortContainer>
-                    {players
+                    {filteredPlayers
                         .sort((a,b) => {
-                            if(a.name < b.name) { return -1; }
-                            if(a.name > b.name) { return 1; }
+                            if(a.lastName < b.lastName) { return -1; }
+                            if(a.lastName > b.lastName) { return 1; }
                             return 0;
                         })
                         .map(player => {
                             const team = data.teams.find(team => team.id === player.teamId);
-                            const matchup = 1;
-                            return (
+                            const matchup = 
+                                data.weeks.find(weekObj => weekObj.weekNumber === parseInt(week))
+                                .matchups.find(matchup => {
+                                    return matchup.teamOne === player.teamId 
+                                        || matchup.teamTwo === player.teamId
+                                }).matchupNumber;
+
+                                return (
                                 <Link to={`/scorecard/${week}/${matchup}`}>
                                     <PlayerCardStyled 
                                         key={player.id}
-                                        name={player.name}
+                                        name={player.fullName}
                                         teamNumber={team.number}
                                         teamColor={team.color}
                                         handicap={player.handicap}

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const Container = styled.div`
     width: 100%;
-    font-size: 16px;
+    height: 100%;
 `;
 
 const LeftIcon = styled.div`
@@ -17,12 +17,25 @@ const StyledInput = styled.input`
     height: 100%;
     font-size: inherit;
     text-align: inherit;
+    font-family: inherit;
     background: transparent;
 `;
 
 class Input extends Component {
-    state = {
-        value: ''
+    constructor(props) {
+        super(props);
+        
+        this.state = {
+            value: ''
+        }
+
+        this.inputRef = React.createRef();
+    }
+    
+    componentDidUpdate(prevProps) {
+        if(this.props.focus && prevProps.focus !== this.props.focus) {
+            this.inputRef.current.focus();
+        }
     }
 
     onChange = (event) => {
@@ -41,13 +54,15 @@ class Input extends Component {
          const { value } = this.state;
 
         return (
-            <Container className={className}>
+            <Container
+                className={className}>
                 {leftIcon && (
                     <LeftIcon>
                         {leftIcon}
                     </LeftIcon>
                 )}
-                <StyledInput 
+                <StyledInput
+                    ref={this.inputRef}
                     placeholder={placeholder}
                     maxLength={maxLength}
                     onChange={this.onChange}

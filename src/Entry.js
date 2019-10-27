@@ -2,30 +2,27 @@ import React, { Component } from 'react';
 import styled from 'styled-components'
 import Input from './Input';
 
-const Container = styled(Input)`
-    height: 100%;
-    width: 64px;
-    border-left: ${props => props.theme.defaultBorder};
-    text-align: center;
-
-    &:last-child {
-        border-top-right-radius: 7px;
-        border-bottom-right-radius: 7px;
-    }
-`;
+// const Container = styled(Input)`
+//     height: 100%;
+//     width: 64px;
+//     border-left: ${props => props.theme.defaultBorder};
+//     text-align: center;
+// `;
 
 class Entry extends Component {
-    onChange = () => {
-
+    onChange = value => {
+        this.props.onChange(this.props.holeNumber, value);
     }
 
     render() {
+        const { focus } = this.props;
+        
         return (
-            <Container 
+            <Input
                 onChange={this.onChange}
-                maxLength="1">
-    
-            </Container>
+                maxLength="1"
+                focus={focus}
+            />
         );
     }
 }

@@ -51,7 +51,7 @@ const LeftDrawer = props => {
             </AppName>
             <Menu>
                 <MenuItem
-                    href="/scoreentry/2"
+                    href="/scoreentry/1"
                     icon={<FaGolfBall />}
                     text="Score Entry" />
                 <MenuItem

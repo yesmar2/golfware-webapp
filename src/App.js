@@ -73,7 +73,7 @@ const routes = [
     },
     {
         key: 'scorecard',
-        path: '/scorecard/:week/:matchup',
+        path: '/scorecard/:week/:matchupNumber',
         title: 'Score Entry / Matchup #1',
         component: Scorecard
     }
