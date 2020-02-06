@@ -41,6 +41,8 @@ class Scorecard extends Component {
             data.weeks.find(weekObj => weekObj.weekNumber === parseInt(week))
             .matchups.find(matchup => matchup.matchupNumber === parseInt(matchupNumber))
 
+        console.log(JSON.stringify(data.weeks))
+
         return (
             <React.Fragment>
                 <ScorecardHeader>

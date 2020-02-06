@@ -7,8 +7,6 @@ import PlayerCard from './PlayerCard';
 import MatchScore from './MatchScore';
 import data from './data';
 
-const API_ROOT = 'http://localhost:3001'
-
 const Container = styled.div`
     display: flex;
 `;
@@ -58,7 +56,7 @@ class ScoreEntry extends Component {
     }
 
     componentDidMount() {
-        fetch(`/players`)
+        fetch(`/api/players`)
             .then(response => response.json())
             .then(players => {
                 const allPlayers = players.map(player => {
@@ -106,15 +104,16 @@ class ScoreEntry extends Component {
                             return 0;
                         })
                         .map(player => {
-                            const team = data.teams.find(team => team.id === player.teamId);
-                            const matchup = 
-                                data.weeks.find(weekObj => weekObj.weekNumber === parseInt(week))
-                                .matchups.find(matchup => {
-                                    return matchup.teamOne === player.teamId 
-                                        || matchup.teamTwo === player.teamId
-                                }).matchupNumber;
+                            const { team } = player;
+                            // const matchup = 
+                            //     data.weeks.find(weekObj => weekObj.weekNumber === parseInt(week))
+                            //     .matchups.find(matchup => {
+                            //         return matchup.teamOne === player.teamId 
+                            //             || matchup.teamTwo === player.teamId
+                            //     }).matchupNumber;
+                            const matchup = 1;
 
-                                return (
+                            return (
                                 <Link to={`/scorecard/${week}/${matchup}`}>
                                     <PlayerCardStyled 
                                         key={player.id}
