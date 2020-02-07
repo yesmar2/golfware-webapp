@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Switch, Route } from "react-router-dom";
 import Home from './Home';
+import Schedule from './Schedule';
 import ScoreEntry from './ScoreEntry';
 import Scorecard from './Scorecard';
 import Header from './Header';
@@ -64,6 +65,12 @@ const routes = [
         path: '/',
         title: 'Home',
         component: Home
+    },
+    {
+        key: 'schedule',
+        path: '/schedule',
+        title: 'Schedule',
+        component: Schedule
     },
     {
         key: 'scoreentry',

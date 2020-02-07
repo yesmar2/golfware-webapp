@@ -6,6 +6,7 @@ import SortDropdown from './SortDropdown';
 import PlayerCard from './PlayerCard';
 import MatchScore from './MatchScore';
 import data from './data';
+import { get } from './utils';
 
 const Container = styled.div`
     display: flex;
@@ -55,22 +56,20 @@ class ScoreEntry extends Component {
         filteredPlayers: []
     }
 
-    componentDidMount() {
-        fetch(`/api/players`)
-            .then(response => response.json())
-            .then(players => {
-                const allPlayers = players.map(player => {
-                    return {
-                        ...player,
-                        fullName: `${player.firstName} ${player.lastName}`
-                    }
-                });
+    async componentDidMount() {
+        const players = await get(`/api/players`) || [];
+        
+        const allPlayers = players.map(player => {
+            return {
+                ...player,
+                fullName: `${player.firstName} ${player.lastName}`
+            }
+        });
 
-                this.setState({
-                    allPlayers,
-                    filteredPlayers: allPlayers
-                });
-            });
+        this.setState({
+            allPlayers,
+            filteredPlayers: allPlayers
+        });
     }
 
     onChange = value => {
