@@ -1,9 +1,11 @@
-import React, { Fragment } from 'react';
-import ReactDOM from 'react-dom';
+import React, { Fragment } from "react";
+import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
-import * as serviceWorker from './serviceWorker';
-import { createGlobalStyle, ThemeProvider } from 'styled-components'
-import App from './App';
+import * as serviceWorker from "./serviceWorker";
+import { createGlobalStyle, ThemeProvider } from "styled-components";
+import { Provider as ReduxProvider } from "react-redux";
+import configureStore from "./state/store";
+import App from "./App";
 
 const grey200 = "#E0E7F0";
 
@@ -30,7 +32,7 @@ const theme = {
     headerHeight: "64px",
     leftDrawerWidth: "256px",
     defaultBorder: `1px solid ${grey200}`
-}
+};
 
 const GlobalStyle = createGlobalStyle`
     *,
@@ -66,18 +68,22 @@ const GlobalStyle = createGlobalStyle`
         text-decoration: none;
         color: inherit;
     }
-`
+`;
+
+const reduxStore = configureStore();
 
 ReactDOM.render(
     <BrowserRouter>
-        <ThemeProvider theme={theme}>
-            <Fragment>
-                <GlobalStyle />
-                <App />
-            </Fragment>
-        </ThemeProvider>
-    </BrowserRouter>
-    , document.getElementById('root')
+        <ReduxProvider store={reduxStore}>
+            <ThemeProvider theme={theme}>
+                <Fragment>
+                    <GlobalStyle />
+                    <App />
+                </Fragment>
+            </ThemeProvider>
+        </ReduxProvider>
+    </BrowserRouter>,
+    document.getElementById("root")
 );
 
 // If you want your app to work offline and load faster, you can change

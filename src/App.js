@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Switch, Route } from "react-router-dom";
 import Home from './Home';
 import Schedule from './Schedule';
-import ScoreEntry from './ScoreEntry';
+import ScoreEntry from './containers/ScoreEntry';
 import Scorecard from './Scorecard';
 import Header from './Header';
 import LeftDrawer from './LeftDrawer';

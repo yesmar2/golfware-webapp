@@ -5,8 +5,6 @@ import Search from './Search';
 import SortDropdown from './SortDropdown';
 import PlayerCard from './PlayerCard';
 import MatchScore from './MatchScore';
-import data from './data';
-import { get } from './utils';
 
 const Container = styled.div`
     display: flex;
@@ -52,30 +50,22 @@ const MatchScoreStyled = styled(MatchScore)`
 
 class ScoreEntry extends Component {
     state = {
-        players: [],
         filteredPlayers: []
     }
 
-    async componentDidMount() {
-        const players = await get(`/api/players`) || [];
-        
-        const allPlayers = players.map(player => {
-            return {
-                ...player,
-                fullName: `${player.firstName} ${player.lastName}`
-            }
-        });
-
-        this.setState({
-            allPlayers,
-            filteredPlayers: allPlayers
-        });
+    componentDidUpdate(prevProps) {
+        const { players } = this.props;
+        if (prevProps.players !== players) {
+            this.setState({
+                filteredPlayers: players
+            });
+        }
     }
 
     onChange = value => {
-        const { allPlayers } = this.state;
+        const { players } = this.props;
 
-        const filteredPlayers = allPlayers.filter(player => { 
+        const filteredPlayers = players.filter(player => { 
             const fullName = player.fullName.toLowerCase();
             return fullName.indexOf(value.toLowerCase()) !== -1;
         })
@@ -84,9 +74,6 @@ class ScoreEntry extends Component {
     }
 
     render() {
-        const { match } = this.props;
-        const { params } = match;
-        const { week } = params;
         const { filteredPlayers } = this.state;
 
         return (
@@ -111,6 +98,7 @@ class ScoreEntry extends Component {
                             //             || matchup.teamTwo === player.teamId
                             //     }).matchupNumber;
                             const matchup = 1;
+                            const week = 1;
 
                             return (
                                 <Link to={`/scorecard/${week}/${matchup}`}>
