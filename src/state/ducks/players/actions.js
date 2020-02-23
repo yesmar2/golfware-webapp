@@ -1,7 +1,7 @@
 import * as types from "./types";
 
-export const fetchPlayers = () => ({
-    type: types.FETCH_PLAYERS,
+const fetchPlayers = () => ({
+    type: types.FETCH,
     meta: {
         async: true,
         blocking: true,
@@ -9,3 +9,10 @@ export const fetchPlayers = () => ({
         method: "GET",
     },
 });
+
+const setPlayerFilter = (filterText) => ({
+    type: types.FILTER,
+    payload: filterText,
+});
+
+export { fetchPlayers, setPlayerFilter };

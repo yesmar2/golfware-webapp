@@ -2,11 +2,9 @@ import { fetch } from "../utils";
 
 const baseUrl = typeof document === "undefined" ? "http://localhost:3000/api" : "/api";
 
-const apiService = ( ) => ( next ) => ( action ) => {
-    console.log("api action", action);
-    const result = next( action );
+const apiService =  ( ) => ( next ) => async ( action ) => {
     if ( !action.meta || !action.meta.async ) {
-        return result;
+        return next( action );;
     }
 
     const { path, method = "GET", body } = action.meta;
@@ -16,31 +14,24 @@ const apiService = ( ) => ( next ) => ( action ) => {
     }
 
     const url = `${ baseUrl }${ path }`;
-    
-    return fetch( url, method, body ).then(
-        res => handleResponse( res, action, next ),
-        err => handleErrors( err, action, next ),
-    );
+    let fetchError;
+
+    try {
+        next({type: `${ action.type }_START`});
+        const response = await fetch( url, method, body );
+        next({
+            type: `${ action.type }_SET`,
+            payload: response
+        });
+    } catch (error) {
+        fetchError = error;
+    } finally {
+        next({
+            type: `${ action.type }_END`,
+            error: fetchError,
+            meta: action.meta
+        });
+    }
 };
 
 export default apiService;
-
-function handleErrors( err, action, next ) {
-    next( {
-        type: `${ action.type }_FAILED`,
-        payload: err,
-        meta: action.meta,
-    } );
-
-    return Promise.reject( err );
-}
-
-function handleResponse( res, action, next ) {
-    next( {
-        type: `${ action.type }_COMPLETED`,
-        payload: res,
-        meta: action.meta,
-    } );
-
-    return res;
-}

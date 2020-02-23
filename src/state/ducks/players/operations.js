@@ -1,5 +1,6 @@
-import { fetchPlayers } from "./actions";
+import { fetchPlayers, setPlayerFilter } from "./actions";
 
 export {
     fetchPlayers,
+    setPlayerFilter,
 };

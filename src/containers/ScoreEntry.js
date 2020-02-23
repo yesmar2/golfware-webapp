@@ -2,30 +2,37 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { playerOperations, playerSelectors } from "../state/ducks/players";
 
-import ScoreEntry from '../ScoreEntry';
+import ScoreEntry from '../components/ScoreEntry';
 
 class ScoreEntryContainer extends React.Component {
     componentDidMount() {
-        this.props.fetchPlayers();
+        const { fetchPlayers, success } = this.props;
+        
+        if(!success) {
+            fetchPlayers();
+        }
     }
 
     render() {
-        const { players } = this.props;
-
+        const { players, setPlayerFilter } = this.props;
         return (
-            <ScoreEntry players={players} />
+            <ScoreEntry
+                players={players}
+                setPlayerFilter={setPlayerFilter}
+            />
         );
     }
 }
 
 const mapDispatchToProps = {
-    fetchPlayers: playerOperations.fetchPlayers
+    fetchPlayers: playerOperations.fetchPlayers,
+    setPlayerFilter: playerOperations.setPlayerFilter,
 };
 
 function mapStateToProps(appState) {
     return {
-        //players: playerSelectors.getPlayers(appState),
-        players: []
+        players: playerSelectors.selectPlayers(appState),
+        success: playerSelectors.selectSuccess(appState),
     };
 }
 
