@@ -1,6 +1,8 @@
 import { fetchPlayers, setPlayerFilter } from "./actions";
 
-export {
+const playerOperations = {
     fetchPlayers,
     setPlayerFilter,
 };
+
+export default playerOperations;

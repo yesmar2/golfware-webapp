@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { playerOperations, playerSelectors } from "../state/ducks/players";
-
 import ScoreEntry from '../components/ScoreEntry';
 
 class ScoreEntryContainer extends React.Component {

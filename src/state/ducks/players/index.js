@@ -1,12 +1,12 @@
-import * as types from './types';
+import { DUCK_NAMESPACE } from './types';
 import reducer from "./reducers";
 
-import * as playerOperations from "./operations";
-import * as playerSelectors from "./selectors";
+import playerOperations from "./operations";
+import playerSelectors from "./selectors";
 
 export {
     playerOperations,
     playerSelectors
 };
 
-export default { [types.DUCK_NAMESPACE]: reducer };
+export default { [DUCK_NAMESPACE]: reducer };

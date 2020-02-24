@@ -1,7 +1,7 @@
-import * as types from "./types";
+import { FETCH_NAMESPACE, FILTER_NAMESPACE} from "./types";
 
 const fetchPlayers = () => ({
-    type: types.FETCH,
+    type: FETCH_NAMESPACE,
     meta: {
         async: true,
         blocking: true,
@@ -11,7 +11,7 @@ const fetchPlayers = () => ({
 });
 
 const setPlayerFilter = (filterText) => ({
-    type: types.FILTER,
+    type: FILTER_NAMESPACE,
     payload: filterText,
 });
 
