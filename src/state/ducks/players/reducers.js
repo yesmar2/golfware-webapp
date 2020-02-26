@@ -3,7 +3,7 @@ import {
     DUCK_NAMESPACE,
     FILTER,
     FILTER_NAMESPACE
-    }
+}
 from "./types";
 import {
     createReducer,
@@ -18,7 +18,7 @@ const playerFilterReducer = createReducer('')({
     }
 });
 
-export default combineReducers( {
+export default combineReducers({
     ...apiMapReducer,
     [FILTER]: playerFilterReducer,
-} );
+});

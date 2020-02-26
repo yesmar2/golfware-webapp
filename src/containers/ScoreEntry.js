@@ -7,6 +7,7 @@ class ScoreEntryContainer extends React.Component {
     componentDidMount() {
         const { fetchPlayers, success } = this.props;
         
+        //TODO: add expired check once it's been added to apiDuckUtils.js
         if(!success) {
             fetchPlayers();
         }
