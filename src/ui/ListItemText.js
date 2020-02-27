@@ -7,20 +7,16 @@ const Container = styled.div`
 
 const PrimaryText = styled.div`
     font-weight: 500;
-    margin-bottom: ${props => props.theme.spacingTiny};
+    margin-bottom: ${(props) => props.theme.spacingTiny};
 `;
 
 const SecondaryText = styled.div`
     font-size: 12px;
-    color: ${props => props.theme.colors.grey[300]};
+    color: ${(props) => props.theme.colors.grey[300]};
 `;
 
-const ListItemText = props => {
-    const {
-        className,
-        primaryText,
-        secondaryText
-    } = props;
+const ListItemText = (props) => {
+    const { className, primaryText, secondaryText } = props;
 
     return (
         <Container className={className}>
@@ -28,6 +24,6 @@ const ListItemText = props => {
             {secondaryText && <SecondaryText>{secondaryText}</SecondaryText>}
         </Container>
     );
-}
+};
 
 export default ListItemText;

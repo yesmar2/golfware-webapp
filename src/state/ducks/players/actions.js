@@ -1,12 +1,12 @@
-import { FETCH_NAMESPACE, FILTER_NAMESPACE} from "./types";
+import { FETCH_NAMESPACE, FILTER_NAMESPACE } from './types';
 
 const fetchPlayers = () => ({
     type: FETCH_NAMESPACE,
     meta: {
         async: true,
         blocking: true,
-        path: "/players",
-        method: "GET",
+        path: '/players',
+        method: 'GET',
     },
 });
 

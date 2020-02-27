@@ -1,32 +1,30 @@
 import React from 'react';
 import styled from 'styled-components';
+import { FaExchangeAlt } from 'react-icons/fa';
 import ListItem from './ui/ListItem';
 import ListItemIcon from './ui/ListItemIcon';
 import ListItemText from './ui/ListItemText';
 import ScorecardCell from './ScorecardCell';
 import TeamLogo from './TeamLogo';
 import HandicapChip from './HandicapChip';
-import { FaExchangeAlt } from 'react-icons/fa';
 import Entry from './Entry';
 
-const Container = styled.div`
-    
-`;
+const Container = styled.div``;
 
 const StyledListItem = styled(ListItem)`
     padding-right: 0;
 `;
 
 const SubstitutionIcon = styled(FaExchangeAlt)`
-    margin-left: ${props => props.theme.spacingMedium};
-    margin-right: ${props => props.theme.spacingMedium};
-    color: ${props => props.theme.colors.grey[300]};
+    margin-left: ${(props) => props.theme.spacingMedium};
+    margin-right: ${(props) => props.theme.spacingMedium};
+    color: ${(props) => props.theme.colors.grey[300]};
     height: 16px;
     width: 16px;
 `;
 
 const Score = styled(ScorecardCell)`
-    border-left: ${props => props.theme.defaultBorder};
+    border-left: ${(props) => props.theme.defaultBorder};
     font-size: 18px;
 `;
 
@@ -34,56 +32,56 @@ const holesData = [
     {
         holeNumber: 1,
         par: 4,
-        score: 0
+        score: 0,
     },
     {
         holeNumber: 2,
         par: 3,
-        score: 0
+        score: 0,
     },
     {
         holeNumber: 3,
         par: 4,
-        score: 0
+        score: 0,
     },
     {
         holeNumber: 4,
         par: 4,
-        score: 0
+        score: 0,
     },
     {
         holeNumber: 5,
         par: 4,
-        score: 0
+        score: 0,
     },
     {
         holeNumber: 6,
         par: 3,
-        score: 0
+        score: 0,
     },
     {
         holeNumber: 7,
         par: 5,
-        score: 0
+        score: 0,
     },
     {
         holeNumber: 8,
         par: 4,
-        score: 0
+        score: 0,
     },
     {
         holeNumber: 9,
         par: 5,
-        score: 0
+        score: 0,
     },
-]
+];
 class PlayerScoreEntry extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
             holeToFocus: 1,
-            holes: holesData
+            holes: holesData,
             // scores: {
             //     1: {
             //         score: 0
@@ -113,14 +111,14 @@ class PlayerScoreEntry extends React.Component {
             //         score: 0
             //     }
             // }
-        }
+        };
     }
 
     onChange = (holeNumber, value) => {
-        if(value.length === 1) {
+        if (value.length === 1) {
             this.setState(() => ({
-                holeToFocus: holeNumber + 1 
-            }))
+                holeToFocus: holeNumber + 1,
+            }));
         }
 
         this.setState((currentState) => ({
@@ -130,30 +128,28 @@ class PlayerScoreEntry extends React.Component {
             //         score: value
             //     }
             // }
-            holes: currentState.holes.map(hole => {
-                if(holeNumber === hole.holeNumber) {
+            holes: currentState.holes.map((hole) => {
+                if (holeNumber === hole.holeNumber) {
                     return {
                         ...hole,
-                        score: value
-                    }
+                        score: value,
+                    };
                 }
-                
+
                 return hole;
-            })
+            }),
         }));
-    }
+    };
 
     renderTotalScore = () => {
         const { holes } = this.state;
 
-        const isScoreEntryComplete = holes.every(hole => hole.score > 0);
+        const isScoreEntryComplete = holes.every((hole) => hole.score > 0);
 
-        if (!isScoreEntryComplete) return;
+        if (!isScoreEntryComplete) return null;
 
-        return holes.reduce((total, hole) => {
-                return total + parseInt(hole.score);
-            }, 0);
-    }
+        return holes.reduce((total, hole) => total + parseInt(hole.score, 10), 0);
+    };
 
     render() {
         const {
@@ -161,14 +157,11 @@ class PlayerScoreEntry extends React.Component {
             teamNumber,
             teamColor,
             handicap,
-            className
+            className,
         } = this.props;
 
-        const {
-            holeToFocus,
-            holes
-        } = this.state;
-        
+        const { holeToFocus, holes } = this.state;
+
         return (
             <Container className={className}>
                 <StyledListItem>
@@ -181,7 +174,7 @@ class PlayerScoreEntry extends React.Component {
                     />
                     <HandicapChip handicap={handicap} />
                     <SubstitutionIcon />
-                    {holes.map(hole => (
+                    {holes.map((hole) => (
                         <Score key={hole.holeNumber}>
                             <Entry
                                 holeNumber={hole.holeNumber}
@@ -190,13 +183,11 @@ class PlayerScoreEntry extends React.Component {
                             />
                         </Score>
                     ))}
-                    <Score>
-                        {this.renderTotalScore()}
-                    </Score>
+                    <Score>{this.renderTotalScore()}</Score>
                     <Score />
                 </StyledListItem>
             </Container>
-        )
+        );
     }
 }
 

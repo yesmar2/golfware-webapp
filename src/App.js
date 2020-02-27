@@ -1,11 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Switch, Route } from "react-router-dom";
-import { connect } from "react-redux";
-import {
-    CSSTransition,
-    TransitionGroup,
-} from 'react-transition-group';
+import { Switch, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import Home from './Home';
 import Schedule from './Schedule';
 import ScoreEntry from './containers/ScoreEntry';
@@ -24,9 +21,9 @@ const Container = styled.div`
 
 const Page = styled.main`
     width: 100%;
-    margin-left: ${props => props.theme.leftDrawerWidth};
-    margin-top: ${props => props.theme.headerHeight};
-    padding: ${props => props.theme.spacingLarge};
+    margin-left: ${(props) => props.theme.leftDrawerWidth};
+    margin-top: ${(props) => props.theme.headerHeight};
+    padding: ${(props) => props.theme.spacingLarge};
 `;
 
 const StyledTransitionGroup = styled(TransitionGroup)`
@@ -67,54 +64,48 @@ const routes = [
         key: 'home',
         path: '/',
         title: 'Home',
-        component: Home
+        component: Home,
     },
     {
         key: 'schedule',
         path: '/schedule',
         title: 'Schedule',
-        component: Schedule
+        component: Schedule,
     },
     {
         key: 'scoreentry',
         path: '/scoreentry/:week',
         title: 'Score Entry',
-        component: ScoreEntry
+        component: ScoreEntry,
     },
     {
         key: 'scorecard',
         path: '/scorecard/:week/:matchupNumber',
         title: 'Score Entry / Matchup #1',
-        component: Scorecard
-    }
+        component: Scorecard,
+    },
 ];
 
-const ProtectedApp = () => {
-    return (
-        <Container>
-            <LeftDrawer />
-            <Header />
-            <Page>
-                {routes.map(route => (
-                    <Route
-                        key={route.key}
-                        path={route.path}
-                        exact
-                        render={() => (
-                            <PageHeader title={route.title} />
-                        )}
-                    />
-                ))}
-                <Route render={({location}) => (
+const ProtectedApp = () => (
+    <Container>
+        <LeftDrawer />
+        <Header />
+        <Page>
+            {routes.map((route) => (
+                <Route
+                    key={route.key}
+                    path={route.path}
+                    exact
+                    render={() => <PageHeader title={route.title} />}
+                />
+            ))}
+            <Route
+                render={({ location }) => (
                     <StyledTransitionGroup>
-                        <CSSTransition
-                            key={location.key}
-                            classNames="fade"
-                            timeout={300}
-                        >
+                        <CSSTransition key={location.key} classNames="fade" timeout={300}>
                             <Content>
                                 <Switch location={location}>
-                                    {routes.map(route => (
+                                    {routes.map((route) => (
                                         <Route
                                             key={route.key}
                                             path={route.path}
@@ -126,14 +117,13 @@ const ProtectedApp = () => {
                             </Content>
                         </CSSTransition>
                     </StyledTransitionGroup>
-                )} />
-            </Page>
-        </Container>
-    )
-}
+                )}
+            />
+        </Page>
+    </Container>
+);
 
 function App(props) {
-
     const { isAuthenticated, isVerifying } = props;
 
     return (
@@ -149,10 +139,10 @@ function App(props) {
 }
 
 function mapStateToProps(appState) {
-  return {
-    isAuthenticated: authSelectors.selectIsAuthenticated(appState),
-    isVerifying: authSelectors.selectIsVerifying(appState),
-  };
+    return {
+        isAuthenticated: authSelectors.selectIsAuthenticated(appState),
+        isVerifying: authSelectors.selectIsVerifying(appState),
+    };
 }
 
 export default connect(mapStateToProps)(App);

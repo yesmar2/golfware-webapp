@@ -1,33 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { get } from './services/utils';
 
 const Container = styled.div`
     display: flex;
 `;
 
-class ScoreEntry extends Component {
-    state = {
-        events: []
-    }
+const Schedule = () => <Container>Schedule</Container>;
 
-    async componentDidMount() {
-        const events = await get(`/api/events`) || [];
-
-        this.setState({
-            events,
-        });
-    }
-
-    render() {
-        const { events } = this.state;
-
-        return (
-            <Container>
-                Schedule
-            </Container>
-        );
-    }
-}
-
-export default ScoreEntry;
+export default Schedule;

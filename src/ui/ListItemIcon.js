@@ -2,13 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
-    margin-right: ${props => props.theme.spacingMedium};
+    margin-right: ${(props) => props.theme.spacingMedium};
 `;
 
-const ListItemIcon = props => {
+const ListItemIcon = (props) => {
     const {
         className,
-        children
+        children,
     } = props;
 
     return (
@@ -16,6 +16,6 @@ const ListItemIcon = props => {
             {children}
         </Container>
     );
-}
+};
 
 export default ListItemIcon;

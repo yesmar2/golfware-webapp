@@ -8,16 +8,14 @@ const Container = styled.div`
     justify-content: center;
     height: 40px;
     width: 40px;
-    background-color: ${props => props.theme.colors[props.color]};
+    background-color: ${(props) => props.theme.colors[props.color]};
     border-radius: 50%;
-`; 
+`;
 
-const TeamLogo = ({ color }) => {
-    return (
-        <Container color={color}>
-            <GolfBall />
-        </Container>
-    );
-}
+const TeamLogo = ({ color }) => (
+    <Container color={color}>
+        <GolfBall />
+    </Container>
+);
 
 export default TeamLogo;

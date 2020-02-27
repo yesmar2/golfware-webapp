@@ -1,4 +1,4 @@
-import { fetchPlayers, setPlayerFilter } from "./actions";
+import { fetchPlayers, setPlayerFilter } from './actions';
 
 const playerOperations = {
     fetchPlayers,

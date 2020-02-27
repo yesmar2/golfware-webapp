@@ -1,7 +1,7 @@
 const DUCK_NAMESPACE = 'PLAYERS';
-const FETCH = `FETCH`;
+const FETCH = 'FETCH';
 const FETCH_NAMESPACE = `${DUCK_NAMESPACE}/${FETCH}`;
-const FILTER = `FILTER`;
+const FILTER = 'FILTER';
 const FILTER_NAMESPACE = `${DUCK_NAMESPACE}/${FILTER}`;
 
 export {
@@ -10,4 +10,4 @@ export {
     FETCH_NAMESPACE,
     FILTER,
     FILTER_NAMESPACE,
-}
+};

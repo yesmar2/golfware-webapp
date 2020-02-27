@@ -10,10 +10,10 @@ const Container = styled.div`
     text-align: center;
 `;
 
-const ScorecardCell = props => {
+const ScorecardCell = (props) => {
     const {
         children,
-        className
+        className,
     } = props;
 
     return (
@@ -21,6 +21,6 @@ const ScorecardCell = props => {
             {children}
         </Container>
     );
-}
+};
 
 export default ScorecardCell;

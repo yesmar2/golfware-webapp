@@ -1,9 +1,9 @@
 import React from 'react';
-import styled from 'styled-components'
+import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 const Container = styled.li`
-    padding: ${props => props.theme.spacingSmall} ${props => props.theme.spacingLarge};
+    padding: ${(props) => props.theme.spacingSmall} ${(props) => props.theme.spacingLarge};
 `;
 
 const MenuItemLink = styled(Link)`
@@ -16,7 +16,7 @@ const MenuItemLink = styled(Link)`
 
 const MenuItemIcon = styled.div`
     display: flex;
-    margin-right: ${props => props.theme.spacingLarge};
+    margin-right: ${(props) => props.theme.spacingLarge};
     font-size: 18px;
 `;
 
@@ -24,7 +24,7 @@ const MenuItemText = styled.div`
     
 `;
 
-const MenuItem = props => {
+const MenuItem = (props) => {
     const { icon, text, href } = props;
 
     return (
@@ -39,6 +39,6 @@ const MenuItem = props => {
             </MenuItemLink>
         </Container>
     );
-}
+};
 
 export default MenuItem;

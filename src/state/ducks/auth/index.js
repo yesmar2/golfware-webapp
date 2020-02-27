@@ -1,12 +1,12 @@
 import { DUCK_NAMESPACE } from './types';
-import reducer from "./reducers";
+import reducer from './reducers';
 
-import authOperations from "./operations";
-import authSelectors from "./selectors";
+import authOperations from './operations';
+import authSelectors from './selectors';
 
 export {
     authOperations,
-    authSelectors
+    authSelectors,
 };
 
 export default { [DUCK_NAMESPACE]: reducer };

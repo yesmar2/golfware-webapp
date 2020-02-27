@@ -1,59 +1,54 @@
-import { combineReducers } from "redux";
-import createReducer from "./createReducer";
+import createReducer from './createReducer';
 
 const DATA_NAMESPACE = 'DATA';
-const STATUS_NAMESPACE = `STATUS`;
+const STATUS_NAMESPACE = 'STATUS';
 
 const initialStatusState = {
     working: false,
     success: false,
-    error: undefined
+    error: undefined,
 };
 
 const buildApiMapReducer = (namespace) => {
     const statusReducer = createReducer(initialStatusState)({
-        [`${namespace}/FETCH_START`]: ( state ) => {
-            return {
-                ...state,
-                working: true
-            };
-        },
-        [`${namespace}/FETCH_END`]: ( state, action ) => {
+        [`${namespace}/FETCH_START`]: (state) => ({
+            ...state,
+            working: true,
+        }),
+        [`${namespace}/FETCH_END`]: (state, action) => {
             const { error, meta } = action;
             return {
                 ...state,
                 working: false,
                 success: !error,
                 error,
-                meta
+                meta,
             };
-        }
+        },
     });
 
     const dataReducer = createReducer([])({
-        [`${namespace}/FETCH_SET`]: ( state, action ) => {
-            return action.payload
-        }
+        [`${namespace}/FETCH_SET`]: (state, action) => action.payload,
     });
 
     return {
         [DATA_NAMESPACE]: dataReducer,
         [STATUS_NAMESPACE]: statusReducer,
-    }
-}
+    };
+};
 
-const buildApiSelectors = namespace => {
-    const selectData = appState => appState[namespace][DATA_NAMESPACE];
-    const selectStatus = appState => appState[namespace][STATUS_NAMESPACE];
-    const selectWorking = appState => selectStatus(appState).working;
-    const selectSuccess = appState => selectStatus(appState).success;
+const buildApiSelectors = (namespace) => {
+    const selectData = (appState) => appState[namespace][DATA_NAMESPACE];
+    const selectStatus = (appState) => appState[namespace][STATUS_NAMESPACE];
+    const selectWorking = (appState) => selectStatus(appState).working;
+    const selectSuccess = (appState) => selectStatus(appState).success;
 
     return {
         selectData,
         selectStatus,
         selectWorking,
-        selectSuccess
-    }
-}
+        selectSuccess,
+    };
+};
 
 export { buildApiSelectors, buildApiMapReducer };

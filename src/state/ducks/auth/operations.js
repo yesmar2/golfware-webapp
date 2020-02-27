@@ -1,6 +1,6 @@
-import { myFirebase } from "../../../firebase/firebase";
+import { myFirebase } from '../../../firebase/firebase';
 
-import { 
+import {
     requestLogin,
     receiveLogin,
     loginError,
@@ -9,58 +9,58 @@ import {
     logoutError,
     verifyRequest,
     verifySuccess,
- } from "./actions";
+} from './actions';
 
-const loginUser = (email, password) => dispatch => {
-  dispatch(requestLogin());
-  myFirebase
-    .auth()
-    .signInWithEmailAndPassword(email, password)
-    .then(user => {
-      dispatch(receiveLogin(user));
-    })
-    .catch(error => {
-      //Do something with the error if you want!
-      dispatch(loginError());
-    });
+const loginUser = (email, password) => (dispatch) => {
+    dispatch(requestLogin());
+    myFirebase
+        .auth()
+        .signInWithEmailAndPassword(email, password)
+        .then((user) => {
+            dispatch(receiveLogin(user));
+        })
+        .catch(() => {
+            // Do something with the error if you want!
+            dispatch(loginError());
+        });
 };
 
-const logoutUser = () => dispatch => {
-  dispatch(requestLogout());
-  myFirebase
-    .auth()
-    .signOut()
-    .then(() => {
-      dispatch(receiveLogout());
-    })
-    .catch(error => {
-      //Do something with the error if you want!
-      dispatch(logoutError());
-    });
+const logoutUser = () => (dispatch) => {
+    dispatch(requestLogout());
+    myFirebase
+        .auth()
+        .signOut()
+        .then(() => {
+            dispatch(receiveLogout());
+        })
+        .catch(() => {
+            // Do something with the error if you want!
+            dispatch(logoutError());
+        });
 };
 
-const verifyAuth = () => dispatch => {
-  dispatch(verifyRequest());
-  myFirebase
-    .auth()
-    .onAuthStateChanged(user => {
-      if (user !== null) {
-        dispatch(receiveLogin(user));
-      }
-      dispatch(verifySuccess());
-    });
+const verifyAuth = () => (dispatch) => {
+    dispatch(verifyRequest());
+    myFirebase
+        .auth()
+        .onAuthStateChanged((user) => {
+            if (user !== null) {
+                dispatch(receiveLogin(user));
+            }
+            dispatch(verifySuccess());
+        });
 };
 
 const authOperations = {
     loginUser,
     logoutUser,
     verifyAuth,
-}
+};
 
 export {
     loginUser,
     logoutUser,
     verifyAuth,
-}
+};
 
 export default authOperations;

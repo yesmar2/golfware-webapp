@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { MdSort, MdExpandMore } from 'react-icons/md';
 
@@ -8,7 +8,7 @@ const Container = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid ${props => props.theme.colors.grey[300]};
+    border-bottom: 1px solid ${(props) => props.theme.colors.grey[300]};
 `;
 
 const SortIcon = styled(MdSort)`
@@ -21,17 +21,12 @@ const ExpandMoreIcon = styled(MdExpandMore)`
     width: 24px;
 `;
 
-class SortDropdown extends Component {
-    render() {
-        return (
-            <Container>
-                <SortIcon />
-                <span>Name</span>
-                <ExpandMoreIcon />
-            </Container>
-            
-        );
-    }
-}
+const SortDropdown = () => (
+    <Container>
+        <SortIcon />
+        <span>Name</span>
+        <ExpandMoreIcon />
+    </Container>
+);
 
 export default SortDropdown;

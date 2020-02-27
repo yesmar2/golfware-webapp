@@ -9,54 +9,38 @@ import {
     VERIFY_SUCCESS,
 } from './types';
 
-const requestLogin = () => {
-  return {
-    type: LOGIN_REQUEST
-  };
-};
+const requestLogin = () => ({
+    type: LOGIN_REQUEST,
+});
 
-const receiveLogin = user => {
-  return {
+const receiveLogin = (user) => ({
     type: LOGIN_SUCCESS,
-    user
-  };
-};
+    user,
+});
 
-const loginError = () => {
-  return {
-    type: LOGIN_FAILURE
-  };
-};
+const loginError = () => ({
+    type: LOGIN_FAILURE,
+});
 
-const requestLogout = () => {
-  return {
-    type: LOGOUT_REQUEST
-  };
-};
+const requestLogout = () => ({
+    type: LOGOUT_REQUEST,
+});
 
-const receiveLogout = () => {
-  return {
-    type: LOGOUT_SUCCESS
-  };
-};
+const receiveLogout = () => ({
+    type: LOGOUT_SUCCESS,
+});
 
-const logoutError = () => {
-  return {
-    type: LOGOUT_FAILURE
-  };
-};
+const logoutError = () => ({
+    type: LOGOUT_FAILURE,
+});
 
-const verifyRequest = () => {
-  return {
-    type: VERIFY_REQUEST
-  };
-};
+const verifyRequest = () => ({
+    type: VERIFY_REQUEST,
+});
 
-const verifySuccess = () => {
-  return {
-    type: VERIFY_SUCCESS
-  };
-};
+const verifySuccess = () => ({
+    type: VERIFY_SUCCESS,
+});
 
 export {
     requestLogin,
@@ -67,4 +51,4 @@ export {
     logoutError,
     verifyRequest,
     verifySuccess,
-}
+};

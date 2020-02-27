@@ -17,7 +17,7 @@ const Points = styled.div`
     font-size: 24px;
 `;
 
-const MatchScore = props => {
+const MatchScore = (props) => {
     const {
         className,
         teamOneNumber,
@@ -27,7 +27,7 @@ const MatchScore = props => {
         teamTwoNumber,
         teamTwoColor,
         teamTwoPlace,
-        teamTwoPoints
+        teamTwoPoints,
     } = props;
 
     return (
@@ -36,24 +36,18 @@ const MatchScore = props => {
                 <ListItemIcon>
                     <TeamLogo color={teamOneColor} />
                 </ListItemIcon>
-                <ListItemText
-                    primaryText={`Team ${teamOneNumber}`}
-                    secondaryText={teamOnePlace}
-                />
+                <ListItemText primaryText={`Team ${teamOneNumber}`} secondaryText={teamOnePlace} />
                 <Points>{teamOnePoints}</Points>
             </ListItem>
             <ListItem>
                 <ListItemIcon>
                     <TeamLogo color={teamTwoColor} />
                 </ListItemIcon>
-                <ListItemText
-                    primaryText={`Team ${teamTwoNumber}`}
-                    secondaryText={teamTwoPlace}
-                />
+                <ListItemText primaryText={`Team ${teamTwoNumber}`} secondaryText={teamTwoPlace} />
                 <Points>{teamTwoPoints}</Points>
             </ListItem>
         </Container>
     );
-}
+};
 
 export default MatchScore;

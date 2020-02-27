@@ -13,7 +13,7 @@ const Container = styled.div`
 
 const PlayerContainer = styled.div`
     flex: 1;
-    margin-right: ${props => props.theme.spacingLarge};
+    margin-right: ${(props) => props.theme.spacingLarge};
 `;
 
 const ScoreboardContainer = styled.div`
@@ -24,7 +24,7 @@ const ScoreboardHeader = styled.div`
     height: 48px;
     display: flex;
     align-items: flex-end;
-    margin-bottom: ${props => props.theme.spacingLarge};
+    margin-bottom: ${(props) => props.theme.spacingLarge};
 `;
 
 const Heading4 = styled.h3`
@@ -33,24 +33,23 @@ const Heading4 = styled.h3`
 
 const SearchSortContainer = styled.div`
     display: flex;
-    margin-bottom: ${props => props.theme.spacingLarge};
+    margin-bottom: ${(props) => props.theme.spacingLarge};
 `;
 
 const StyledSearch = styled(Search)`
     flex: 1;
-    margin-right: ${props => props.theme.spacingLarge};
+    margin-right: ${(props) => props.theme.spacingLarge};
 `;
 
 const PlayerCardStyled = styled(PlayerCard)`
-    margin-bottom: ${props => props.theme.spacingLarge};
+    margin-bottom: ${(props) => props.theme.spacingLarge};
 `;
 
 const MatchScoreStyled = styled(MatchScore)`
-    margin-bottom: ${props => props.theme.spacingLarge};
+    margin-bottom: ${(props) => props.theme.spacingLarge};
 `;
 
 class ScoreEntry extends Component {
-
     render() {
         const { players, setPlayerFilter } = this.props;
 
@@ -62,27 +61,29 @@ class ScoreEntry extends Component {
                         <SortDropdown />
                     </SearchSortContainer>
                     {players
-                        .sort((a,b) => {
-                            if(a.lastName < b.lastName) { return -1; }
-                            if(a.lastName > b.lastName) { return 1; }
+                        .sort((a, b) => {
+                            if (a.lastName < b.lastName) {
+                                return -1;
+                            }
+                            if (a.lastName > b.lastName) {
+                                return 1;
+                            }
                             return 0;
                         })
-                        .map(player => {
+                        .map((player) => {
                             const { team } = player;
-                            // const matchup = 
+                            // const matchup =
                             //     data.weeks.find(weekObj => weekObj.weekNumber === parseInt(week))
                             //     .matchups.find(matchup => {
-                            //         return matchup.teamOne === player.teamId 
+                            //         return matchup.teamOne === player.teamId
                             //             || matchup.teamTwo === player.teamId
                             //     }).matchupNumber;
                             const matchup = 1;
                             const week = 1;
 
                             return (
-                                <Link
-                                    to={`/scorecard/${week}/${matchup}`}
-                                    key={player._id}>
-                                    <PlayerCardStyled 
+                                <Link to={`/scorecard/${week}/${matchup}`} key={player._id}>
+                                    <PlayerCardStyled
                                         key={player.id}
                                         name={player.fullName}
                                         teamNumber={team.number}
@@ -91,16 +92,13 @@ class ScoreEntry extends Component {
                                     />
                                 </Link>
                             );
-                        }
-                    )}
+                        })}
                 </PlayerContainer>
                 <ScoreboardContainer>
                     <ScoreboardHeader>
-                        <Heading4>
-                            Scoreboard
-                        </Heading4>
+                        <Heading4>Scoreboard</Heading4>
                     </ScoreboardHeader>
-                    <MatchScoreStyled 
+                    <MatchScoreStyled
                         teamOneNumber={3}
                         teamOneColor="green"
                         teamOnePlace="1st Place"
@@ -110,7 +108,7 @@ class ScoreEntry extends Component {
                         teamTwoPlace="7th Place"
                         teamTwoPoints={3.5}
                     />
-                    <MatchScoreStyled 
+                    <MatchScoreStyled
                         teamOneNumber={3}
                         teamOneColor="blue"
                         teamOnePlace="1st Place"
@@ -120,7 +118,7 @@ class ScoreEntry extends Component {
                         teamTwoPlace="7th Place"
                         teamTwoPoints={7.5}
                     />
-                    <MatchScoreStyled 
+                    <MatchScoreStyled
                         teamOneNumber={3}
                         teamOneColor="blue"
                         teamOnePlace="1st Place"
@@ -130,7 +128,7 @@ class ScoreEntry extends Component {
                         teamTwoPlace="7th Place"
                         teamTwoPoints={4.5}
                     />
-                    <MatchScoreStyled 
+                    <MatchScoreStyled
                         teamOneNumber={3}
                         teamOneColor="green"
                         teamOnePlace="1st Place"
@@ -140,7 +138,7 @@ class ScoreEntry extends Component {
                         teamTwoPlace="7th Place"
                         teamTwoPoints={3}
                     />
-                    <MatchScoreStyled 
+                    <MatchScoreStyled
                         teamOneNumber={3}
                         teamOneColor="red"
                         teamOnePlace="1st Place"

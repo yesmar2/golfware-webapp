@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import { FaExchangeAlt } from 'react-icons/fa';
+import { IoMdInformationCircleOutline } from 'react-icons/io';
 import Paper from './Paper';
 import ListItem from './ui/ListItem';
 import ListItemIcon from './ui/ListItemIcon';
@@ -7,8 +9,6 @@ import ListItemText from './ui/ListItemText';
 import TeamLogo from './TeamLogo';
 import HandicapChip from './HandicapChip';
 import ToggleSwitch from './ui/ToggleSwitch';
-import { FaExchangeAlt } from 'react-icons/fa';
-import { IoMdInformationCircleOutline } from 'react-icons/io';
 
 const Container = styled(Paper)`
     cursor: pointer;
@@ -31,55 +31,47 @@ const SkinsContainer = styled.div`
 `;
 
 const SubstitutionIcon = styled(FaExchangeAlt)`
-    color: ${props => props.theme.colors.grey[300]};
+    color: ${(props) => props.theme.colors.grey[300]};
     height: 16px;
     width: 16px;
 `;
 
 const InfoIcon = styled(IoMdInformationCircleOutline)`
-    color: ${props => props.theme.colors.grey[300]};
-    margin-right: ${props => props.theme.spacingSmall};
+    color: ${(props) => props.theme.colors.grey[300]};
+    margin-right: ${(props) => props.theme.spacingSmall};
     height: 24px;
     width: 24px;
 `;
 
 const StyledToggleSwitch = styled(ToggleSwitch)`
-    margin-right: ${props => props.theme.spacingLarge};
+    margin-right: ${(props) => props.theme.spacingLarge};
 `;
 
-class PlayerCard extends React.Component {
-    render() {
-        const {
-            name,
-            teamNumber,
-            teamColor,
-            handicap,
-            className
-        } = this.props;
+const PlayerCard = (props) => {
+    const { name, teamNumber, teamColor, handicap, className } = props;
 
-        return (
-            <Container className={className}>
-                <ListItem>
-                    <ListItemIcon>
-                        <TeamLogo color={teamColor} />
-                    </ListItemIcon>
-                    <ListItemText
-                        primaryText={name}
-                        secondaryText={`Team ${teamNumber}`}
-                    />
-                    <HandicapContainer>
-                        <HandicapChip handicap={handicap} />
-                    </HandicapContainer>
-                    <SkinsContainer>
-                        <StyledToggleSwitch label="Scratch Skins" />
-                        <ToggleSwitch label="Net Skins" />
-                    </SkinsContainer>
-                    <InfoIcon />
-                    <SubstitutionIcon />
-                </ListItem>
-            </Container>
-        );
-    }
-}
+    return (
+        <Container className={className}>
+            <ListItem>
+                <ListItemIcon>
+                    <TeamLogo color={teamColor} />
+                </ListItemIcon>
+                <ListItemText
+                    primaryText={name}
+                    secondaryText={`Team ${teamNumber}`}
+                />
+                <HandicapContainer>
+                    <HandicapChip handicap={handicap} />
+                </HandicapContainer>
+                <SkinsContainer>
+                    <StyledToggleSwitch label="Scratch Skins" />
+                    <ToggleSwitch label="Net Skins" />
+                </SkinsContainer>
+                <InfoIcon />
+                <SubstitutionIcon />
+            </ListItem>
+        </Container>
+    );
+};
 
 export default PlayerCard;

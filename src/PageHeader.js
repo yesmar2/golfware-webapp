@@ -1,12 +1,12 @@
 import React from 'react';
-import styled from 'styled-components'
+import styled from 'styled-components';
 import { MdExpandMore } from 'react-icons/md';
 
 
 const Container = styled.div`
     display: flex;
     align-items: center;
-    margin-bottom: ${props => props.theme.spacingLarge};
+    margin-bottom: ${(props) => props.theme.spacingLarge};
 `;
 
 const Heading3 = styled.h3`
@@ -16,7 +16,7 @@ const Heading3 = styled.h3`
 const WeekDropdown = styled.div`
     display: flex;
     align-items: flex-end;
-    margin-left: ${props => props.theme.spacingMedium};
+    margin-left: ${(props) => props.theme.spacingMedium};
 `;
 
 const WeekDropdownText = styled.span`
@@ -24,12 +24,12 @@ const WeekDropdownText = styled.span`
     font-size: 12px;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    margin-right: ${props => props.theme.spacingTiny};
+    margin-right: ${(props) => props.theme.spacingTiny};
 `;
 
-const PageHeader = props => {
+const PageHeader = (props) => {
     const {
-        title
+        title,
     } = props;
 
     return (
@@ -45,6 +45,6 @@ const PageHeader = props => {
             </WeekDropdown>
         </Container>
     );
-}
+};
 
 export default PageHeader;

@@ -7,7 +7,7 @@ const Container = styled.div`
 `;
 
 const LeftIcon = styled.div`
-    margin-right: ${props => props.theme.spacingMedium};
+    margin-right: ${(props) => props.theme.spacingMedium};
 `;
 
 const StyledInput = styled.input`
@@ -24,51 +24,48 @@ const StyledInput = styled.input`
 class Input extends Component {
     constructor(props) {
         super(props);
-        
+
         this.state = {
-            value: ''
-        }
+            value: '',
+        };
 
         this.inputRef = React.createRef();
     }
-    
+
     componentDidUpdate(prevProps) {
-        if(this.props.focus && prevProps.focus !== this.props.focus) {
+        const { focus } = this.props;
+        if (focus && prevProps.focus !== focus) {
             this.inputRef.current.focus();
         }
     }
 
     onChange = (event) => {
-        this.setState({value: event.target.value});
-        this.props.onChange(event.target.value);
-    }
+        const { onChange } = this.props;
+        this.setState({ value: event.target.value });
+        onChange(event.target.value);
+    };
 
     render() {
         const {
             className,
             maxLength,
             placeholder,
-            leftIcon
-         } = this.props;
+            leftIcon,
+        } = this.props;
 
-         const { value } = this.state;
+        const { value } = this.state;
 
         return (
-            <Container
-                className={className}>
-                {leftIcon && (
-                    <LeftIcon>
-                        {leftIcon}
-                    </LeftIcon>
-                )}
+            <Container className={className}>
+                {leftIcon && <LeftIcon>{leftIcon}</LeftIcon>}
                 <StyledInput
                     ref={this.inputRef}
                     placeholder={placeholder}
                     maxLength={maxLength}
                     onChange={this.onChange}
-                    value={value} />
+                    value={value}
+                />
             </Container>
-            
         );
     }
 }

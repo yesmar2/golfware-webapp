@@ -1,21 +1,19 @@
-import { combineReducers } from "redux";
+import { combineReducers } from 'redux';
 import {
     DUCK_NAMESPACE,
     FILTER,
-    FILTER_NAMESPACE
+    FILTER_NAMESPACE,
 }
-from "./types";
+    from './types';
 import {
     createReducer,
     buildApiMapReducer,
-} from "../../utils";
+} from '../../utils';
 
 const apiMapReducer = buildApiMapReducer(DUCK_NAMESPACE);
 
 const playerFilterReducer = createReducer('')({
-    [FILTER_NAMESPACE]: ( state, action ) => {
-        return action.payload
-    }
+    [FILTER_NAMESPACE]: (state, action) => action.payload,
 });
 
 export default combineReducers({
