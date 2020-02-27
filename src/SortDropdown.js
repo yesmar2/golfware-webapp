@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { MdSort, MdExpandMore } from 'react-icons/md';
+import {
+    MdSort, MdExpandMore,
+} from 'react-icons/md';
 
 const Container = styled.div`
     height: 48px;

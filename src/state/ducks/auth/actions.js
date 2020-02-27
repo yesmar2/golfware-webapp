@@ -9,38 +9,24 @@ import {
     VERIFY_SUCCESS,
 } from './types';
 
-const requestLogin = () => ({
-    type: LOGIN_REQUEST,
-});
+const requestLogin = () => ({ type: LOGIN_REQUEST });
 
 const receiveLogin = (user) => ({
     type: LOGIN_SUCCESS,
     user,
 });
 
-const loginError = () => ({
-    type: LOGIN_FAILURE,
-});
+const loginError = () => ({ type: LOGIN_FAILURE });
 
-const requestLogout = () => ({
-    type: LOGOUT_REQUEST,
-});
+const requestLogout = () => ({ type: LOGOUT_REQUEST });
 
-const receiveLogout = () => ({
-    type: LOGOUT_SUCCESS,
-});
+const receiveLogout = () => ({ type: LOGOUT_SUCCESS });
 
-const logoutError = () => ({
-    type: LOGOUT_FAILURE,
-});
+const logoutError = () => ({ type: LOGOUT_FAILURE });
 
-const verifyRequest = () => ({
-    type: VERIFY_REQUEST,
-});
+const verifyRequest = () => ({ type: VERIFY_REQUEST });
 
-const verifySuccess = () => ({
-    type: VERIFY_SUCCESS,
-});
+const verifySuccess = () => ({ type: VERIFY_SUCCESS });
 
 export {
     requestLogin,

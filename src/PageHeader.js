@@ -28,9 +28,7 @@ const WeekDropdownText = styled.span`
 `;
 
 const PageHeader = (props) => {
-    const {
-        title,
-    } = props;
+    const { title } = props;
 
     return (
         <Container>

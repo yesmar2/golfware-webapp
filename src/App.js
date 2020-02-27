@@ -1,8 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Switch, Route } from 'react-router-dom';
+import {
+    Switch, Route,
+} from 'react-router-dom';
 import { connect } from 'react-redux';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import {
+    CSSTransition, TransitionGroup,
+} from 'react-transition-group';
 import Home from './Home';
 import Schedule from './Schedule';
 import ScoreEntry from './containers/ScoreEntry';
@@ -124,7 +128,9 @@ const ProtectedApp = () => (
 );
 
 function App(props) {
-    const { isAuthenticated, isVerifying } = props;
+    const {
+        isAuthenticated, isVerifying,
+    } = props;
 
     return (
         <Switch>

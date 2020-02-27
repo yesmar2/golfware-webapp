@@ -10,7 +10,9 @@ const Container = styled.div`
 `;
 
 const ListItem = (props) => {
-    const { children, className, onClick } = props;
+    const {
+        children, className, onClick,
+    } = props;
 
     return (
         <Container className={className} onClick={onClick}>

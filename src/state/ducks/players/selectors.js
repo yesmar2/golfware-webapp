@@ -1,5 +1,7 @@
 import { buildApiSelectors } from '../../utils';
-import { DUCK_NAMESPACE, FILTER } from './types';
+import {
+    DUCK_NAMESPACE, FILTER,
+} from './types';
 
 const apiSelectors = buildApiSelectors(DUCK_NAMESPACE);
 

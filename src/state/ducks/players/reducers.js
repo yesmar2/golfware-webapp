@@ -12,9 +12,7 @@ import {
 
 const apiMapReducer = buildApiMapReducer(DUCK_NAMESPACE);
 
-const playerFilterReducer = createReducer('')({
-    [FILTER_NAMESPACE]: (state, action) => action.payload,
-});
+const playerFilterReducer = createReducer('')({ [FILTER_NAMESPACE]: (state, action) => action.payload });
 
 export default combineReducers({
     ...apiMapReducer,

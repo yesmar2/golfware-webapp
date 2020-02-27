@@ -25,9 +25,7 @@ class Input extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            value: '',
-        };
+        this.state = { value: '' };
 
         this.inputRef = React.createRef();
     }

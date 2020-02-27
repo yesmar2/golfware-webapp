@@ -7,7 +7,9 @@ const apiService = () => (next) => async (action) => {
         return next(action);
     }
 
-    const { path, method = 'GET', body } = action.meta;
+    const {
+        path, method = 'GET', body,
+    } = action.meta;
 
     if (!path) {
         throw new Error(`'path' not specified for async action ${action.type}`);

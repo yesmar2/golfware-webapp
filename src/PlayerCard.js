@@ -48,7 +48,9 @@ const StyledToggleSwitch = styled(ToggleSwitch)`
 `;
 
 const PlayerCard = (props) => {
-    const { name, teamNumber, teamColor, handicap, className } = props;
+    const {
+        name, teamNumber, teamColor, handicap, className,
+    } = props;
 
     return (
         <Container className={className}>

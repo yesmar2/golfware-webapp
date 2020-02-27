@@ -13,7 +13,9 @@ const Container = styled.div`
 `;
 
 const Chip = (props) => {
-    const { className, text } = props;
+    const {
+        className, text,
+    } = props;
     return (
         <Container className={className}>
             {text}

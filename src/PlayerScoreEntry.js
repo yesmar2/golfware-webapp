@@ -116,9 +116,7 @@ class PlayerScoreEntry extends React.Component {
 
     onChange = (holeNumber, value) => {
         if (value.length === 1) {
-            this.setState(() => ({
-                holeToFocus: holeNumber + 1,
-            }));
+            this.setState(() => ({ holeToFocus: holeNumber + 1 }));
         }
 
         this.setState((currentState) => ({
@@ -160,7 +158,9 @@ class PlayerScoreEntry extends React.Component {
             className,
         } = this.props;
 
-        const { holeToFocus, holes } = this.state;
+        const {
+            holeToFocus, holes,
+        } = this.state;
 
         return (
             <Container className={className}>

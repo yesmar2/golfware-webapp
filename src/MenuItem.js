@@ -25,7 +25,9 @@ const MenuItemText = styled.div`
 `;
 
 const MenuItem = (props) => {
-    const { icon, text, href } = props;
+    const {
+        icon, text, href,
+    } = props;
 
     return (
         <Container>

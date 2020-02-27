@@ -7,7 +7,10 @@ function parseStatus(status, res) {
         } else {
             // TODO: look into rejecting error
             // eslint-disable-next-line prefer-promise-reject-errors
-            res.then((response) => reject({ status, response }));
+            res.then((response) => reject({
+                status,
+                response,
+            }));
         }
     });
 }

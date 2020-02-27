@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
-import { createGlobalStyle, ThemeProvider } from 'styled-components';
+import {
+    createGlobalStyle, ThemeProvider,
+} from 'styled-components';
 import { Provider as ReduxProvider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 import configureStore from './state/store';

@@ -1,7 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { FaUsers, FaUser, FaGolfBall, FaCalendar } from 'react-icons/fa';
+import {
+    FaUsers, FaUser, FaGolfBall, FaCalendar,
+} from 'react-icons/fa';
 import MenuItem from './MenuItem';
 import golfer from './images/golfer.jpg';
 

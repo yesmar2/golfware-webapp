@@ -3,7 +3,9 @@ import Input from './Input';
 
 class Entry extends Component {
     onChange = (value) => {
-        const { onChange, holeNumber } = this.props;
+        const {
+            onChange, holeNumber,
+        } = this.props;
         onChange(holeNumber, value);
     };
 

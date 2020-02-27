@@ -12,7 +12,9 @@ const Container = styled(Input)`
 `;
 
 const Search = (props) => {
-    const { onChange, className } = props;
+    const {
+        onChange, className,
+    } = props;
 
     return (
         <Container

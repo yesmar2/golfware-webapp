@@ -16,7 +16,9 @@ const SecondaryText = styled.div`
 `;
 
 const ListItemText = (props) => {
-    const { className, primaryText, secondaryText } = props;
+    const {
+        className, primaryText, secondaryText,
+    } = props;
 
     return (
         <Container className={className}>

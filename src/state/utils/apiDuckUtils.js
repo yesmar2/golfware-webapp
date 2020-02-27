@@ -16,7 +16,9 @@ const buildApiMapReducer = (namespace) => {
             working: true,
         }),
         [`${namespace}/FETCH_END`]: (state, action) => {
-            const { error, meta } = action;
+            const {
+                error, meta,
+            } = action;
             return {
                 ...state,
                 working: false,
@@ -27,9 +29,7 @@ const buildApiMapReducer = (namespace) => {
         },
     });
 
-    const dataReducer = createReducer([])({
-        [`${namespace}/FETCH_SET`]: (state, action) => action.payload,
-    });
+    const dataReducer = createReducer([])({ [`${namespace}/FETCH_SET`]: (state, action) => action.payload });
 
     return {
         [DATA_NAMESPACE]: dataReducer,
@@ -51,4 +51,6 @@ const buildApiSelectors = (namespace) => {
     };
 };
 
-export { buildApiSelectors, buildApiMapReducer };
+export {
+    buildApiSelectors, buildApiMapReducer,
+};

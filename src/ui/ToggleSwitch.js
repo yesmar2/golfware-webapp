@@ -64,19 +64,17 @@ const StyledLabel = styled.label`
 `;
 
 class ToggleSwitch extends Component {
-    state = {
-        checked: true,
-    };
+    state = { checked: true };
 
     onChange = (event) => {
-        this.setState({
-            checked: event.target.checked,
-        });
+        this.setState({ checked: event.target.checked });
     };
 
     render() {
         const { checked } = this.state;
-        const { label, className } = this.props;
+        const {
+            label, className,
+        } = this.props;
 
         return (
             <Container className={className}>

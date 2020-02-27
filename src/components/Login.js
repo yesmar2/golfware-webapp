@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { authSelectors, authOperations } from '../state/ducks/auth';
+import {
+    authSelectors, authOperations,
+} from '../state/ducks/auth';
 
 class Login extends Component {
-    state = { email: '', password: '' };
+    state = {
+        email: '',
+        password: '',
+    };
 
     handleEmailChange = ({ target }) => {
         this.setState({ email: target.value });
@@ -16,13 +21,17 @@ class Login extends Component {
 
     handleSubmit = () => {
         const { loginUser } = this.props;
-        const { email, password } = this.state;
+        const {
+            email, password,
+        } = this.state;
 
         loginUser(email, password);
     };
 
     render() {
-        const { loginError, isAuthenticated } = this.props;
+        const {
+            loginError, isAuthenticated,
+        } = this.props;
         if (isAuthenticated) {
             return <Redirect to="/" />;
         }
@@ -38,9 +47,7 @@ class Login extends Component {
     }
 }
 
-const mapDispatchToProps = {
-    loginUser: authOperations.loginUser,
-};
+const mapDispatchToProps = { loginUser: authOperations.loginUser };
 
 function mapStateToProps(appState) {
     return {

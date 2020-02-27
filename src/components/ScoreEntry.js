@@ -51,7 +51,9 @@ const MatchScoreStyled = styled(MatchScore)`
 
 class ScoreEntry extends Component {
     render() {
-        const { players, setPlayerFilter } = this.props;
+        const {
+            players, setPlayerFilter,
+        } = this.props;
 
         return (
             <Container>
