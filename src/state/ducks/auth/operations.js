@@ -11,6 +11,8 @@ import {
     verifySuccess,
 } from './actions';
 
+import { leagueOperations } from '../leagues';
+
 const loginUser = (email, password) => (dispatch) => {
     dispatch(requestLogin());
     myFirebase
@@ -46,6 +48,7 @@ const verifyAuth = () => (dispatch) => {
         .onAuthStateChanged((user) => {
             if (user !== null) {
                 dispatch(receiveLogin(user));
+                dispatch(leagueOperations.fetchLeaguesByFirebaseID(user.uid));
             }
             dispatch(verifySuccess());
         });

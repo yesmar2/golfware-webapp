@@ -1,5 +1,7 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { authSelectors } from '../state/ducks/auth';
 
 const ProtectedRoute = (props) => {
     const {
@@ -32,4 +34,11 @@ const ProtectedRoute = (props) => {
     );
 };
 
-export default ProtectedRoute;
+function mapStateToProps(appState) {
+    return {
+        isAuthenticated: authSelectors.selectIsAuthenticated(appState),
+        isVerifying: authSelectors.selectIsVerifying(appState),
+    };
+}
+
+export default connect(mapStateToProps)(ProtectedRoute);

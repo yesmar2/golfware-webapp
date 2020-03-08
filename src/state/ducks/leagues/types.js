@@ -1,0 +1,9 @@
+const DUCK_NAMESPACE = 'LEAGUES';
+const FETCH = 'FETCH';
+const FETCH_NAMESPACE = `${DUCK_NAMESPACE}/${FETCH}`;
+
+export {
+    DUCK_NAMESPACE,
+    FETCH,
+    FETCH_NAMESPACE,
+};

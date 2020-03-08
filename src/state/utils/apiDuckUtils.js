@@ -51,6 +51,4 @@ const buildApiSelectors = (namespace) => {
     };
 };
 
-export {
-    buildApiSelectors, buildApiMapReducer,
-};
+export { buildApiSelectors, buildApiMapReducer };

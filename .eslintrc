@@ -3,6 +3,7 @@
     "rules": {
         "indent": [2, 4],
         "no-underscore-dangle": [0],
+        "import/prefer-default-export": [0],
         //TODO: update file names with jsx
         "react/jsx-filename-extension": [0],
         "react/jsx-first-prop-new-line": [2, "multiline-multiprop"],
