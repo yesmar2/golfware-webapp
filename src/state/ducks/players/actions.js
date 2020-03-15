@@ -1,6 +1,4 @@
-import {
-    FETCH_NAMESPACE, FILTER_NAMESPACE,
-} from './types';
+import { FETCH_NAMESPACE, FILTER_NAMESPACE } from './types';
 
 const fetchPlayers = () => ({
     type: FETCH_NAMESPACE,
@@ -17,6 +15,4 @@ const setPlayerFilter = (filterText) => ({
     payload: filterText,
 });
 
-export {
-    fetchPlayers, setPlayerFilter,
-};
+export { fetchPlayers, setPlayerFilter };

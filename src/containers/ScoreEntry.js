@@ -1,40 +1,30 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import {
-    playerOperations, playerSelectors,
-} from '../state/ducks/players';
+import React, { useEffect, useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { playerOperations, playerSelectors } from '../state/ducks/players';
 import ScoreEntry from '../components/ScoreEntry';
 
-class ScoreEntryContainer extends React.Component {
-    componentDidMount() {
-        const {
-            fetchPlayers, success,
-        } = this.props;
+const ScoreEntryContainer = () => {
+    const players = useSelector(playerSelectors.selectFilteredPlayers);
+    const success = useSelector(playerSelectors.selectSuccess);
+    const dispatch = useDispatch();
 
-        // TODO: add expired check once it's been added to apiDuckUtils.js
+    const setPlayerFilter = useCallback(
+        (value) => dispatch(playerOperations.setPlayerFilter(value)),
+        [dispatch],
+    );
+
+    useEffect(() => {
         if (!success) {
-            fetchPlayers();
+            dispatch(playerOperations.fetchPlayers());
         }
-    }
+    }, [dispatch, success]);
 
-    render() {
-        const {
-            players, setPlayerFilter,
-        } = this.props;
-        return <ScoreEntry players={players} setPlayerFilter={setPlayerFilter} />;
-    }
-}
-
-const mapDispatchToProps = {
-    fetchPlayers: playerOperations.fetchPlayers,
-    setPlayerFilter: playerOperations.setPlayerFilter,
+    return (
+        <ScoreEntry
+            players={players}
+            setPlayerFilter={setPlayerFilter}
+        />
+    );
 };
 
-function mapStateToProps(appState) {
-    return {
-        players: playerSelectors.selectPlayers(appState),
-        success: playerSelectors.selectSuccess(appState),
-    };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(ScoreEntryContainer);
+export default ScoreEntryContainer;

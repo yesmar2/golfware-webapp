@@ -1,19 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Input from './Input';
 
-class Entry extends Component {
-    onChange = (value) => {
-        const {
-            onChange, holeNumber,
-        } = this.props;
+const Entry = (props) => {
+    const onEntryChange = (value) => {
+        const { onChange, holeNumber } = props;
         onChange(holeNumber, value);
     };
 
-    render() {
-        const { focus } = this.props;
+    const { focus } = props;
 
-        return <Input onChange={this.onChange} maxLength="1" focus={focus} />;
-    }
-}
+    return <Input onChange={onEntryChange} maxLength="1" focus={focus} />;
+};
 
 export default Entry;
