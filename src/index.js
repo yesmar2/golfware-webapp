@@ -31,8 +31,8 @@ const theme = {
     spacingMedium: '16px',
     spacingLarge: '24px',
     spacingHuge: '32px',
-    headerHeight: '64px',
-    leftDrawerWidth: '256px',
+    headerHeight: '200px',
+    // leftDrawerWidth: '256px',
     defaultBorder: `1px solid ${grey200}`,
 };
 

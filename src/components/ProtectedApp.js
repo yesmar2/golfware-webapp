@@ -2,23 +2,31 @@ import React from 'react';
 import styled from 'styled-components';
 import { Switch, Route } from 'react-router-dom';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import MiddleSection from '../ui/MiddleSection';
 import Home from '../Home';
 import Schedule from '../Schedule';
 import ScoreEntry from '../containers/ScoreEntry';
 import Scorecard from '../Scorecard';
-import Header from '../Header';
-import LeftDrawer from '../LeftDrawer';
-import PageHeader from '../PageHeader';
+import LeagueHeader from '../LeagueHeader';
+// import PageHeader from '../PageHeader';
+import golfer from '../images/golfer.jpg';
 
 const Container = styled.div`
-    display: flex;
     height: 100%;
 `;
 
-const Page = styled.main`
+const Header = styled.div`
+    height: ${(props) => props.theme.headerHeight};
+    background: linear-gradient(
+            ${(props) => props.theme.colors.green}dd,
+            ${(props) => props.theme.colors.green}dd
+        ),
+        url(${golfer}) no-repeat 50% 36%;
+    background-size: cover;
+`;
+
+const Main = styled.main`
     width: 100%;
-    margin-left: ${(props) => props.theme.leftDrawerWidth};
-    margin-top: ${(props) => props.theme.headerHeight};
     padding: ${(props) => props.theme.spacingLarge};
 `;
 
@@ -84,38 +92,43 @@ const routes = [
 
 const ProtectedApp = () => (
     <Container>
-        <LeftDrawer />
-        <Header />
-        <Page>
-            {routes.map((route) => (
+        <Header>
+            <MiddleSection>
+                <LeagueHeader />
+            </MiddleSection>
+        </Header>
+        <Main>
+            <MiddleSection>
+                {/* {routes.map((route) => (
+                    <Route
+                        key={route.key}
+                        path={route.path}
+                        exact
+                        render={() => <PageHeader title={route.title} />}
+                    />
+                ))} */}
                 <Route
-                    key={route.key}
-                    path={route.path}
-                    exact
-                    render={() => <PageHeader title={route.title} />}
+                    render={({ location }) => (
+                        <StyledTransitionGroup>
+                            <CSSTransition key={location.key} classNames="fade" timeout={300}>
+                                <Content>
+                                    <Switch location={location}>
+                                        {routes.map((route) => (
+                                            <Route
+                                                key={route.key}
+                                                path={route.path}
+                                                exact
+                                                component={route.component}
+                                            />
+                                        ))}
+                                    </Switch>
+                                </Content>
+                            </CSSTransition>
+                        </StyledTransitionGroup>
+                    )}
                 />
-            ))}
-            <Route
-                render={({ location }) => (
-                    <StyledTransitionGroup>
-                        <CSSTransition key={location.key} classNames="fade" timeout={300}>
-                            <Content>
-                                <Switch location={location}>
-                                    {routes.map((route) => (
-                                        <Route
-                                            key={route.key}
-                                            path={route.path}
-                                            exact
-                                            component={route.component}
-                                        />
-                                    ))}
-                                </Switch>
-                            </Content>
-                        </CSSTransition>
-                    </StyledTransitionGroup>
-                )}
-            />
-        </Page>
+            </MiddleSection>
+        </Main>
     </Container>
 );
 

@@ -9,7 +9,7 @@ const Container = styled.li`
 const MenuItemLink = styled(Link)`
     display: flex;
     align-items: center;
-    color: white;
+    color: #fff;
     font-weight: 600;
     text-transform: uppercase;
 `;
