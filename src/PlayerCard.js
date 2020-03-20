@@ -31,20 +31,20 @@ const SkinsContainer = styled.div`
 `;
 
 const SubstitutionIcon = styled(FaExchangeAlt)`
-    color: ${(props) => props.theme.colors.grey[300]};
+    color: ${(props) => props.theme.palette.grey[300]};
     height: 16px;
     width: 16px;
 `;
 
 const InfoIcon = styled(IoMdInformationCircleOutline)`
-    color: ${(props) => props.theme.colors.grey[300]};
-    margin-right: ${(props) => props.theme.spacingSmall};
+    color: ${(props) => props.theme.palette.grey[300]};
+    margin-right: ${(props) => props.theme.spacing(1)}px;
     height: 24px;
     width: 24px;
 `;
 
 const StyledToggleSwitch = styled(ToggleSwitch)`
-    margin-right: ${(props) => props.theme.spacingLarge};
+    margin-right: ${(props) => props.theme.spacing(3)}px;
 `;
 
 const PlayerCard = (props) => {

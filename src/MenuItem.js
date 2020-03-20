@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 const Container = styled.li`
-    padding: ${(props) => props.theme.spacingSmall} ${(props) => props.theme.spacingLarge};
+    padding: ${(props) => props.theme.spacing(1)}px ${(props) => props.theme.spacing(3)}px;
 `;
 
 const MenuItemLink = styled(Link)`
@@ -16,7 +16,7 @@ const MenuItemLink = styled(Link)`
 
 const MenuItemIcon = styled.div`
     display: flex;
-    margin-right: ${(props) => props.theme.spacingLarge};
+    margin-right: ${(props) => props.theme.spacing(3)}px;
     font-size: 18px;
 `;
 

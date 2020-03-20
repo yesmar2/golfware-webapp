@@ -26,7 +26,7 @@ const Slider = styled.span`
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: ${(props) => props.theme.colors.grey[200]};
+    background-color: ${(props) => props.theme.palette.grey[200]};
     transition: 0.4s;
     border-radius: 8px;
 
@@ -49,17 +49,17 @@ const Input = styled.input`
     }
 
     :focus + ${Slider} {
-        box-shadow: 0 0 1px ${(props) => props.theme.colors.green};
+        box-shadow: 0 0 1px ${(props) => props.theme.palette.green};
     }
 
     :checked + ${Slider}::before {
         transform: translateX(16px);
-        background-color: ${(props) => props.theme.colors.green};
+        background-color: ${(props) => props.theme.palette.green};
     }
 `;
 
 const StyledLabel = styled.label`
-    margin-left: ${(props) => props.theme.spacingSmall};
+    margin-left: ${(props) => props.theme.spacing(1)}px;
     font-size: 12px;
 `;
 

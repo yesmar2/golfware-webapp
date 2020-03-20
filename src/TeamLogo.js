@@ -8,7 +8,7 @@ const Container = styled.div`
     justify-content: center;
     height: 40px;
     width: 40px;
-    background-color: ${(props) => props.theme.colors[props.color]};
+    background-color: ${(props) => props.theme.palette[props.color]};
     border-radius: 50%;
 `;
 

@@ -12,15 +12,15 @@ const Container = styled.nav`
     height: 100%;
     width: ${(props) => props.theme.leftDrawerWidth};
     background: linear-gradient(
-            ${(props) => props.theme.colors.green}e6,
-            ${(props) => props.theme.colors.green}e6
+            ${(props) => props.theme.palette.green}e6,
+            ${(props) => props.theme.palette.green}e6
         ),
         url(${golfer}) no-repeat 38%;
     background-size: cover;
 `;
 
 const AppName = styled.div`
-    padding-left: ${(props) => props.theme.spacingLarge};
+    padding-left: ${(props) => props.theme.spacing(3)}px;
     border-bottom: 1px solid rgba(256, 256, 256, 0.5);
     height: ${(props) => props.theme.headerHeight};
     display: flex;
@@ -37,7 +37,7 @@ const Heading = styled.h1`
 const Menu = styled.ul`
     list-style-type: none;
     margin: 0;
-    padding: ${(props) => props.theme.spacingMedium} 0;
+    padding: ${(props) => props.theme.spacing(2)}px 0;
 `;
 
 const LeftDrawer = () => (

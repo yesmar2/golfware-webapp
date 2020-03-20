@@ -16,10 +16,10 @@ const Container = styled.div`
 `;
 
 const Header = styled.div`
-    height: ${(props) => props.theme.headerHeight};
+    height: 200px;
     background: linear-gradient(
-            ${(props) => props.theme.colors.green}dd,
-            ${(props) => props.theme.colors.green}dd
+            ${(props) => props.theme.palette.green}dd,
+            ${(props) => props.theme.palette.green}dd
         ),
         url(${golfer}) no-repeat 50% 36%;
     background-size: cover;
@@ -27,7 +27,7 @@ const Header = styled.div`
 
 const Main = styled.main`
     width: 100%;
-    padding: ${(props) => props.theme.spacingLarge};
+    padding: ${(props) => props.theme.spacing(3)}px;
 `;
 
 const StyledTransitionGroup = styled(TransitionGroup)`

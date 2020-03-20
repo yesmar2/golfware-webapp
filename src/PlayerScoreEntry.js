@@ -16,15 +16,15 @@ const StyledListItem = styled(ListItem)`
 `;
 
 const SubstitutionIcon = styled(FaExchangeAlt)`
-    margin-left: ${(props) => props.theme.spacingMedium};
-    margin-right: ${(props) => props.theme.spacingMedium};
-    color: ${(props) => props.theme.colors.grey[300]};
+    margin-left: ${(props) => props.theme.spacing(2)}px;
+    margin-right: ${(props) => props.theme.spacing(2)}px;
+    color: ${(props) => props.theme.palette.grey[300]};
     height: 16px;
     width: 16px;
 `;
 
 const Score = styled(ScorecardCell)`
-    border-left: ${(props) => props.theme.defaultBorder};
+    border-left: 1px solid ${(props) => props.theme.palette.grey[200]};
     font-size: 18px;
 `;
 

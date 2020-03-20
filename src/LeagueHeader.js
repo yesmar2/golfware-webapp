@@ -13,7 +13,7 @@ const Heading = styled.h2`
     font-size: 30px;
     font-weight: normal;
     flex: 1;
-    color: ${(props) => props.theme.colors.grey[100]};
+    color: ${(props) => props.theme.palette.grey[100]};
 `;
 
 const LogoContainer = styled.div`
@@ -41,13 +41,13 @@ const Menu = styled.ul`
 `;
 
 const MenuItem = styled.li`
-    padding: ${(props) => props.theme.spacingMedium} ${(props) => props.theme.spacingLarge};
+    padding: ${(props) => props.theme.spacing(2)}px ${(props) => props.theme.spacing(3)}px;
     text-transform: uppercase;
     font-weight: 600;
     font-size: 14px;
     color: #fff;
     ${(props) => props.active && css`
-        border-bottom: 2px solid  ${props.theme.colors.red};
+        border-bottom: 2px solid  ${props.theme.palette.red};
     `}
 `;
 

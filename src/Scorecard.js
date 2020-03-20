@@ -5,7 +5,7 @@ import PlayerScoreEntry from './PlayerScoreEntry';
 import ScorecardCell from './ScorecardCell';
 
 const Container = styled(Paper)`
-    margin-bottom: ${(props) => props.theme.spacingHuge};
+    margin-bottom: ${(props) => props.theme.spacing(4)}px;
 `;
 
 const ScorecardHeader = styled.div`
@@ -14,7 +14,7 @@ const ScorecardHeader = styled.div`
 
 const Heading3 = styled.h3`
     flex: 1;
-    margin-bottom: ${(props) => props.theme.spacingLarge};
+    margin-bottom: ${(props) => props.theme.spacing(3)}px;
 `;
 
 const StyledPlayerScoreEntry = styled(PlayerScoreEntry)`

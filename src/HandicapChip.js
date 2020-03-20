@@ -4,7 +4,7 @@ import Chip from './ui/Chip';
 
 const StyledChip = styled(Chip)`
     background-color: #e7f1ec;
-    color: ${(props) => props.theme.colors.green};
+    color: ${(props) => props.theme.palette.green};
 `;
 
 const HandicapChip = ({ handicap }) => (

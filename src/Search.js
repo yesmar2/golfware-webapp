@@ -1,27 +1,30 @@
 import React from 'react';
 import styled from 'styled-components';
+import TextField from '@material-ui/core/TextField';
+import InputAdornment from '@material-ui/core/InputAdornment';
 import { FaSearch } from 'react-icons/fa';
-import Input from './Input';
 
-const Container = styled(Input)`
-    width: 100%;
-    height: 48px;
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid ${(props) => props.theme.colors.grey[300]};
+const TextFieldStyled = styled(TextField)`
+    margin-right: ${(props) => props.theme.spacing(2)}px;
+    background: #fff;
 `;
 
 const Search = (props) => {
-    const {
-        onChange, className,
-    } = props;
+    const { onChange, className } = props;
 
     return (
-        <Container
+        <TextFieldStyled
             placeholder="Search for a player..."
-            onChange={onChange}
+            variant="outlined"
             className={className}
-            leftIcon={<FaSearch />}
+            onChange={(event) => onChange(event.target.value)}
+            InputProps={{
+                startAdornment: (
+                    <InputAdornment position="start">
+                        <FaSearch />
+                    </InputAdornment>
+                ),
+            }}
         />
     );
 };

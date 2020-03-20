@@ -7,7 +7,7 @@ const Container = styled.div`
 `;
 
 const LeftIcon = styled.div`
-    margin-right: ${(props) => props.theme.spacingMedium};
+    margin-right: ${(props) => props.theme.spacing(2)}px;
 `;
 
 const StyledInput = styled.input`

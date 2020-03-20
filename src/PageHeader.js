@@ -4,9 +4,11 @@ import { MdExpandMore } from 'react-icons/md';
 
 
 const Container = styled.div`
-    display: flex;
-    align-items: center;
-    margin-bottom: ${(props) => props.theme.spacingLarge};
+    ${({ theme }) => `
+        display: flex;
+        align-items: center;
+        margin-bottom: ${theme.spacing(3)};
+    `}
 `;
 
 const Heading3 = styled.h3`
@@ -14,17 +16,21 @@ const Heading3 = styled.h3`
 `;
 
 const WeekDropdown = styled.div`
-    display: flex;
-    align-items: flex-end;
-    margin-left: ${(props) => props.theme.spacingMedium};
+    ${({ theme }) => `
+        display: flex;
+        align-items: flex-end;
+        margin-left: ${theme.spacing(2)};
+    `}
 `;
 
 const WeekDropdownText = styled.span`
-    font-weight: 600;
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-right: ${(props) => props.theme.spacingTiny};
+    ${({ theme }) => `
+        font-weight: 600;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin-right: ${theme.spacing(0.5)};
+    `}
 `;
 
 const PageHeader = (props) => {

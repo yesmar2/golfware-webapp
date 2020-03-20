@@ -13,40 +13,29 @@ const Container = styled.div`
 
 const PlayerContainer = styled.div`
     flex: 1;
-    margin-right: ${(props) => props.theme.spacingLarge};
+    margin-right: ${(props) => props.theme.spacing(3)}px;
 `;
 
 const ScoreboardContainer = styled.div`
     width: 300px;
 `;
 
-const ScoreboardHeader = styled.div`
-    height: 48px;
-    display: flex;
-    align-items: flex-end;
-    margin-bottom: ${(props) => props.theme.spacingLarge};
-`;
-
-const Heading4 = styled.h3`
-    font-size: 16px;
-`;
-
 const SearchSortContainer = styled.div`
     display: flex;
-    margin-bottom: ${(props) => props.theme.spacingLarge};
+    margin-bottom: ${(props) => props.theme.spacing(3)}px;
 `;
 
 const StyledSearch = styled(Search)`
     flex: 1;
-    margin-right: ${(props) => props.theme.spacingLarge};
+    margin-right: ${(props) => props.theme.spacing(3)}px;
 `;
 
 const PlayerCardStyled = styled(PlayerCard)`
-    margin-bottom: ${(props) => props.theme.spacingLarge};
+    margin-bottom: ${(props) => props.theme.spacing(3)}px;
 `;
 
 const MatchScoreStyled = styled(MatchScore)`
-    margin-bottom: ${(props) => props.theme.spacingLarge};
+    margin-bottom: ${(props) => props.theme.spacing(3)}px;
 `;
 
 const ScoreEntry = (props) => {
@@ -93,9 +82,6 @@ const ScoreEntry = (props) => {
                     })}
             </PlayerContainer>
             <ScoreboardContainer>
-                <ScoreboardHeader>
-                    <Heading4>Scoreboard</Heading4>
-                </ScoreboardHeader>
                 <MatchScoreStyled
                     teamOneNumber={3}
                     teamOneColor="green"

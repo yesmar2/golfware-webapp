@@ -1,19 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
+import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import {
-    createGlobalStyle, ThemeProvider,
-} from 'styled-components';
+    createMuiTheme,
+    ThemeProvider as MuiThemeProvider,
+    StylesProvider,
+} from '@material-ui/core/styles';
 import { Provider as ReduxProvider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 import configureStore from './state/store';
 import App from './App';
 
-const grey200 = '#E0E7F0';
 
-const theme = {
-    colors: {
-        green: '#30da7b',
+const grey200 = '#E0E7F0';
+const green = '#30da7b';
+
+const customTheme = createMuiTheme({
+    palette: {
+        primary: {
+            main: green,
+        },
+        green,
         red: '#EE6352',
         yellow: '#FFE74C',
         purple: '#731DD8',
@@ -26,15 +34,34 @@ const theme = {
             500: '#414042',
         },
     },
-    spacingTiny: '4px',
-    spacingSmall: '8px',
-    spacingMedium: '16px',
-    spacingLarge: '24px',
-    spacingHuge: '32px',
-    headerHeight: '200px',
-    // leftDrawerWidth: '256px',
-    defaultBorder: `1px solid ${grey200}`,
-};
+});
+
+console.log(customTheme);
+
+// const theme = {
+//     colors: {
+//         green: '#30da7b',
+//         red: '#EE6352',
+//         yellow: '#FFE74C',
+//         purple: '#731DD8',
+//         blue: '#3FA7D6',
+//         grey: {
+//             100: '#F6F7F9',
+//             200: grey200,
+//             300: '#B6BDC7',
+//             400: '#666D76',
+//             500: '#414042',
+//         },
+//     },
+//     spacingTiny: '4px',
+//     spacingSmall: '8px',
+//     spacingMedium: '16px',
+//     spacingLarge: '24px',
+//     spacingHuge: '32px',
+//     headerHeight: '200px',
+//     // leftDrawerWidth: '256px',
+//     defaultBorder: `1px solid ${grey200}`,
+// };
 
 const GlobalStyle = createGlobalStyle`
     *,
@@ -52,8 +79,8 @@ const GlobalStyle = createGlobalStyle`
         font-family: 'Montserrat', sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-        color: ${(props) => props.theme.colors.grey[500]};
-        background: ${(props) => props.theme.colors.grey[100]};
+        color: ${(props) => props.theme.palette.grey[500]};
+        background: ${(props) => props.theme.palette.grey[100]};
         font-size: 14px;
         line-height: 1;
     }
@@ -77,12 +104,14 @@ const reduxStore = configureStore();
 ReactDOM.render(
     <BrowserRouter>
         <ReduxProvider store={reduxStore}>
-            <ThemeProvider theme={theme}>
-                <>
-                    <GlobalStyle />
-                    <App />
-                </>
-            </ThemeProvider>
+            <MuiThemeProvider theme={customTheme}>
+                <ThemeProvider theme={customTheme}>
+                    <StylesProvider injectFirst>
+                        <GlobalStyle />
+                        <App />
+                    </StylesProvider>
+                </ThemeProvider>
+            </MuiThemeProvider>
         </ReduxProvider>
     </BrowserRouter>,
     document.getElementById('root'),

@@ -5,8 +5,8 @@ const Container = styled.div`
     display: flex;
     align-items: center;
     height: 64px;
-    padding-left: ${(props) => props.theme.spacingMedium};
-    padding-right: ${(props) => props.theme.spacingMedium};
+    padding-left: ${(props) => props.theme.spacing(2)}px;
+    padding-right: ${(props) => props.theme.spacing(2)}px;
 `;
 
 const ListItem = (props) => {
