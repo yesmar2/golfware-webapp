@@ -47,7 +47,9 @@ const ScoreEntry = (props) => {
                     <StyledSearch onChange={debounce(setPlayerFilter, 250)} />
                     <SortDropdown />
                 </SearchSortContainer>
+                {/* TODO: move sort to redux */}
                 {players
+                    .slice(0, 10)
                     .sort((a, b) => {
                         if (a.lastName < b.lastName) {
                             return -1;
@@ -83,22 +85,22 @@ const ScoreEntry = (props) => {
             </PlayerContainer>
             <ScoreboardContainer>
                 <MatchScoreStyled
-                    teamOneNumber={3}
+                    teamOneNumber={1}
                     teamOneColor="green"
                     teamOnePlace="1st Place"
                     teamOnePoints={5.5}
-                    teamTwoNumber={3}
+                    teamTwoNumber={10}
                     teamTwoColor="red"
                     teamTwoPlace="7th Place"
                     teamTwoPoints={3.5}
                 />
                 <MatchScoreStyled
-                    teamOneNumber={3}
+                    teamOneNumber={2}
                     teamOneColor="blue"
                     teamOnePlace="1st Place"
                     teamOnePoints={5}
-                    teamTwoNumber={3}
-                    teamTwoColor="yellow"
+                    teamTwoNumber={9}
+                    teamTwoColor="red"
                     teamTwoPlace="7th Place"
                     teamTwoPoints={7.5}
                 />
@@ -107,27 +109,27 @@ const ScoreEntry = (props) => {
                     teamOneColor="blue"
                     teamOnePlace="1st Place"
                     teamOnePoints={8}
-                    teamTwoNumber={3}
+                    teamTwoNumber={8}
                     teamTwoColor="purple"
                     teamTwoPlace="7th Place"
                     teamTwoPoints={4.5}
                 />
                 <MatchScoreStyled
-                    teamOneNumber={3}
+                    teamOneNumber={4}
                     teamOneColor="green"
                     teamOnePlace="1st Place"
                     teamOnePoints={4}
-                    teamTwoNumber={3}
-                    teamTwoColor="yellow"
+                    teamTwoNumber={7}
+                    teamTwoColor="blue"
                     teamTwoPlace="7th Place"
                     teamTwoPoints={3}
                 />
                 <MatchScoreStyled
-                    teamOneNumber={3}
+                    teamOneNumber={5}
                     teamOneColor="red"
                     teamOnePlace="1st Place"
                     teamOnePoints={5}
-                    teamTwoNumber={3}
+                    teamTwoNumber={6}
                     teamTwoColor="blue"
                     teamTwoPlace="7th Place"
                     teamTwoPoints={5.5}

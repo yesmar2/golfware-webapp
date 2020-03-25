@@ -3,10 +3,15 @@ import styled from 'styled-components';
 import TextField from '@material-ui/core/TextField';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import { FaSearch } from 'react-icons/fa';
+import { inputStyles } from './ui/styleUtils';
 
 const TextFieldStyled = styled(TextField)`
-    margin-right: ${(props) => props.theme.spacing(2)}px;
     background: #fff;
+    ${(props) => inputStyles(props.theme)}
+`;
+
+const FaSearchStyled = styled(FaSearch)`
+    color: ${(props) => props.theme.palette.grey[300]};
 `;
 
 const Search = (props) => {
@@ -21,7 +26,7 @@ const Search = (props) => {
             InputProps={{
                 startAdornment: (
                     <InputAdornment position="start">
-                        <FaSearch />
+                        <FaSearchStyled />
                     </InputAdornment>
                 ),
             }}

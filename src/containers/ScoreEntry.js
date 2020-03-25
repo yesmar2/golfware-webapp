@@ -9,7 +9,6 @@ const ScoreEntryContainer = () => {
     const dispatch = useDispatch();
 
     const setPlayerFilter = (value) => {
-        console.log('value', value);
         dispatch(playerOperations.setPlayerFilter(value));
     };
 

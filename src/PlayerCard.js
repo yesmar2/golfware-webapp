@@ -51,12 +51,14 @@ const PlayerCard = (props) => {
     const {
         name, teamNumber, teamColor, handicap, className,
     } = props;
-
     return (
         <Container className={className}>
             <ListItem>
                 <ListItemIcon>
-                    <TeamLogo color={teamColor} />
+                    <TeamLogo
+                        color={teamColor}
+                        teamNumber={teamNumber}
+                    />
                 </ListItemIcon>
                 <ListItemText
                     primaryText={name}

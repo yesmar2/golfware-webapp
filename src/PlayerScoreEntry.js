@@ -166,7 +166,10 @@ class PlayerScoreEntry extends React.Component {
             <Container className={className}>
                 <StyledListItem>
                     <ListItemIcon>
-                        <TeamLogo color={teamColor} />
+                        <TeamLogo
+                            color={teamColor}
+                            teamNumber={teamNumber}
+                        />
                     </ListItemIcon>
                     <ListItemText
                         primaryText={name}

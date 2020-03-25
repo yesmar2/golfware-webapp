@@ -1,5 +1,8 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
+import { NavLink, useLocation } from 'react-router-dom';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
 import { ReactComponent as Logo } from './images/golfware-logo-white.svg';
 
 const Container = styled.header`
@@ -33,39 +36,41 @@ const Nav = styled.nav`
     bottom: 0;
 `;
 
-const Menu = styled.ul`
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-`;
+// const Menu = styled.div`
+//     display: flex;
+// `;
 
-const MenuItem = styled.li`
+const TabStyled = styled(Tab)`
     padding: ${(props) => props.theme.spacing(2)}px ${(props) => props.theme.spacing(3)}px;
     text-transform: uppercase;
     font-weight: 600;
     font-size: 14px;
     color: #fff;
-    ${(props) => props.active && css`
-        border-bottom: 2px solid  ${props.theme.palette.red};
-    `}
 `;
 
-const LeagueHeader = () => (
-    <Container>
-        <LogoContainer>
-            <LogoStyled />
-        </LogoContainer>
-        <Heading>Bemus Point Monday Night Men&apos;s League</Heading>
-        <Nav>
-            <Menu>
-                <MenuItem active>Score Entry</MenuItem>
-                <MenuItem>Schedule</MenuItem>
-                <MenuItem>Teams</MenuItem>
-                <MenuItem>Players</MenuItem>
-            </Menu>
-        </Nav>
-    </Container>
-);
+const LeagueHeader = () => {
+    const location = useLocation();
+    return (
+        <Container>
+            <LogoContainer>
+                <LogoStyled />
+            </LogoContainer>
+            <Heading>Bemus Point Monday Night Men&apos;s League</Heading>
+            <Nav>
+                <Tabs value={location.pathname}>
+                    <TabStyled label="Score Entry" component={NavLink} to="/scoreentry/1" value="/scoreentry/1" />
+                    <TabStyled label="Schedule" component={NavLink} to="/schedule" value="/schedule" />
+                    <TabStyled label="Teams" component={NavLink} to="/teams" value="/teams" />
+                </Tabs>
+                {/* <Menu>
+                    <MenuItemLink to="/scoreentry/1">Score Entry</MenuItemLink>
+                    <MenuItemLink to="/schedule">Schedule</MenuItemLink>
+                    <MenuItemLink to="/teams">Teams</MenuItemLink>
+                    <MenuItemLink to="/players">Players</MenuItemLink>
+                </Menu> */}
+            </Nav>
+        </Container>
+    );
+};
 
 export default LeagueHeader;

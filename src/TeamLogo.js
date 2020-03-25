@@ -8,13 +8,26 @@ const Container = styled.div`
     justify-content: center;
     height: 40px;
     width: 40px;
-    background-color: ${(props) => props.theme.palette[props.color]};
     border-radius: 50%;
+    position: relative;
 `;
 
-const TeamLogo = ({ color }) => (
-    <Container color={color}>
-        <GolfBall />
+const GolfBallStyled = styled(GolfBall)`
+    fill: ${(props) => props.theme.palette[props.color]};
+    height: 36px;
+    width: 24px;
+`;
+
+const TeamNumber = styled.div`
+    position: absolute;
+    top: 7px;
+    color: #fff;
+`;
+
+const TeamLogo = ({ color, teamNumber }) => (
+    <Container>
+        <TeamNumber>{teamNumber}</TeamNumber>
+        <GolfBallStyled color={color} />
     </Container>
 );
 

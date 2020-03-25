@@ -18,7 +18,7 @@ const Heading3 = styled.h3`
 `;
 
 const StyledPlayerScoreEntry = styled(PlayerScoreEntry)`
-    border-bottom: ${(props) => props.theme.defaultBorder};
+    border-bottom: 1px solid ${(props) => props.theme.palette.grey[200]};
 
     &:last-child {
         border: none;

@@ -34,14 +34,20 @@ const MatchScore = (props) => {
         <Container className={className}>
             <ListItem>
                 <ListItemIcon>
-                    <TeamLogo color={teamOneColor} />
+                    <TeamLogo
+                        color={teamOneColor}
+                        teamNumber={teamOneNumber}
+                    />
                 </ListItemIcon>
                 <ListItemText primaryText={`Team ${teamOneNumber}`} secondaryText={teamOnePlace} />
                 <Points>{teamOnePoints}</Points>
             </ListItem>
             <ListItem>
                 <ListItemIcon>
-                    <TeamLogo color={teamTwoColor} />
+                    <TeamLogo
+                        color={teamTwoColor}
+                        teamNumber={teamTwoNumber}
+                    />
                 </ListItemIcon>
                 <ListItemText primaryText={`Team ${teamTwoNumber}`} secondaryText={teamTwoPlace} />
                 <Points>{teamTwoPoints}</Points>

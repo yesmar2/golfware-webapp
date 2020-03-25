@@ -1,33 +1,21 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { MdSort, MdExpandMore } from 'react-icons/md';
-// import InputLabel from '@material-ui/core/InputLabel';
+import { MdSwapVert } from 'react-icons/md';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-import InputAdornment from '@material-ui/core/InputAdornment';
+import { inputStyles } from './ui/styleUtils';
 
-// const Container = styled.div`
-//     height: 48px;
-//     width: 150px;
-//     display: flex;
-//     align-items: center;
-//     justify-content: space-between;
-// `;
-
-const SortIcon = styled(MdSort)`
-    height: 24px;
-    width: 24px;
-`;
-
-const ExpandMoreIcon = styled(MdExpandMore)`
+const ExpandMoreIcon = styled(MdSwapVert)`
     height: 24px;
     width: 24px;
 `;
 
 const FormControlStyled = styled(FormControl)`
     height: 100%;
-    width: 200px;
+    width: 150px;
+    background: #fff;
+    ${(props) => inputStyles(props.theme)}
 `;
 
 const SortDropdown = () => {
@@ -44,11 +32,6 @@ const SortDropdown = () => {
                 value={sortType}
                 onChange={handleChange}
                 IconComponent={ExpandMoreIcon}
-                startAdornment={(
-                    <InputAdornment position="start">
-                        <SortIcon />
-                    </InputAdornment>
-                )}
             >
                 <MenuItem value="name">Name</MenuItem>
                 <MenuItem value="handicap">Handicap</MenuItem>
