@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { memo } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import LazyLoad from 'react-lazyload';
 import Search from '../Search';
 import SortDropdown from '../SortDropdown';
 import PlayerCard from '../PlayerCard';
@@ -38,7 +39,7 @@ const MatchScoreStyled = styled(MatchScore)`
     margin-bottom: ${(props) => props.theme.spacing(3)}px;
 `;
 
-const ScoreEntry = (props) => {
+const ScoreEntry = memo((props) => {
     const { players, setPlayerFilter } = props;
     return (
         <Container>
@@ -49,7 +50,6 @@ const ScoreEntry = (props) => {
                 </SearchSortContainer>
                 {/* TODO: move sort to redux */}
                 {players
-                    .slice(0, 10)
                     .sort((a, b) => {
                         if (a.lastName < b.lastName) {
                             return -1;
@@ -71,15 +71,16 @@ const ScoreEntry = (props) => {
                         const week = 1;
 
                         return (
-                            <Link to={`/scorecard/${week}/${matchup}`} key={player._id}>
-                                <PlayerCardStyled
-                                    key={player.id}
-                                    name={player.fullName}
-                                    teamNumber={team.number}
-                                    teamColor={team.color}
-                                    handicap={player.handicap}
-                                />
-                            </Link>
+                            <LazyLoad key={player._id} height={88} offset={400} once>
+                                <Link to={`/scorecard/${week}/${matchup}`}>
+                                    <PlayerCardStyled
+                                        name={player.fullName}
+                                        teamNumber={team.number}
+                                        teamColor={team.color}
+                                        handicap={player.handicap}
+                                    />
+                                </Link>
+                            </LazyLoad>
                         );
                     })}
             </PlayerContainer>
@@ -137,6 +138,6 @@ const ScoreEntry = (props) => {
             </ScoreboardContainer>
         </Container>
     );
-};
+});
 
 export default ScoreEntry;

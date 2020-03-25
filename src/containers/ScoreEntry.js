@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { playerOperations, playerSelectors } from '../state/ducks/players';
 import ScoreEntry from '../components/ScoreEntry';
@@ -8,9 +8,9 @@ const ScoreEntryContainer = () => {
     const success = useSelector(playerSelectors.selectSuccess);
     const dispatch = useDispatch();
 
-    const setPlayerFilter = (value) => {
+    const setPlayerFilter = useCallback((value) => {
         dispatch(playerOperations.setPlayerFilter(value));
-    };
+    }, [dispatch]);
 
     useEffect(() => {
         if (!success) {
