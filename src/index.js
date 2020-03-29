@@ -41,6 +41,8 @@ const customTheme = createMuiTheme({
             500: '#414042',
         },
     },
+    headerHeightBig: '200px',
+    headerHeightSmall: '80px',
 });
 
 const GlobalStyle = createGlobalStyle`

@@ -8,7 +8,6 @@ const Container = styled.div`
     justify-content: center;
     height: 40px;
     width: 40px;
-    border-radius: 50%;
     position: relative;
 `;
 
