@@ -1,12 +1,15 @@
-import React, { memo } from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import LazyLoad from 'react-lazyload';
-import Search from '../Search';
-import SortDropdown from '../SortDropdown';
-import PlayerCard from '../PlayerCard';
-import MatchScore from '../MatchScore';
-import debounce from '../utils/debounce';
+import { playerOperations, playerSelectors } from './state/ducks/players';
+import Search from './Search';
+import SortDropdown from './SortDropdown';
+import PlayerCard from './PlayerCard';
+import MatchScore from './MatchScore';
+import Skeleton from './ui/Skeleton';
+import debounce from './utils/debounce';
 
 const Container = styled.div`
     display: flex;
@@ -39,8 +42,28 @@ const MatchScoreStyled = styled(MatchScore)`
     margin-bottom: ${(props) => props.theme.spacing(3)}px;
 `;
 
-const ScoreEntry = memo((props) => {
-    const { players, setPlayerFilter } = props;
+const SkeletonStyled = styled(Skeleton)`
+    height: 64px;
+    width: 100%;
+    margin-bottom: ${(props) => props.theme.spacing(3)}px;
+`;
+
+const ScoreEntry = () => {
+    const players = useSelector(playerSelectors.selectFilteredPlayers);
+    const success = useSelector(playerSelectors.selectSuccess);
+    const hasLoaded = useSelector(playerSelectors.selectHasLoaded);
+    const dispatch = useDispatch();
+
+    const setPlayerFilter = (value) => {
+        dispatch(playerOperations.setPlayerFilter(value));
+    };
+
+    useEffect(() => {
+        if (!success) {
+            dispatch(playerOperations.fetchPlayers());
+        }
+    }, [dispatch, success]);
+
     return (
         <Container>
             <PlayerContainer>
@@ -49,24 +72,22 @@ const ScoreEntry = memo((props) => {
                     <SortDropdown />
                 </SearchSortContainer>
                 {/* TODO: move sort to redux */}
-                {players
-                    .sort((a, b) => {
-                        if (a.lastName < b.lastName) {
-                            return -1;
-                        }
-                        if (a.lastName > b.lastName) {
-                            return 1;
-                        }
-                        return 0;
-                    })
+                {(!hasLoaded ? Array.from(new Array(10)) : players)
+                    // .sort((a, b) => {
+                    //     if (a.lastName < b.lastName) {
+                    //         return -1;
+                    //     }
+                    //     if (a.lastName > b.lastName) {
+                    //         return 1;
+                    //     }
+                    //     return 0;
+                    // })
                     .map((player) => {
+                        if (!player) {
+                            return <SkeletonStyled />;
+                        }
+
                         const { team } = player;
-                        // const matchup =
-                        //     data.weeks.find(weekObj => weekObj.weekNumber === parseInt(week))
-                        //     .matchups.find(matchup => {
-                        //         return matchup.teamOne === player.teamId
-                        //             || matchup.teamTwo === player.teamId
-                        //     }).matchupNumber;
                         const matchup = 1;
                         const week = 1;
 
@@ -138,6 +159,6 @@ const ScoreEntry = memo((props) => {
             </ScoreboardContainer>
         </Container>
     );
-});
+};
 
 export default ScoreEntry;

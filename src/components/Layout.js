@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import styled from 'styled-components';
 import {
@@ -9,13 +10,15 @@ import {
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import MiddleSection from '../ui/MiddleSection';
 import Header from './Header';
+import LeagueSelection from '../LeagueSelection';
 import Dashboard from '../Dashboard';
 import Schedule from '../Schedule';
-import ScoreEntry from '../containers/ScoreEntry';
+import Players from '../Players';
+import ScoreEntry from '../ScoreEntry';
 import Scorecard from '../Scorecard';
 
 const Container = styled.div`
-    height: 100%;
+
 `;
 
 const Main = styled.main`
@@ -23,30 +26,30 @@ const Main = styled.main`
     padding: ${(props) => props.theme.spacing(3)}px;
     transition: margin-top 200ms;
     transition-delay: 200ms;
-    margin-top: ${(props) => (props.smallHeader ? props.theme.headerHeightSmall : props.theme.headerHeightBig)}
+    margin-top: ${(props) => (props.smallHeader ? props.theme.headerHeightSmall : props.theme.headerHeightBig)};
 `;
 
 const StyledTransitionGroup = styled(TransitionGroup)`
     position: relative;
 
-    .fade-enter {
+    .page-enter {
         opacity: 0.01;
         transform: translateY(100px);
     }
 
-    .fade-enter.fade-enter-active {
+    .page-enter.page-enter-active {
         opacity: 1;
         transform: translateY(0px);
         transition: transform 300ms, opacity 200ms ease-in;
         transition-delay: 500ms;
     }
 
-    .fade-exit {
+    .page-exit {
         opacity: 1;
         transform: translateY(0px);
     }
 
-    .fade-exit.fade-exit-active {
+    .page-exit.page-exit-active {
         opacity: 0.01;
         transform: translateY(100px);
         transition: transform 300ms, opacity 200ms ease-in;
@@ -62,14 +65,24 @@ const Content = styled(TransitionGroup)`
 
 const routes = [
     {
-        key: 'dashboard',
+        key: 'leagueSelection',
         path: '/',
+        component: LeagueSelection,
+    },
+    {
+        key: 'dashboard',
+        path: '/dashboard',
         component: Dashboard,
     },
     {
         key: 'schedule',
         path: '/schedule',
         component: Schedule,
+    },
+    {
+        key: 'players',
+        path: '/players',
+        component: Players,
     },
     {
         key: 'scoreentry',
@@ -106,7 +119,7 @@ const Layout = () => {
             <Main smallHeader={smallHeader}>
                 <MiddleSection>
                     <StyledTransitionGroup>
-                        <CSSTransition key={location.key} classNames="fade" timeout={800}>
+                        <CSSTransition key={location.key} classNames="page" timeout={800}>
                             <Content>
                                 <Switch location={location}>
                                     {routes.map((route) => (

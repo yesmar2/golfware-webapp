@@ -42,12 +42,16 @@ const buildApiSelectors = (namespace) => {
     const selectStatus = (appState) => appState[namespace][STATUS_NAMESPACE];
     const selectWorking = (appState) => selectStatus(appState).working;
     const selectSuccess = (appState) => selectStatus(appState).success;
+    const selectError = (appState) => selectStatus(appState).error;
+    const selectHasLoaded = (appState) => selectSuccess(appState) || selectError(appState);
 
     return {
         selectData,
         selectStatus,
         selectWorking,
         selectSuccess,
+        selectError,
+        selectHasLoaded,
     };
 };
 

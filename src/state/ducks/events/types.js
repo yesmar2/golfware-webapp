@@ -1,0 +1,9 @@
+const DUCK_NAMESPACE = 'EVENTS';
+const FETCH = 'FETCH';
+const FETCH_NAMESPACE = `${DUCK_NAMESPACE}/${FETCH}`;
+
+export {
+    DUCK_NAMESPACE,
+    FETCH,
+    FETCH_NAMESPACE,
+};

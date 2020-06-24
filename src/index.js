@@ -12,7 +12,6 @@ import * as serviceWorker from './serviceWorker';
 import configureStore from './state/store';
 import App from './App';
 
-
 const grey200 = '#E0E7F0';
 const green = '#30da7b';
 const red = '#EE6352';
@@ -52,8 +51,8 @@ const GlobalStyle = createGlobalStyle`
         box-sizing: border-box;
     }
 
-    html, body {
-        height: 100%;
+    html {
+        overflow-y: scroll;
     }
 
     body {
@@ -65,10 +64,6 @@ const GlobalStyle = createGlobalStyle`
         background: ${(props) => props.theme.palette.grey[100]};
         font-size: 14px;
         line-height: 1;
-    }
-
-    #root {
-        height: 100%;
     }
 
     h1, h2, h3, h4, h5, h6 {
