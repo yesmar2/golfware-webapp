@@ -10,4 +10,14 @@ const fetchEvents = () => ({
     },
 });
 
-export { fetchEvents };
+const fetchEventsBySeasonId = (seasonId) => ({
+    type: FETCH_NAMESPACE,
+    meta: {
+        async: true,
+        blocking: true,
+        path: `/events/${seasonId}`,
+        method: 'GET',
+    },
+});
+
+export { fetchEvents, fetchEventsBySeasonId };

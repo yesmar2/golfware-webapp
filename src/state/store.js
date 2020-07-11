@@ -4,7 +4,8 @@ import {
 import thunk from 'redux-thunk';
 import reducers from './ducks';
 import {
-    apiService, createLogger,
+    apiService,
+    createLogger,
 } from './middlewares';
 import { verifyAuth } from './ducks/auth/operations';
 

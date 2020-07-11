@@ -1,13 +1,14 @@
 /* eslint-disable */
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { NavLink, useLocation } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import { globalSelectors } from '../state/ducks/global';
 import { leagueSelectors } from '../state/ducks/leagues';
 import { ReactComponent as Logo } from '../images/golfware-logo-white.svg';
 
@@ -18,7 +19,7 @@ const Container = styled.div`
     align-items: center;
 `;
 
-const LogoContainer = styled.div`
+const LogoContainer = styled(Link)`
     position: absolute;
     width: 72px;
     left: -96px;
@@ -67,25 +68,27 @@ const FormControlStyled = styled(FormControl)`
 `;
 
 const LeagueNav = ({ className }) => {
-    const [leagueId, setLeagueId] = useState();
 
     const handleChange = (event) => {
-        setLeagueId(event.target.value);
+        setSelectedLeagueId(event.target.value);
     };
 
     const leagues = useSelector(leagueSelectors.selectData);
+    const selectedLeagueId = useSelector(globalSelectors.selectSelectedLeagueId);
     const location = useLocation();
+    
+    if (leagues.length === 0 || !selectedLeagueId) return null;
 
     return (
         <Container className={className}>
-            <LogoContainer>
+            <LogoContainer to="/leagues">
                 <LogoStyled />
             </LogoContainer>
             <FormControlStyled>
                 <Select
                     labelId="leagueDropdownLabel"
                     id="leagueDropdown"
-                    value={leagueId}
+                    value={selectedLeagueId}
                     onChange={handleChange}
                     MenuProps={{
                         anchorOrigin: {
@@ -100,15 +103,15 @@ const LeagueNav = ({ className }) => {
                     }}
                 >
                     {leagues.map((league) => (
-                        <MenuItem value={league._id}>{league.name}</MenuItem>
+                        <MenuItem key={league._id} value={league._id}>{league.name}</MenuItem>
                     ))}
                 </Select>
             </FormControlStyled>
             <Nav>
                 <Tabs value={location.pathname}>
-                    <TabStyled label="Dashboard" component={NavLink} to="/dashboard" value="/dashboard" />
-                    <TabStyled label="Schedule" component={NavLink} to="/schedule" value="/schedule" />
-                    <TabStyled label="Players" component={NavLink} to="/players" value="/players" />
+                    <TabStyled label="Dashboard" component={NavLink} to="dashboard" value={`/${selectedLeagueId}/dashboard`} />
+                    <TabStyled label="Schedule" component={NavLink} to="schedule" value={`/${selectedLeagueId}/schedule`} />
+                    <TabStyled label="Players" component={NavLink} to="players" value={`/${selectedLeagueId}/players`} />
                 </Tabs>
             </Nav>
         </Container>

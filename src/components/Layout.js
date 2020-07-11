@@ -1,21 +1,27 @@
 /* eslint-disable */
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
+import { useDispatch, useSelector } from 'react-redux';
 import {
     Switch,
     Route,
     useLocation,
     useRouteMatch,
+    useParams,
 } from 'react-router-dom';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import MiddleSection from '../ui/MiddleSection';
-import Header from './Header';
+import LeagueSelectionHeader from './LeagueSelectionHeader';
+import LeagueNav from './LeagueNav';
+import ScoreEntryNav from './ScoreEntryNav';
 import LeagueSelection from '../LeagueSelection';
 import Dashboard from '../Dashboard';
 import Schedule from '../Schedule';
 import Players from '../Players';
 import ScoreEntry from '../ScoreEntry';
 import Scorecard from '../Scorecard';
+import { globalOperations, globalSelectors } from '../state/ducks/global';
+import golfer from '../images/golfer.jpg';
 
 const Container = styled.div`
 
@@ -63,35 +69,68 @@ const Content = styled(TransitionGroup)`
     right: 0;
 `;
 
+const Header = styled.header`
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: ${(props) => (props.small ? props.theme.headerHeightSmall : props.theme.headerHeightBig)}
+    background: linear-gradient(
+            ${(props) => props.theme.palette.green}dd,
+            ${(props) => props.theme.palette.green}dd
+        ),
+        url(${golfer}) no-repeat 50% 36%;
+    background-size: cover;
+    transition: height 200ms;
+    z-index: 1;
+
+    .fade-enter {
+        opacity: 0.01;
+    }
+
+    .fade-enter.fade-enter-active {
+        opacity: 1;
+        transition:opacity 500ms ease-in;
+    }
+
+    .fade-exit {
+        opacity: 1;
+    }
+
+    .fade-exit.fade-exit-active {
+        opacity: 0.01;
+        transition: opacity 200ms ease-in;
+    }
+`;
+
 const routes = [
     {
         key: 'leagueSelection',
-        path: '/',
+        path: '/leagues',
         component: LeagueSelection,
     },
     {
         key: 'dashboard',
-        path: '/dashboard',
+        path: '/:leagueId/dashboard',
         component: Dashboard,
     },
     {
         key: 'schedule',
-        path: '/schedule',
+        path: '/:leagueId/schedule',
         component: Schedule,
     },
     {
         key: 'players',
-        path: '/players',
+        path: '/:leagueId/players',
         component: Players,
     },
     {
         key: 'scoreentry',
-        path: '/scoreentry',
+        path: '/:leagueId/scoreentry',
         component: ScoreEntry,
     },
     {
         key: 'scorecard',
-        path: '/scorecard/:week/:matchupNumber',
+        path: '/:leagueId/scorecard/:week/:matchupNumber',
         component: Scorecard,
     },
 ];
@@ -109,13 +148,44 @@ const useSmallHeader = () => {
     return false;
 };
 
+const LeagueHeader = () => {
+    const { selectedLeagueId } = useParams();
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(globalOperations.setSelectedLeagueId(selectedLeagueId));
+    }, [dispatch, selectedLeagueId]);
+
+    return (
+        <Switch>
+            <Route path="/:selectedLeagueId/scoreentry">
+                <ScoreEntryNav />
+            </Route>
+            <Route>
+                <LeagueNav />
+            </Route>
+        </Switch>
+    );
+}
+
 const Layout = () => {
     const location = useLocation();
     const smallHeader = useSmallHeader();
-
+    
     return (
         <Container>
-            <Header small={smallHeader} />
+            <Header small={smallHeader}>
+                <MiddleSection>
+                    <Switch>
+                        <Route path="/leagues" exact>
+                           <LeagueSelectionHeader />
+                        </Route>
+                        <Route path="/:selectedLeagueId">
+                            <LeagueHeader />
+                        </Route>
+                    </Switch>
+                </MiddleSection>
+            </Header>
             <Main smallHeader={smallHeader}>
                 <MiddleSection>
                     <StyledTransitionGroup>

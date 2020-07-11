@@ -67,9 +67,10 @@ const ScoreEntry = () => {
                 //     }
                 //     return 0;
                 // })
-                .map((player) => {
+                .map((player, index) => {
                     if (!player) {
-                        return <SkeletonStyled />;
+                        // eslint-disable-next-line react/no-array-index-key
+                        return <SkeletonStyled key={index} />;
                     }
 
                     const { team } = player;

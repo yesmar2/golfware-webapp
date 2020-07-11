@@ -31,7 +31,7 @@ const LogoStyled = styled(Logo)`
 
 const ScoreEntryNav = () => (
     <Container>
-        <LogoContainer to="/">
+        <LogoContainer to="/leagues">
             <LogoStyled />
         </LogoContainer>
         <Heading>Bemus Point Monday Night Men&apos;s League</Heading>
