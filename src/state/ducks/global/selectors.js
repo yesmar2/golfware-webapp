@@ -1,10 +1,10 @@
 import { DUCK_NAMESPACE } from './types';
 
 const _selectGlobal = (appState) => appState[DUCK_NAMESPACE];
-const selectSelectedLeagueId = (appState) => _selectGlobal(appState).selectedLeagueId;
+const selectSelectedSeasonId = (appState) => _selectGlobal(appState).selectedSeasonId;
 
 const globalSelectors = {
-    selectSelectedLeagueId,
+    selectSelectedSeasonId,
 };
 
 export default globalSelectors;

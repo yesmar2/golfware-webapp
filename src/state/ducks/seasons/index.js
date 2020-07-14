@@ -1,12 +1,12 @@
 import { DUCK_NAMESPACE } from './types';
 import reducer from './reducers';
 
-import eventOperations from './operations';
-import eventSelectors from './selectors';
+import seasonOperations from './operations';
+import seasonSelectors from './selectors';
 
 export {
-    eventOperations,
-    eventSelectors,
+    seasonOperations,
+    seasonSelectors,
 };
 
 export default { [DUCK_NAMESPACE]: reducer };

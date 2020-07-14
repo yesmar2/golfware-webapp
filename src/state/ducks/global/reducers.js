@@ -1,17 +1,17 @@
 import { createReducer } from '../../utils';
 
 import {
-    SET_ACTIVE_LEAGUE_ID,
+    SET_SELECTED_SEASON_ID,
 } from './types';
 
 const initialState = {
-    selectedLeagueId: null,
+    selectedSeasonId: null,
 };
 
 const globalReducer = createReducer(initialState)({
-    [SET_ACTIVE_LEAGUE_ID]: (state, action) => ({
+    [SET_SELECTED_SEASON_ID]: (state, action) => ({
         ...state,
-        selectedLeagueId: action.selectedLeagueId,
+        selectedSeasonId: action.selectedSeasonId,
     }),
 });
 

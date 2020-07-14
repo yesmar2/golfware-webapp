@@ -20,7 +20,7 @@ import Schedule from '../Schedule';
 import Players from '../Players';
 import ScoreEntry from '../ScoreEntry';
 import Scorecard from '../Scorecard';
-import { globalOperations, globalSelectors } from '../state/ducks/global';
+import { seasonOperations } from '../state/ducks/seasons';
 import golfer from '../images/golfer.jpg';
 
 const Container = styled.div`
@@ -110,27 +110,27 @@ const routes = [
     },
     {
         key: 'dashboard',
-        path: '/:leagueId/dashboard',
+        path: '/:seasonId/dashboard',
         component: Dashboard,
     },
     {
         key: 'schedule',
-        path: '/:leagueId/schedule',
+        path: '/:seasonId/schedule',
         component: Schedule,
     },
     {
         key: 'players',
-        path: '/:leagueId/players',
+        path: '/:seasonId/players',
         component: Players,
     },
     {
         key: 'scoreentry',
-        path: '/:leagueId/scoreentry',
+        path: '/:seasonId/scoreentry',
         component: ScoreEntry,
     },
     {
         key: 'scorecard',
-        path: '/:leagueId/scorecard/:week/:matchupNumber',
+        path: '/:seasonId/scorecard/:week/:matchupNumber',
         component: Scorecard,
     },
 ];
@@ -149,16 +149,16 @@ const useSmallHeader = () => {
 };
 
 const LeagueHeader = () => {
-    const { selectedLeagueId } = useParams();
+    const { selectedSeasonId } = useParams();
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(globalOperations.setSelectedLeagueId(selectedLeagueId));
-    }, [dispatch, selectedLeagueId]);
+        dispatch(seasonOperations.fetchSeason(selectedSeasonId));
+    }, [dispatch, selectedSeasonId]);
 
     return (
         <Switch>
-            <Route path="/:selectedLeagueId/scoreentry">
+            <Route path="/:selectedSeasonId/scoreentry">
                 <ScoreEntryNav />
             </Route>
             <Route>
@@ -168,7 +168,7 @@ const LeagueHeader = () => {
     );
 }
 
-const Layout = () => {
+const LeagueApp = () => {
     const location = useLocation();
     const smallHeader = useSmallHeader();
     
@@ -180,7 +180,7 @@ const Layout = () => {
                         <Route path="/leagues" exact>
                            <LeagueSelectionHeader />
                         </Route>
-                        <Route path="/:selectedLeagueId">
+                        <Route path="/:selectedSeasonId">
                             <LeagueHeader />
                         </Route>
                     </Switch>
@@ -210,4 +210,4 @@ const Layout = () => {
     );
 };
 
-export default Layout;
+export default LeagueApp;

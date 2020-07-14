@@ -8,7 +8,7 @@ import Tab from '@material-ui/core/Tab';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-import { globalSelectors } from '../state/ducks/global';
+import { seasonSelectors } from '../state/ducks/seasons';
 import { leagueSelectors } from '../state/ducks/leagues';
 import { ReactComponent as Logo } from '../images/golfware-logo-white.svg';
 
@@ -70,14 +70,19 @@ const FormControlStyled = styled(FormControl)`
 const LeagueNav = ({ className }) => {
 
     const handleChange = (event) => {
-        setSelectedLeagueId(event.target.value);
+        // setSelectedLeagueId(event.target.value);
     };
 
-    const leagues = useSelector(leagueSelectors.selectData);
-    const selectedLeagueId = useSelector(globalSelectors.selectSelectedLeagueId);
     const location = useLocation();
+    const leagues = useSelector(leagueSelectors.selectData);
+    const season = useSelector(seasonSelectors.selectData);
     
-    if (leagues.length === 0 || !selectedLeagueId) return null;
+    const {
+        _id: seasonId,
+        leagueId,
+    } = season;
+
+    if (!leagueId) return null;
 
     return (
         <Container className={className}>
@@ -88,7 +93,7 @@ const LeagueNav = ({ className }) => {
                 <Select
                     labelId="leagueDropdownLabel"
                     id="leagueDropdown"
-                    value={selectedLeagueId}
+                    value={leagueId}
                     onChange={handleChange}
                     MenuProps={{
                         anchorOrigin: {
@@ -109,9 +114,9 @@ const LeagueNav = ({ className }) => {
             </FormControlStyled>
             <Nav>
                 <Tabs value={location.pathname}>
-                    <TabStyled label="Dashboard" component={NavLink} to="dashboard" value={`/${selectedLeagueId}/dashboard`} />
-                    <TabStyled label="Schedule" component={NavLink} to="schedule" value={`/${selectedLeagueId}/schedule`} />
-                    <TabStyled label="Players" component={NavLink} to="players" value={`/${selectedLeagueId}/players`} />
+                    <TabStyled label="Dashboard" component={NavLink} to="dashboard" value={`/${seasonId}/dashboard`} />
+                    <TabStyled label="Schedule" component={NavLink} to="schedule" value={`/${seasonId}/schedule`} />
+                    <TabStyled label="Players" component={NavLink} to="players" value={`/${seasonId}/players`} />
                 </Tabs>
             </Nav>
         </Container>

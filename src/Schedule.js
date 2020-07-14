@@ -1,8 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { useDispatch, useSelector } from 'react-redux';
-import { leagueSelectors } from './state/ducks/leagues';
-import { eventOperations, eventSelectors } from './state/ducks/events';
+import { useSelector } from 'react-redux';
+import { seasonSelectors } from './state/ducks/seasons';
 import EventCard from './components/EventCard';
 
 const Container = styled.div`
@@ -14,17 +13,8 @@ const EventCardStyled = styled(EventCard)`
 `;
 
 const Schedule = () => {
-    const events = useSelector(eventSelectors.selectData);
-    const success = useSelector(eventSelectors.selectSuccess);
-    const activeSeasonId = useSelector(leagueSelectors.selectActiveSeasonId);
-    // const hasLoaded = useSelector(eventSelectors.selectHasLoaded);
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        if (!success && activeSeasonId) {
-            dispatch(eventOperations.fetchEventsBySeasonId(activeSeasonId));
-        }
-    }, [dispatch, success, activeSeasonId]);
+    const events = useSelector(seasonSelectors.selectEvents);
+    console.log('events :>> ', events);
 
     return (
         <Container>

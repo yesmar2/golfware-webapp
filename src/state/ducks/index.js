@@ -5,6 +5,7 @@ import leagues from './leagues';
 import players from './players';
 import events from './events';
 import global from './global';
+import seasons from './seasons';
 
 export default combineReducers({
     ...players,
@@ -12,4 +13,5 @@ export default combineReducers({
     ...auth,
     ...events,
     ...global,
+    ...seasons,
 });

@@ -1,12 +1,12 @@
 import {
-    SET_ACTIVE_LEAGUE_ID,
+    SET_SELECTED_SEASON_ID,
 } from './types';
 
-const setSelectedLeagueId = (selectedLeagueId) => ({
-    type: SET_ACTIVE_LEAGUE_ID,
-    selectedLeagueId,
+const setSelectedSeasonId = (selectedSeasonId) => ({
+    type: SET_SELECTED_SEASON_ID,
+    selectedSeasonId,
 });
 
 export {
-    setSelectedLeagueId,
+    setSelectedSeasonId,
 };
