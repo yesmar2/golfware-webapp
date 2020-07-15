@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import LazyLoad from 'react-lazyload';
-import { playerOperations, playerSelectors } from './state/ducks/players';
+import { seasonOperations, seasonSelectors } from './state/ducks/season';
 import Search from './Search';
 import SortDropdown from './SortDropdown';
 import PlayerCard from './PlayerCard';
@@ -49,18 +49,18 @@ const SkeletonStyled = styled(Skeleton)`
 `;
 
 const ScoreEntry = () => {
-    const players = useSelector(playerSelectors.selectFilteredPlayers);
-    const success = useSelector(playerSelectors.selectSuccess);
-    const hasLoaded = useSelector(playerSelectors.selectHasLoaded);
+    const players = useSelector(seasonSelectors.selectFilteredPlayers);
+    const success = useSelector(seasonSelectors.selectSuccess);
+    const hasLoaded = useSelector(seasonSelectors.selectHasLoaded);
     const dispatch = useDispatch();
 
     const setPlayerFilter = (value) => {
-        dispatch(playerOperations.setPlayerFilter(value));
+        dispatch(seasonOperations.setPlayerFilter(value));
     };
 
     useEffect(() => {
         if (!success) {
-            dispatch(playerOperations.fetchPlayers());
+            dispatch(seasonOperations.fetchPlayers());
         }
     }, [dispatch, success]);
 

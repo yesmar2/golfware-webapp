@@ -1,5 +1,5 @@
 import { setSelectedSeasonId } from './actions';
-import { fetchSeason } from '../seasons/actions';
+import { fetchSeason } from '../season/actions';
 
 const loadLeagueSeasonData = (seasonId) => (dispatch) => {
     dispatch(setSelectedSeasonId(seasonId));

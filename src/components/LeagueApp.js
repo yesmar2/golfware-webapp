@@ -20,7 +20,7 @@ import Schedule from '../Schedule';
 import Players from '../Players';
 import ScoreEntry from '../ScoreEntry';
 import Scorecard from '../Scorecard';
-import { seasonOperations } from '../state/ducks/seasons';
+import { seasonOperations } from '../state/ducks/season';
 import golfer from '../images/golfer.jpg';
 
 const Container = styled.div`

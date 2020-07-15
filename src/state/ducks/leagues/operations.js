@@ -2,8 +2,8 @@ import {
     fetchLeaguesByFirebaseID,
 } from './actions';
 
-const playerOperations = {
+const leagueOperations = {
     fetchLeaguesByFirebaseID,
 };
 
-export default playerOperations;
+export default leagueOperations;

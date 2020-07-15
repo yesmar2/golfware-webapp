@@ -8,7 +8,7 @@ import Tab from '@material-ui/core/Tab';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-import { seasonSelectors } from '../state/ducks/seasons';
+import { seasonSelectors } from '../state/ducks/season';
 import { leagueSelectors } from '../state/ducks/leagues';
 import { ReactComponent as Logo } from '../images/golfware-logo-white.svg';
 
@@ -76,7 +76,7 @@ const LeagueNav = ({ className }) => {
     const location = useLocation();
     const leagues = useSelector(leagueSelectors.selectData);
     const season = useSelector(seasonSelectors.selectData);
-    
+
     const {
         _id: seasonId,
         leagueId,

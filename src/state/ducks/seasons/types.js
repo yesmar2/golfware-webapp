@@ -1,9 +1,0 @@
-const DUCK_NAMESPACE = 'SEASONS';
-const FETCH = 'FETCH';
-const FETCH_NAMESPACE = `${DUCK_NAMESPACE}/${FETCH}`;
-
-export {
-    DUCK_NAMESPACE,
-    FETCH,
-    FETCH_NAMESPACE,
-};

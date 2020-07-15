@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
-import { seasonSelectors } from './state/ducks/seasons';
+import { seasonSelectors } from './state/ducks/season';
 import EventCard from './components/EventCard';
 
 const Container = styled.div`
@@ -14,8 +14,6 @@ const EventCardStyled = styled(EventCard)`
 
 const Schedule = () => {
     const events = useSelector(seasonSelectors.selectEvents);
-    console.log('events :>> ', events);
-
     return (
         <Container>
             {events.map((event) => (

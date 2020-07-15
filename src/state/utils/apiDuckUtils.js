@@ -9,7 +9,7 @@ const initialStatusState = {
     error: undefined,
 };
 
-const buildApiMapReducer = (namespace) => {
+const buildApiMapReducer = (namespace, initialDataState = []) => {
     const statusReducer = createReducer(initialStatusState)({
         [`${namespace}/FETCH_START`]: (state) => ({
             ...state,
@@ -29,7 +29,7 @@ const buildApiMapReducer = (namespace) => {
         },
     });
 
-    const dataReducer = createReducer([])({ [`${namespace}/FETCH_SET`]: (state, action) => action.payload });
+    const dataReducer = createReducer(initialDataState)({ [`${namespace}/FETCH_SET`]: (state, action) => action.payload });
 
     return {
         [DATA_NAMESPACE]: dataReducer,

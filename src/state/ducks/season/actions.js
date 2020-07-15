@@ -1,5 +1,6 @@
 import {
     FETCH_NAMESPACE,
+    PLAYER_FILTER_NAMESPACE,
 } from './types';
 
 const fetchSeason = (seasonId) => ({
@@ -12,6 +13,12 @@ const fetchSeason = (seasonId) => ({
     },
 });
 
+const setPlayerFilter = (filterText) => ({
+    type: PLAYER_FILTER_NAMESPACE,
+    payload: filterText,
+});
+
 export {
     fetchSeason,
+    setPlayerFilter,
 };
