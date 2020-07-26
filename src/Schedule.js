@@ -19,6 +19,7 @@ const Schedule = () => {
             {events.map((event) => (
                 <EventCardStyled
                     key={event.number}
+                    eventId={event._id}
                     number={event.number}
                     description={event.description}
                     date={event.date}

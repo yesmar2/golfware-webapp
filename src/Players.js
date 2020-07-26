@@ -66,7 +66,6 @@ const ScoreEntry = () => {
                         return <SkeletonStyled key={index} />;
                     }
 
-                    const { team } = player;
                     const matchup = 1;
                     const week = 1;
 
@@ -75,8 +74,8 @@ const ScoreEntry = () => {
                             <Link to={`/scorecard/${week}/${matchup}`}>
                                 <PlayerCardStyled
                                     name={player.fullName}
-                                    teamNumber={team.number}
-                                    teamColor={team.color}
+                                    teamNumber={player.teamNumber}
+                                    teamColor={player.teamColor}
                                     handicap={player.handicap}
                                 />
                             </Link>

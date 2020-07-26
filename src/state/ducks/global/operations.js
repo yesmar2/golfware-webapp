@@ -1,19 +1,21 @@
-import { setSelectedSeasonId } from './actions';
+import { setSelectedSeasonId, setSelectedEventId } from './actions';
 import { fetchSeason } from '../season/actions';
 
-const loadLeagueSeasonData = (seasonId) => (dispatch) => {
+const loadSeasonData = (seasonId) => (dispatch) => {
     dispatch(setSelectedSeasonId(seasonId));
     dispatch(fetchSeason(seasonId));
 };
 
 const globalOperations = {
+    loadSeasonData,
+    setSelectedEventId,
     setSelectedSeasonId,
-    loadLeagueSeasonData,
 };
 
 export {
+    loadSeasonData,
+    setSelectedEventId,
     setSelectedSeasonId,
-    loadLeagueSeasonData,
 };
 
 export default globalOperations;

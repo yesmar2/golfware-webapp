@@ -20,7 +20,7 @@ import Schedule from '../Schedule';
 import Players from '../Players';
 import ScoreEntry from '../ScoreEntry';
 import Scorecard from '../Scorecard';
-import { seasonOperations } from '../state/ducks/season';
+import { globalOperations } from '../state/ducks/global';
 import golfer from '../images/golfer.jpg';
 
 const Container = styled.div`
@@ -110,27 +110,27 @@ const routes = [
     },
     {
         key: 'dashboard',
-        path: '/:seasonId/dashboard',
+        path: '/:selectedSeasonId/dashboard',
         component: Dashboard,
     },
     {
         key: 'schedule',
-        path: '/:seasonId/schedule',
+        path: '/:selectedSeasonId/schedule',
         component: Schedule,
     },
     {
         key: 'players',
-        path: '/:seasonId/players',
+        path: '/:selectedSeasonId/players',
         component: Players,
     },
     {
         key: 'scoreentry',
-        path: '/:seasonId/scoreentry',
+        path: '/:selectedSeasonId/scoreentry/:selectedEventId',
         component: ScoreEntry,
     },
     {
         key: 'scorecard',
-        path: '/:seasonId/scorecard/:week/:matchupNumber',
+        path: '/:selectedSeasonId/scorecard/:week/:matchupNumber',
         component: Scorecard,
     },
 ];
@@ -153,7 +153,7 @@ const LeagueHeader = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(seasonOperations.fetchSeason(selectedSeasonId));
+        dispatch(globalOperations.loadSeasonData(selectedSeasonId));
     }, [dispatch, selectedSeasonId]);
 
     return (

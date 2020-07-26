@@ -33,9 +33,10 @@ const MatchupContainer = styled.div`
     flex: 1;
 `;
 
-const PlayerCard = (props) => {
+const EventCard = (props) => {
     const {
         className,
+        eventId,
         number,
         description,
         date,
@@ -55,7 +56,7 @@ const PlayerCard = (props) => {
                         <MatchupChip text={`${matchup.teamOneNumber} vs ${matchup.teamTwoNumber}`} />
                     </MatchupContainer>
                 ))}
-                <Button variant="outlined" component={Link} to="scoreentry" color="primary">
+                <Button variant="outlined" component={Link} to={`scoreentry/${eventId}`} color="primary">
                     Enter Scores
                 </Button>
             </ListItem>
@@ -63,4 +64,4 @@ const PlayerCard = (props) => {
     );
 };
 
-export default PlayerCard;
+export default EventCard;

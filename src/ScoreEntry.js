@@ -1,15 +1,16 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import LazyLoad from 'react-lazyload';
-import { seasonOperations, seasonSelectors } from './state/ducks/season';
 import Search from './Search';
 import SortDropdown from './SortDropdown';
 import PlayerCard from './PlayerCard';
 import MatchScore from './MatchScore';
 import Skeleton from './ui/Skeleton';
 import debounce from './utils/debounce';
+import { seasonOperations, seasonSelectors } from './state/ducks/season';
+import { globalOperations } from './state/ducks/global';
 
 const Container = styled.div`
     display: flex;
@@ -49,20 +50,23 @@ const SkeletonStyled = styled(Skeleton)`
 `;
 
 const ScoreEntry = () => {
-    const players = useSelector(seasonSelectors.selectFilteredPlayers);
-    const success = useSelector(seasonSelectors.selectSuccess);
+    const { selectedEventId } = useParams();
     const hasLoaded = useSelector(seasonSelectors.selectHasLoaded);
+    const unmatchedPlayers = useSelector(seasonSelectors.selectFilteredUnmatchedPlayers);
+    console.log('unmatchedPlayers :>> ', unmatchedPlayers);
+
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(globalOperations.setSelectedEventId(selectedEventId));
+        return () => {
+            dispatch(globalOperations.setSelectedEventId(null));
+        };
+    }, [dispatch, selectedEventId]);
 
     const setPlayerFilter = (value) => {
         dispatch(seasonOperations.setPlayerFilter(value));
     };
-
-    useEffect(() => {
-        if (!success) {
-            dispatch(seasonOperations.fetchPlayers());
-        }
-    }, [dispatch, success]);
 
     return (
         <Container>
@@ -72,7 +76,7 @@ const ScoreEntry = () => {
                     <SortDropdown />
                 </SearchSortContainer>
                 {/* TODO: move sort to redux */}
-                {(!hasLoaded ? Array.from(new Array(10)) : players)
+                {(!hasLoaded ? Array.from(new Array(10)) : unmatchedPlayers)
                     // .sort((a, b) => {
                     //     if (a.lastName < b.lastName) {
                     //         return -1;
@@ -82,12 +86,12 @@ const ScoreEntry = () => {
                     //     }
                     //     return 0;
                     // })
-                    .map((player) => {
+                    .map((player, index) => {
                         if (!player) {
-                            return <SkeletonStyled />;
+                            // eslint-disable-next-line react/no-array-index-key
+                            return <SkeletonStyled key={index} />;
                         }
 
-                        const { team } = player;
                         const matchup = 1;
                         const week = 1;
 
@@ -96,8 +100,8 @@ const ScoreEntry = () => {
                                 <Link to={`/scorecard/${week}/${matchup}`}>
                                     <PlayerCardStyled
                                         name={player.fullName}
-                                        teamNumber={team.number}
-                                        teamColor={team.color}
+                                        teamNumber={player.teamNumber}
+                                        teamColor={player.teamColor}
                                         handicap={player.handicap}
                                     />
                                 </Link>

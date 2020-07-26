@@ -8,9 +8,17 @@ import Tab from '@material-ui/core/Tab';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import { MdExpandMore } from 'react-icons/md';
 import { seasonSelectors } from '../state/ducks/season';
 import { leagueSelectors } from '../state/ducks/leagues';
 import { ReactComponent as Logo } from '../images/golfware-logo-white.svg';
+
+const ExpandMoreIcon = styled(MdExpandMore)`
+    height: 28px;
+    width: 28px;
+    color: ${(props) => props.theme.palette.grey[100]};
+`;
+
 
 const Container = styled.div`
     width: 100%;
@@ -67,6 +75,17 @@ const FormControlStyled = styled(FormControl)`
     }
 `;
 
+const SeasonFormControl = styled(FormControlStyled)`
+    & .MuiInputBase-root {
+        font-size: 24px;
+    }
+`;
+
+const SelectStyled = styled(Select)`
+    padding-right: ${(props) => props.theme.spacing(1)}px;
+    margin-right: ${(props) => props.theme.spacing(3)}px;
+`;
+
 const LeagueNav = ({ className }) => {
 
     const handleChange = (event) => {
@@ -79,7 +98,9 @@ const LeagueNav = ({ className }) => {
 
     const {
         _id: seasonId,
-        leagueId,
+        league: {
+            _id: leagueId
+        },
     } = season;
 
     if (!leagueId) return null;
@@ -90,11 +111,12 @@ const LeagueNav = ({ className }) => {
                 <LogoStyled />
             </LogoContainer>
             <FormControlStyled>
-                <Select
+                <SelectStyled
                     labelId="leagueDropdownLabel"
                     id="leagueDropdown"
                     value={leagueId}
                     onChange={handleChange}
+                    IconComponent={ExpandMoreIcon}
                     MenuProps={{
                         anchorOrigin: {
                             vertical: "bottom",
@@ -110,8 +132,30 @@ const LeagueNav = ({ className }) => {
                     {leagues.map((league) => (
                         <MenuItem key={league._id} value={league._id}>{league.name}</MenuItem>
                     ))}
-                </Select>
+                </SelectStyled>
             </FormControlStyled>
+            <SeasonFormControl>
+                <SelectStyled
+                    labelId="seasonDropdownLabel"
+                    id="seasonDropdown"
+                    value="2020"
+                    onChange={handleChange}
+                    IconComponent={ExpandMoreIcon}
+                    MenuProps={{
+                        anchorOrigin: {
+                            vertical: "bottom",
+                            horizontal: "left"
+                        },
+                        transformOrigin: {
+                            vertical: "top",
+                            horizontal: "left"
+                        },
+                        getContentAnchorEl: null
+                    }}
+                >
+                    <MenuItem value="2020">2020</MenuItem>
+                </SelectStyled>
+            </SeasonFormControl>
             <Nav>
                 <Tabs value={location.pathname}>
                     <TabStyled label="Dashboard" component={NavLink} to="dashboard" value={`/${seasonId}/dashboard`} />

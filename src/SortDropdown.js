@@ -6,7 +6,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import { inputStyles } from './ui/styleUtils';
 
-const ExpandMoreIcon = styled(MdSwapVert)`
+const SortIcon = styled(MdSwapVert)`
     height: 24px;
     width: 24px;
 `;
@@ -31,7 +31,7 @@ const SortDropdown = () => {
                 id="sortDropdown"
                 value={sortType}
                 onChange={handleChange}
-                IconComponent={ExpandMoreIcon}
+                IconComponent={SortIcon}
             >
                 <MenuItem value="name">Name</MenuItem>
                 <MenuItem value="handicap">Handicap</MenuItem>

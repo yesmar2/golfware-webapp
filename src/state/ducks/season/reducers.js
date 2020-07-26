@@ -5,6 +5,10 @@ import { buildApiMapReducer, createReducer } from '../../utils';
 const initialDataState = {
     events: [],
     teams: [],
+    league: {
+        _id: null,
+        name: null,
+    },
 };
 
 const apiMapReducer = buildApiMapReducer(DUCK_NAMESPACE, initialDataState);
