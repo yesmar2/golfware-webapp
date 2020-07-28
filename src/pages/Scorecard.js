@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import Paper from './Paper';
-import PlayerScoreEntry from './PlayerScoreEntry';
-import ScorecardCell from './ScorecardCell';
+import Paper from '../components/Paper';
+import PlayerScoreEntry from '../components/PlayerScoreEntry';
+import ScorecardCell from '../components/ScorecardCell';
 
 const Container = styled(Paper)`
     margin-bottom: ${(props) => props.theme.spacing(4)}px;

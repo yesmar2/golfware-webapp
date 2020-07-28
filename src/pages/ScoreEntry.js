@@ -3,14 +3,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { Link, useParams } from 'react-router-dom';
 import LazyLoad from 'react-lazyload';
-import Search from './Search';
-import SortDropdown from './SortDropdown';
-import PlayerCard from './PlayerCard';
-import MatchScore from './MatchScore';
-import Skeleton from './ui/Skeleton';
-import debounce from './utils/debounce';
-import { seasonOperations, seasonSelectors } from './state/ducks/season';
-import { globalOperations } from './state/ducks/global';
+import Search from '../components/Search';
+import SortDropdown from '../components/SortDropdown';
+import PlayerCard from '../components/PlayerCard';
+import MatchScore from '../components/MatchScore';
+import Skeleton from '../ui/Skeleton';
+import debounce from '../utils/debounce';
+import { seasonOperations, seasonSelectors } from '../state/ducks/season';
+import { globalOperations } from '../state/ducks/global';
 
 const Container = styled.div`
     display: flex;
@@ -53,7 +53,6 @@ const ScoreEntry = () => {
     const { selectedEventId } = useParams();
     const hasLoaded = useSelector(seasonSelectors.selectHasLoaded);
     const unmatchedPlayers = useSelector(seasonSelectors.selectFilteredUnmatchedPlayers);
-    console.log('unmatchedPlayers :>> ', unmatchedPlayers);
 
     const dispatch = useDispatch();
 
@@ -92,17 +91,23 @@ const ScoreEntry = () => {
                             return <SkeletonStyled key={index} />;
                         }
 
-                        const matchup = 1;
-                        const week = 1;
+                        const {
+                            _id,
+                            fullName,
+                            teamNumber,
+                            teamColor,
+                            handicap,
+                            matchupId,
+                        } = player;
 
                         return (
-                            <LazyLoad key={player._id} height={88} offset={400} once>
-                                <Link to={`/scorecard/${week}/${matchup}`}>
+                            <LazyLoad key={_id} height={88} offset={400} once>
+                                <Link to={`/scorecard/${matchupId}`}>
                                     <PlayerCardStyled
-                                        name={player.fullName}
-                                        teamNumber={player.teamNumber}
-                                        teamColor={player.teamColor}
-                                        handicap={player.handicap}
+                                        name={fullName}
+                                        teamNumber={teamNumber}
+                                        teamColor={teamColor}
+                                        handicap={handicap}
                                     />
                                 </Link>
                             </LazyLoad>

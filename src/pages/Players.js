@@ -3,12 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import LazyLoad from 'react-lazyload';
-import { seasonOperations, seasonSelectors } from './state/ducks/season';
-import Search from './Search';
-import SortDropdown from './SortDropdown';
-import PlayerCard from './PlayerCard';
-import Skeleton from './ui/Skeleton';
-import debounce from './utils/debounce';
+import { seasonOperations, seasonSelectors } from '../state/ducks/season';
+import Search from '../components/Search';
+import SortDropdown from '../components/SortDropdown';
+import PlayerCard from '../components/PlayerCard';
+import Skeleton from '../ui/Skeleton';
+import debounce from '../utils/debounce';
 
 const Container = styled.div`
     

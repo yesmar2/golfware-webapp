@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { GolfBall } from './icons';
+import { GolfBall } from '../icons';
 
 const Container = styled.div`
     display: flex;

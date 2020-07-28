@@ -3,12 +3,12 @@ import styled from 'styled-components';
 import { FaExchangeAlt } from 'react-icons/fa';
 import { IoMdInformationCircleOutline } from 'react-icons/io';
 import Paper from './Paper';
-import ListItem from './ui/ListItem';
-import ListItemIcon from './ui/ListItemIcon';
-import ListItemText from './ui/ListItemText';
+import ListItem from '../ui/ListItem';
+import ListItemIcon from '../ui/ListItemIcon';
+import ListItemText from '../ui/ListItemText';
 import TeamLogo from './TeamLogo';
 import HandicapChip from './HandicapChip';
-import ToggleSwitch from './ui/ToggleSwitch';
+import ToggleSwitch from '../ui/ToggleSwitch';
 
 const Container = styled(Paper)`
     cursor: pointer;

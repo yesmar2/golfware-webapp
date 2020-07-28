@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
-import { seasonSelectors } from './state/ducks/season';
-import EventCard from './components/EventCard';
+import { seasonSelectors } from '../state/ducks/season';
+import EventCard from '../components/EventCard';
 
 const Container = styled.div`
     

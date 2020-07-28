@@ -3,11 +3,11 @@ import styled from 'styled-components';
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
 import { format, parseISO } from 'date-fns';
-import Paper from '../Paper';
+import Paper from './Paper';
 import ListItem from '../ui/ListItem';
 import ListItemIcon from '../ui/ListItemIcon';
 import ListItemText from '../ui/ListItemText';
-import MatchupChip from '../MatchupChip';
+import MatchupChip from './MatchupChip';
 
 const Container = styled(Paper)`
     

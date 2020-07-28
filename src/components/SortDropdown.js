@@ -4,7 +4,7 @@ import { MdSwapVert } from 'react-icons/md';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-import { inputStyles } from './ui/styleUtils';
+import { inputStyles } from '../ui/styleUtils';
 
 const SortIcon = styled(MdSwapVert)`
     height: 24px;

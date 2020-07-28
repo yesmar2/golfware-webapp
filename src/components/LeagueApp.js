@@ -1,7 +1,6 @@
-/* eslint-disable */
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import {
     Switch,
     Route,
@@ -10,16 +9,16 @@ import {
     useParams,
 } from 'react-router-dom';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import LeagueSelection from '../pages/LeagueSelection';
+import Dashboard from '../pages/Dashboard';
+import Schedule from '../pages/Schedule';
+import Players from '../pages/Players';
+import ScoreEntry from '../pages/ScoreEntry';
+import Scorecard from '../pages/Scorecard';
 import MiddleSection from '../ui/MiddleSection';
 import LeagueSelectionHeader from './LeagueSelectionHeader';
 import LeagueNav from './LeagueNav';
 import ScoreEntryNav from './ScoreEntryNav';
-import LeagueSelection from '../LeagueSelection';
-import Dashboard from '../Dashboard';
-import Schedule from '../Schedule';
-import Players from '../Players';
-import ScoreEntry from '../ScoreEntry';
-import Scorecard from '../Scorecard';
 import { globalOperations } from '../state/ducks/global';
 import golfer from '../images/golfer.jpg';
 
@@ -166,19 +165,19 @@ const LeagueHeader = () => {
             </Route>
         </Switch>
     );
-}
+};
 
 const LeagueApp = () => {
     const location = useLocation();
     const smallHeader = useSmallHeader();
-    
+
     return (
         <Container>
             <Header small={smallHeader}>
                 <MiddleSection>
                     <Switch>
                         <Route path="/leagues" exact>
-                           <LeagueSelectionHeader />
+                            <LeagueSelectionHeader />
                         </Route>
                         <Route path="/:selectedSeasonId">
                             <LeagueHeader />

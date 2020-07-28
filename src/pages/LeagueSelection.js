@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { leagueSelectors } from './state/ducks/leagues';
+import { leagueSelectors } from '../state/ducks/leagues';
 
 const LeagueSelection = () => {
     const leagues = useSelector(leagueSelectors.selectData);

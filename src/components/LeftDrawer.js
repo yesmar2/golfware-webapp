@@ -5,7 +5,7 @@ import {
     FaUsers, FaUser, FaGolfBall, FaCalendar,
 } from 'react-icons/fa';
 import MenuItem from './MenuItem';
-import golfer from './images/golfer.jpg';
+import golfer from '../images/golfer.jpg';
 
 const Container = styled.nav`
     position: fixed;

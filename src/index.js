@@ -10,7 +10,7 @@ import {
 import { Provider as ReduxProvider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 import configureStore from './state/store';
-import App from './App';
+import App from './components/App';
 
 const grey200 = '#E0E7F0';
 const green = '#30da7b';

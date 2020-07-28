@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import { FaExchangeAlt } from 'react-icons/fa';
-import ListItem from './ui/ListItem';
-import ListItemIcon from './ui/ListItemIcon';
-import ListItemText from './ui/ListItemText';
+import ListItem from '../ui/ListItem';
+import ListItemIcon from '../ui/ListItemIcon';
+import ListItemText from '../ui/ListItemText';
 import ScorecardCell from './ScorecardCell';
 import TeamLogo from './TeamLogo';
 import HandicapChip from './HandicapChip';
