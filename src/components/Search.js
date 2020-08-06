@@ -1,12 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import TextField from '@material-ui/core/TextField';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import { FaSearch } from 'react-icons/fa';
+import TextField from '../ui/Textfield';
 import { inputStyles } from '../ui/styleUtils';
 
 const TextFieldStyled = styled(TextField)`
-    background: #fff;
     ${(props) => inputStyles(props.theme)}
 `;
 

@@ -1,5 +1,4 @@
-/* eslint-disable */
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -87,8 +86,7 @@ const SelectStyled = styled(Select)`
 `;
 
 const LeagueNav = ({ className }) => {
-
-    const handleChange = (event) => {
+    const handleChange = () => {
         // setSelectedLeagueId(event.target.value);
     };
 
@@ -99,7 +97,7 @@ const LeagueNav = ({ className }) => {
     const {
         _id: seasonId,
         league: {
-            _id: leagueId
+            _id: leagueId,
         },
     } = season;
 
@@ -119,14 +117,14 @@ const LeagueNav = ({ className }) => {
                     IconComponent={ExpandMoreIcon}
                     MenuProps={{
                         anchorOrigin: {
-                            vertical: "bottom",
-                            horizontal: "left"
+                            vertical: 'bottom',
+                            horizontal: 'left',
                         },
                         transformOrigin: {
-                            vertical: "top",
-                            horizontal: "left"
+                            vertical: 'top',
+                            horizontal: 'left',
                         },
-                        getContentAnchorEl: null
+                        getContentAnchorEl: null,
                     }}
                 >
                     {leagues.map((league) => (
@@ -143,14 +141,14 @@ const LeagueNav = ({ className }) => {
                     IconComponent={ExpandMoreIcon}
                     MenuProps={{
                         anchorOrigin: {
-                            vertical: "bottom",
-                            horizontal: "left"
+                            vertical: 'bottom',
+                            horizontal: 'left',
                         },
                         transformOrigin: {
-                            vertical: "top",
-                            horizontal: "left"
+                            vertical: 'top',
+                            horizontal: 'left',
                         },
-                        getContentAnchorEl: null
+                        getContentAnchorEl: null,
                     }}
                 >
                     <MenuItem value="2020">2020</MenuItem>

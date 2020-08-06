@@ -10,24 +10,28 @@ import {
 } from 'react-router-dom';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import LeagueSelection from '../pages/LeagueSelection';
+import LeagueWizard from '../pages/LeagueWizard';
 import Dashboard from '../pages/Dashboard';
 import Schedule from '../pages/Schedule';
 import Players from '../pages/Players';
 import ScoreEntry from '../pages/ScoreEntry';
 import Scorecard from '../pages/Scorecard';
-import MiddleSection from '../ui/MiddleSection';
 import LeagueSelectionHeader from './LeagueSelectionHeader';
 import LeagueNav from './LeagueNav';
 import ScoreEntryNav from './ScoreEntryNav';
 import { globalOperations } from '../state/ducks/global';
 import golfer from '../images/golfer.jpg';
 
-const Container = styled.div`
-
+const middleSectionStyles = `
+    position: relative;
+    width: 1200px;
+    height: 100%;
+    margin: 0 auto;
 `;
 
 const Main = styled.main`
     width: 100%;
+    height: calc(100vh - ${(props) => (props.smallHeader ? props.theme.headerHeightSmall : props.theme.headerHeightBig)});
     padding: ${(props) => props.theme.spacing(3)}px;
     transition: margin-top 200ms;
     transition-delay: 200ms;
@@ -35,8 +39,8 @@ const Main = styled.main`
 `;
 
 const StyledTransitionGroup = styled(TransitionGroup)`
-    position: relative;
-
+    ${middleSectionStyles}
+    
     .page-enter {
         opacity: 0.01;
         transform: translateY(100px);
@@ -66,6 +70,7 @@ const Content = styled(TransitionGroup)`
     top: 0;
     left: 0;
     right: 0;
+    height: 100%;
 `;
 
 const Header = styled.header`
@@ -101,11 +106,20 @@ const Header = styled.header`
     }
 `;
 
+const InnerHeader = styled.div`
+    ${middleSectionStyles}
+`;
+
 const routes = [
     {
         key: 'leagueSelection',
         path: '/leagues',
         component: LeagueSelection,
+    },
+    {
+        key: 'leagueWizard',
+        path: '/league-wizard',
+        component: LeagueWizard,
     },
     {
         key: 'dashboard',
@@ -172,40 +186,38 @@ const LeagueApp = () => {
     const smallHeader = useSmallHeader();
 
     return (
-        <Container>
+        <>
             <Header small={smallHeader}>
-                <MiddleSection>
+                <InnerHeader>
                     <Switch>
-                        <Route path="/leagues" exact>
+                        <Route path={['/leagues', '/league-wizard']} exact>
                             <LeagueSelectionHeader />
                         </Route>
                         <Route path="/:selectedSeasonId">
                             <LeagueHeader />
                         </Route>
                     </Switch>
-                </MiddleSection>
+                </InnerHeader>
             </Header>
             <Main smallHeader={smallHeader}>
-                <MiddleSection>
-                    <StyledTransitionGroup>
-                        <CSSTransition key={location.key} classNames="page" timeout={800}>
-                            <Content>
-                                <Switch location={location}>
-                                    {routes.map((route) => (
-                                        <Route
-                                            key={route.key}
-                                            path={route.path}
-                                            exact
-                                            component={route.component}
-                                        />
-                                    ))}
-                                </Switch>
-                            </Content>
-                        </CSSTransition>
-                    </StyledTransitionGroup>
-                </MiddleSection>
+                <StyledTransitionGroup>
+                    <CSSTransition key={location.key} classNames="page" timeout={800}>
+                        <Content>
+                            <Switch location={location}>
+                                {routes.map((route) => (
+                                    <Route
+                                        key={route.key}
+                                        path={route.path}
+                                        exact
+                                        component={route.component}
+                                    />
+                                ))}
+                            </Switch>
+                        </Content>
+                    </CSSTransition>
+                </StyledTransitionGroup>
             </Main>
-        </Container>
+        </>
     );
 };
 

@@ -14,7 +14,6 @@ const SortIcon = styled(MdSwapVert)`
 const FormControlStyled = styled(FormControl)`
     height: 100%;
     width: 150px;
-    background: #fff;
     ${(props) => inputStyles(props.theme)}
 `;
 
