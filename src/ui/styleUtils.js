@@ -1,7 +1,7 @@
 export function inputStyles(theme) {
     return `
-        background: #fff;
         & .MuiOutlinedInput-root {
+            background: #fff;
             & fieldset {
                 border: 1px solid  ${theme.palette.grey[200]};
             }
@@ -11,6 +11,6 @@ export function inputStyles(theme) {
             &.Mui-focused fieldset {
                 border: 1px solid ${theme.palette.green};
             }
-        }   
+        }
   `;
 }

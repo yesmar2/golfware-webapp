@@ -1,21 +1,18 @@
 import React from 'react';
-import TextField from '../ui/Textfield';
+import NumericField from './NumericField';
 import StepQuestionLabel from '../ui/StepQuestionLabel';
+import StepQuestionContainer from '../ui/StepQuestionContainer';
 
 const TeamStep = () => (
     <>
         <StepQuestionLabel>How many teams are there?</StepQuestionLabel>
-        <TextField
-            fullWidth
-            variant="outlined"
-            // onChange={(event) => onChange(event.target.value)}
-        />
+        <StepQuestionContainer>
+            <NumericField name="numTeams" />
+        </StepQuestionContainer>
         <StepQuestionLabel>How many players per team?</StepQuestionLabel>
-        <TextField
-            fullWidth
-            variant="outlined"
-            // onChange={(event) => onChange(event.target.value)}
-        />
+        <StepQuestionContainer>
+            <NumericField name="numPlayersPerTeam" />
+        </StepQuestionContainer>
     </>
 );
 

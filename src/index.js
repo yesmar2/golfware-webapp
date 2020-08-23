@@ -8,6 +8,8 @@ import {
     StylesProvider,
 } from '@material-ui/core/styles';
 import { Provider as ReduxProvider } from 'react-redux';
+import { MuiPickersUtilsProvider } from '@material-ui/pickers';
+import DateFnsUtils from '@date-io/date-fns';
 import * as serviceWorker from './serviceWorker';
 import configureStore from './state/store';
 import App from './components/App';
@@ -85,7 +87,9 @@ ReactDOM.render(
                 <ThemeProvider theme={customTheme}>
                     <StylesProvider injectFirst>
                         <GlobalStyle />
-                        <App />
+                        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                            <App />
+                        </MuiPickersUtilsProvider>
                     </StylesProvider>
                 </ThemeProvider>
             </MuiThemeProvider>

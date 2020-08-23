@@ -1,26 +1,48 @@
 import React from 'react';
-// import Button from '@material-ui/core/Button';
-import TextField from '../ui/Textfield';
+import { Field } from 'formik';
+import Radio from '@material-ui/core/Radio';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import { RadioGroup } from 'formik-material-ui';
+import FormikTextField from '../ui/FormikTextField';
 import StepQuestionLabel from '../ui/StepQuestionLabel';
+import StepQuestionContainer from '../ui/StepQuestionContainer';
+import GolfCourseField from './GolfCourseField';
 
 const LeagueStep = () => (
     <>
         <StepQuestionLabel>Enter a name for your league</StepQuestionLabel>
-        <TextField
-            fullWidth
-            placeholder="e.g. Monday Night Men's League"
-            variant="outlined"
-        />
-        {/* <StepQuestionLabel>
-            Does your league play 9 or 18 holes?
-        </StepQuestionLabel> */}
+        <StepQuestionContainer>
+            <Field
+                component={FormikTextField}
+                name="leagueName"
+                placeholder="e.g. Monday Night Men's League"
+                variant="outlined"
+                fullWidth
+            />
+        </StepQuestionContainer>
         <StepQuestionLabel>
             What golf course(s) will this league play at?
         </StepQuestionLabel>
-        <TextField
-            fullWidth
-            variant="outlined"
-        />
+        <StepQuestionContainer>
+            <GolfCourseField />
+        </StepQuestionContainer>
+        <StepQuestionLabel>
+            How many holes will your league be playing each round?
+        </StepQuestionLabel>
+        <StepQuestionContainer>
+            <Field component={RadioGroup} name="numHoles" row>
+                <FormControlLabel
+                    value="9"
+                    control={<Radio color="primary" />}
+                    label="9 holes"
+                />
+                <FormControlLabel
+                    value="18"
+                    control={<Radio color="primary" />}
+                    label="18 holes"
+                />
+            </Field>
+        </StepQuestionContainer>
     </>
 );
 

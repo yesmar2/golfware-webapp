@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-// import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import { ReactComponent as GolfIllustration } from '../images/golf-illustration.svg';
-// import { leagueSelectors } from '../state/ducks/leagues';
+import { leagueSelectors } from '../state/ducks/leagues';
 
 const Container = styled.div`
     height: 100%;
@@ -33,8 +33,8 @@ const EmtpyStateSubText = styled.p`
 `;
 
 const LeagueSelection = () => {
-    // const leagues = useSelector(leagueSelectors.selectData);
-    const leagues = [];
+    const leagues = useSelector(leagueSelectors.selectData);
+    // const leagues = [];
     return (
         <Container>
             {leagues.length === 0 ? (
