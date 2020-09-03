@@ -128,7 +128,7 @@ const LeagueNav = ({ className }) => {
                     }}
                 >
                     {leagues.map((league) => (
-                        <MenuItem key={league._id} value={league._id}>{league.name}</MenuItem>
+                        <MenuItem key={league._id} value={league._id}>{league.leagueName}</MenuItem>
                     ))}
                 </SelectStyled>
             </FormControlStyled>

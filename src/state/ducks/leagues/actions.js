@@ -1,5 +1,6 @@
 import {
     FETCH_NAMESPACE,
+    ADD_NAMESPACE,
 } from './types';
 
 const fetchLeaguesByFirebaseID = (firebaseID) => ({
@@ -12,6 +13,18 @@ const fetchLeaguesByFirebaseID = (firebaseID) => ({
     },
 });
 
+const addLeague = (payload) => ({
+    type: ADD_NAMESPACE,
+    meta: {
+        async: true,
+        blocking: true,
+        path: '/league',
+        method: 'POST',
+        payload,
+    },
+});
+
 export {
     fetchLeaguesByFirebaseID,
+    addLeague,
 };

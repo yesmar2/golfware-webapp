@@ -1,5 +1,3 @@
-// import isomorphicFetch from "isomorphic-fetch";
-
 function parseStatus(status, res) {
     return new Promise((resolve, reject) => {
         if (status >= 200 && status < 300) {
@@ -22,11 +20,13 @@ function requestHeaders() {
     };
 }
 
-export default (url, method, body) => {
+export default (path, method, payload) => {
+    const url = `/api${path}`;
+
     const options = {
         method,
         headers: requestHeaders(),
-        body: method !== 'GET' ? JSON.stringify(body) : null,
+        body: method !== 'GET' ? JSON.stringify(payload) : null,
     };
 
     return fetch(url, options)

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useHistory } from 'react-router-dom';
 import { FiChevronLeft } from 'react-icons/fi';
 
 const Container = styled.div`
@@ -13,6 +14,7 @@ const BackIconContainer = styled.div`
     border-right: 1px solid rgba(256, 256, 256, 0.7);
     margin-right: ${(props) => props.theme.spacing(4)}px;
     padding-right: ${(props) => props.theme.spacing(3)}px;
+    cursor: pointer;
 `;
 
 const BackIconStyled = styled(FiChevronLeft)`
@@ -26,15 +28,19 @@ const Heading = styled.h1`
     color: ${(props) => props.theme.palette.grey[100]};
 `;
 
-const FormHeader = ({ title }) => (
-    <Container>
-        <BackIconContainer>
-            <BackIconStyled />
-        </BackIconContainer>
-        <Heading>
-            {title}
-        </Heading>
-    </Container>
-);
+const FormHeader = ({ title }) => {
+    const history = useHistory();
+
+    return (
+        <Container>
+            <BackIconContainer onClick={() => history.goBack()}>
+                <BackIconStyled />
+            </BackIconContainer>
+            <Heading>
+                {title}
+            </Heading>
+        </Container>
+    );
+};
 
 export default FormHeader;

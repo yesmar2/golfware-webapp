@@ -54,7 +54,7 @@ const LeagueSelection = () => {
                 <div>
                     {leagues.map((league) => (
                         <div key={league._id}>
-                            <Link to={`${league.activeSeasonId}/dashboard`}>{league.name}</Link>
+                            <Link to={`${league.activeSeasonId}/dashboard`}>{league.leagueName}</Link>
                         </div>
                     ))}
                 </div>

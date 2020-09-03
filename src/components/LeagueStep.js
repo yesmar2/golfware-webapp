@@ -30,7 +30,7 @@ const LeagueStep = () => (
             How many holes will your league be playing each round?
         </StepQuestionLabel>
         <StepQuestionContainer>
-            <Field component={RadioGroup} name="numHoles" row>
+            <Field component={RadioGroup} name="numberOfHoles" row>
                 <FormControlLabel
                     value="9"
                     control={<Radio color="primary" />}

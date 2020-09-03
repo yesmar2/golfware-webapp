@@ -1,10 +1,15 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import * as Yup from 'yup';
+import fetch from '../utils/fetch';
 import Wizard, { WizardStep } from '../components/Wizard';
 import LeagueStep from '../components/LeagueStep';
 import SeasonStep from '../components/SeasonStep';
 import TeamStep from '../components/TeamStep';
+import { authSelectors } from '../state/ducks/auth';
+import { leagueOperations } from '../state/ducks/leagues';
 
 const Container = styled.div`
     display: flex;
@@ -13,8 +18,24 @@ const Container = styled.div`
 `;
 
 const LeagueWizard = () => {
-    const onSubmit = (values) => {
-        console.log('values :>> ', values);
+    const dispatch = useDispatch();
+    const history = useHistory();
+    const firebaseId = useSelector(authSelectors.selectUserFirebaseId);
+
+    const onSubmit = async (values) => {
+        const { leagueName, golfCourse, numberOfHoles } = values;
+
+        const payload = {
+            leagueName,
+            admin: firebaseId,
+            golfCourseId: golfCourse.courseId,
+            numberOfHoles,
+        };
+
+        const leagueResult = await fetch('/league', 'POST', payload);
+        await dispatch(leagueOperations.fetchLeaguesByFirebaseID(firebaseId));
+
+        history.push(`/${leagueResult.seasons[0]}/dashboard`);
     };
 
     return (
@@ -23,7 +44,7 @@ const LeagueWizard = () => {
                 initialValues={{
                     leagueName: '',
                     golfCourse: null,
-                    numHoles: '9',
+                    numberOfHoles: '9',
                     eventDate: new Date(),
                     numEvents: '',
                     numTeams: '',

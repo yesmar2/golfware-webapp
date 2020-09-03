@@ -6,6 +6,7 @@ const selectIsVerifying = (appState) => _selectAuth(appState).isVerifying;
 const selectIsLoggingIn = (appState) => _selectAuth(appState).isLoggingIn;
 const selectLoginError = (appState) => _selectAuth(appState).loginError;
 const selectUser = (appState) => _selectAuth(appState).user;
+const selectUserFirebaseId = (appState) => selectUser(appState).uid;
 
 const authSelectors = {
     selectIsAuthenticated,
@@ -13,6 +14,7 @@ const authSelectors = {
     selectIsLoggingIn,
     selectLoginError,
     selectUser,
+    selectUserFirebaseId,
 };
 
 export default authSelectors;
